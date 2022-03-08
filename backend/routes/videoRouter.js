@@ -34,8 +34,6 @@ videoRouter.get("/search_1", getAnVideoById);
 
 //4- get video by category
 
-//category
-
 videoRouter.get("/search_2", getAnVideoByCategory);
 
 //5- delete video by id
@@ -45,7 +43,8 @@ videoRouter.delete("/delete_1/:id", authentication, deleteAnVideoById);
 //6- delete video by user_id
 
 videoRouter.delete("/delete_2/:user_id", authentication, deleteAnVideoByUserId);
-////////////////////////////// add like on specific video
+//7-add like on specific video
+
 videoRouter.post("/addLikeOnVideo/:id", authentication, addLikeOnVideo);
 
 videoRouter.delete("/removeLikeOnVideo/:id", authentication, removeLikeOnVideo);
