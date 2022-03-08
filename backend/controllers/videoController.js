@@ -13,10 +13,9 @@ const createNewVideo = (req, res) => {
     video_link,
     Likes,
     Dislikes,
-    user_id,
   } = req.body;
+  const user_id = req.token.userId;
 
-  // const user_id = req.token.userId;
   const query = `insert into videos (title, description, video_link, image,user_id,category,video_views,Likes,Dislikes) values (?,?,?,?,?,?,?,?,?)`;
 
   const data = [
@@ -47,9 +46,6 @@ const createNewVideo = (req, res) => {
   });
 };
 
-//Select * from <table_name> LIMIT value_1, OFFSET value_2
-// value_2=(page-1)*value_1
-
 //create controller for getAllVideos
 const getAllVideos = (req, res) => {
   const query = `select * from videos  where is_deleted = 0  `;
@@ -73,7 +69,7 @@ const getAllVideos = (req, res) => {
 const getAnVideoById = (req, res) => {
   const video_Id = req.query.id;
 
-  const query = `SELECT title,videos.id,description,video_link,firstName,user_id,Likes ,Dislikes,users.users_image,videos.image,video_views,category FROM users INNER JOIN videos ON users.id=videos.user_id where videos.id = ? and videos.is_deleted =0 and videos.is_deleted =0 and users.is_deleted = 0`;
+  const query = `SELECT title,videos.id,description,video_link,firstName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM users INNER JOIN videos ON users.id=videos.user_id where videos.id = ? and videos.is_deleted =0 and videos.is_deleted =0 and users.is_deleted = 0`;
 
   const data = [video_Id];
   connection.query(query, data, (err, result) => {
@@ -104,9 +100,10 @@ const getAnVideoById = (req, res) => {
 const getAnVideoByCategory = (req, res) => {
   const category = req.query.category;
 
-  const query = `SELECT title,description,videos.id,firstName,video_link,video_views,user_id,Likes ,Dislikes,users.users_image,products.image,category FROM users INNER JOIN videos ON users.id=videos.user_id where videos.category = ? and videos.is_deleted = 0`;
+  const query = `SELECT title,videos.id,description,video_link,firstName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM users INNER JOIN videos  ON users.id=videos.user_id where videos.category = ? and videos.is_deleted = 0`;
 
   const data = [category];
+
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -135,13 +132,14 @@ const getAnVideoByCategory = (req, res) => {
 
 const deleteAnVideoById = (req, res) => {
   const video_Id = req.params.id;
-  const query = `UPDATE videos SET is_deleted =1 where id=?`;
-  const data = [video_Id];
+  const userId = req.token.userId;
+  const query = `UPDATE videos SET is_deleted =1 where id=? AND user_id = ?`;
+  const data = [video_Id, userId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
         success: false,
-        message: "server error",
+        message: "Un Authorized",
         err: err,
       });
     } else {
@@ -159,9 +157,9 @@ const deleteAnVideoById = (req, res) => {
   });
 };
 
-//create controller for deleteAnVideoByUserId
+//create controller for deleteAnVideoByUserId/////cancel dont use it
 const deleteAnVideoByUserId = (req, res) => {
-  const userId = req.params.user_id;
+  const userId = req.token.user_id;
   const query = `UPDATE videos SET is_deleted =1 where user_id=? and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
