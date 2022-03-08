@@ -5,20 +5,12 @@ const { connection } = require("../database/db");
 //create controller for register
 
 const register = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    age,
-    country,
-    email,
-    phone_Number,
-    password,
-    role_id,
-    users_image,
-    id,
-  } = req.body;
+  const { firstName, lastName, age, country, email, password, user_image } =
+    req.body;
+
   const hashPassword = await bcrypt.hash(password, 10);
-  const query = `insert into users (firstName,lastName,age,country,email,phone_Number,password,role_id,users_image,id) values (?,?,?,?,?,?,?,?,?,?)`;
+
+  const query = `insert into users (firstName,lastName,age,country,email,password,user_image) values (?,?,?,?,?,?,?)`;
 
   const data = [
     firstName,
@@ -26,11 +18,8 @@ const register = async (req, res) => {
     age,
     country,
     email,
-    phone_Number,
     hashPassword,
-    role_id,
-    users_image,
-    id,
+    user_image,
   ];
 
   connection.query(query, data, (err, result) => {
@@ -51,7 +40,7 @@ const register = async (req, res) => {
   });
 };
 
-//create controller for register
+//create controller for login
 
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -72,8 +61,7 @@ const login = (req, res) => {
           firstName: result[0].firstName,
           lastName: result[0].lastName,
           country: result[0].country,
-          role: result[0].role_id,
-          image: result[0].users_image,
+          image: result[0].user_image,
         };
 
         const options = {
@@ -105,11 +93,10 @@ const login = (req, res) => {
 
 const updateUserById = (req, res) => {
   const userId = req.token.userId;
-  const { firstName, lastName, age, country, email, password, phone_Number } =
-    req.body;
+  const { firstName, lastName, age, country, email, user_image } = req.body;
 
-  const query = `UPDATE users SET firstName=?,lastName=?,age=?,country=? ,email=?,phone_Number=? where id=? and is_deleted =0`;
-  const data = [firstName, lastName, age, country, email, phone_Number];
+  const query = `UPDATE users SET firstName=?,lastName=?,age=?,country=? ,email=?,user_image=?where id=? and is_deleted =0`;
+  const data = [firstName, lastName, age, country, email, user_image, userId];
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -125,7 +112,7 @@ const updateUserById = (req, res) => {
           message: `No user found with the indicated id => ${userId}`,
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: `The user with user_id was updated => ${userId} `,
       });
@@ -136,7 +123,7 @@ const updateUserById = (req, res) => {
 //create controller for deleteUserById
 
 const deleteUserById = (req, res) => {
-  const userId = req.params.id;
+  const userId = req.token.userId;
   const query = `UPDATE users SET is_deleted =1 where id=? and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
@@ -160,6 +147,8 @@ const deleteUserById = (req, res) => {
     }
   });
 };
+
+//create controller for getAllUsers
 
 const getAllUsers = (req, res) => {
   const query = `select * from users  where is_deleted = 0`;
@@ -192,7 +181,7 @@ const getUserById = (req, res) => {
       if (!result.length) {
         return res.status(404).json({
           success: false,
-          message: `users found with the indicated  id => ${userId}`,
+          message: `no users found with the indicated  id => ${userId}`,
         });
       }
       res.status(200).json({

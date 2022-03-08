@@ -1,6 +1,6 @@
 const express = require("express");
 const authentication = require("../middleware/authentication");
-//create product router
+//create user router
 
 const userRouter = express.Router();
 
@@ -27,13 +27,17 @@ userRouter.post("/login", login);
 
 //3- create end points for update user
 
-userRouter.put("/updateprofile", authentication, updateUserById);
+userRouter.put("/", authentication, updateUserById);
 
 //4- create end points for delete user
 
-userRouter.delete("/:id", authentication, deleteUserById);
+userRouter.delete("/", authentication, deleteUserById);
 
-userRouter.get("/",authentication ,getAllUsers);
+//4- create end points for getAllUsers user
+
+userRouter.get("/", authentication, getAllUsers);
+
+//4- create end points for get user
 userRouter.get("/profile", authentication, getUserById);
 
 module.exports = { userRouter };

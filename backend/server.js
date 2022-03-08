@@ -27,7 +27,7 @@ app.use("/comment", commentRouter);
 
 //create role route with path of "/role"
 
-app.use("/role", roleRouter);
+// app.use("/role", roleRouter);
 
 //create watchLater route with path of "/watchLater"
 
