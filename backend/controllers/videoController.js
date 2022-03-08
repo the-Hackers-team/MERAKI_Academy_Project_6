@@ -50,7 +50,7 @@ const createNewVideo = (req, res) => {
 //Select * from <table_name> LIMIT value_1, OFFSET value_2
 // value_2=(page-1)*value_1
 
-//create controller for getAllProducts
+//create controller for getAllVideos
 const getAllVideos = (req, res) => {
   const query = `select * from videos  where is_deleted = 0  `;
 
@@ -68,7 +68,7 @@ const getAllVideos = (req, res) => {
   });
 };
 
-//create controller for getAnProductById
+//create controller for getAnVideoById
 
 const getAnVideoById = (req, res) => {
   const video_Id = req.query.id;
@@ -100,7 +100,7 @@ const getAnVideoById = (req, res) => {
 };
 // No products found with the indicated category
 
-//create controller for getAnProductByCategory
+//create controller for getAnVideoByCategory
 const getAnVideoByCategory = (req, res) => {
   const category = req.query.category;
 
@@ -131,7 +131,7 @@ const getAnVideoByCategory = (req, res) => {
   });
 };
 
-//create controller for deleteAnProductById
+//create controller for deleteAnVideoById
 
 const deleteAnVideoById = (req, res) => {
   const video_Id = req.params.id;
@@ -159,7 +159,7 @@ const deleteAnVideoById = (req, res) => {
   });
 };
 
-//create controller for deleteAnProductByUserId
+//create controller for deleteAnVideoByUserId
 const deleteAnVideoByUserId = (req, res) => {
   const userId = req.params.user_id;
   const query = `UPDATE videos SET is_deleted =1 where user_id=? and is_deleted =0`;
@@ -186,7 +186,7 @@ const deleteAnVideoByUserId = (req, res) => {
   });
 };
 
-//create controller for updateAnProductById
+//create controller for updateAnVideoById
 const updateAnVideoById = (req, res) => {
   const video_Id = req.params.id;
   const { title, description, image, category, video_link } = req.body;
@@ -212,11 +212,11 @@ const updateAnVideoById = (req, res) => {
 };
 
 //////////////////////////////////////////////
-const addToLikedVideos = (req, res)=>{
-  const videoId = req.params.id
-  const userId = req.token.userId
-  const query = ` updated videos SET Likes = Like+1 where user_id = ? and id = ?`
-  const data = [userId,videoId]
+const addLikeOnVideo = (req, res) => {
+  const videoId = req.params.id;
+  const userId = req.token.userId;
+  const query = ` updated videos SET Likes = Like+1 where user_id = ? and id = ?`;
+  const data = [userId, videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -236,15 +236,14 @@ const addToLikedVideos = (req, res)=>{
         message: `Like has been added`,
       });
     }
-  })
-}
-
+  });
+};
 
 const disLikeVideo = (req, res) => {
-  const videoId = req.params.id
-  const userId = req.token.userId
-  const query = ` updated videos SET Dislikes = Dislikes+1 where user_id = ? and id = ?`
-  const data = [userId,videoId]
+  const videoId = req.params.id;
+  const userId = req.token.userId;
+  const query = ` updated videos SET Dislikes = Dislikes+1 where user_id = ? and id = ?`;
+  const data = [userId, videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -264,16 +263,14 @@ const disLikeVideo = (req, res) => {
         message: `DisLike has been added`,
       });
     }
-  })
+  });
+};
 
-}
-
-
-const removeLikeOnVideo = (req, res)=>{
-  const videoId = req.params.id
-  const userId = req.token.userId
-  const query = ` updated videos SET Likes = Like-1 where user_id = ? and id = ?`
-  const data = [userId,videoId]
+const removeLikeOnVideo = (req, res) => {
+  const videoId = req.params.id;
+  const userId = req.token.userId;
+  const query = ` updated videos SET Likes = Like-1 where user_id = ? and id = ?`;
+  const data = [userId, videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -293,15 +290,14 @@ const removeLikeOnVideo = (req, res)=>{
         message: `Like has been removed`,
       });
     }
-  })
-}
-
+  });
+};
 
 const removedisLikeVideo = (req, res) => {
-  const videoId = req.params.id
-  const userId = req.token.userId
-  const query = ` updated videos SET Dislikes = Dislikes-1 where user_id = ? and id = ?`
-  const data = [userId,videoId]
+  const videoId = req.params.id;
+  const userId = req.token.userId;
+  const query = ` updated videos SET Dislikes = Dislikes-1 where user_id = ? and id = ?`;
+  const data = [userId, videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -321,11 +317,10 @@ const removedisLikeVideo = (req, res) => {
         message: `DisLike has been removed`,
       });
     }
-  })
-}
+  });
+};
 
 ///////////////////////////////////////////////////////////////////
-
 
 module.exports = {
   createNewVideo,
@@ -337,9 +332,9 @@ module.exports = {
   updateAnVideoById,
   ///////////////////////
 
-  addToLikedVideos,
+  addLikeOnVideo,
   removedisLikeVideo,
   removeLikeOnVideo,
-  disLikeVideo
+  disLikeVideo,
   //////////////
 };

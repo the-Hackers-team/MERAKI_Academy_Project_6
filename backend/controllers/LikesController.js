@@ -86,11 +86,9 @@ const deleteLikedVideos = (req, res) => {
   });
 };
 
-
 module.exports = {
-    deleteLikedVideos,
-    addToLikedVideos,
+  deleteLikedVideos,
+  addToLikedVideos,
 
-    getLikedVideosByUserId
-
-}
+  getLikedVideosByUserId,
+};

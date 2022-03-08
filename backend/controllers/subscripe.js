@@ -49,7 +49,7 @@ const removeFromMySubscription = (req, res) => {
 
 const getMySubscriptionChannels = (req, res)=>{
     const userId = req.token.userId;
-    const query = `select firstName,,lastName,users_image from subscriptions INNER JOIN users ON users.id = subscriptions.user_id where user_id=? is_deleted = 0  `;
+    const query = `select firstName,lastName,users_image from subscriptions INNER JOIN users ON users.id = subscriptions.user_id where user_id=? is_deleted = 0  `;
      const data = [userId]
     connection.query(query, (err, result) => {
       if (err) {

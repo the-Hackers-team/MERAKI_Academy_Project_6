@@ -5,17 +5,17 @@ const videoRouter = express.Router();
 // import videos comtrollers from "videoControllers"
 
 const {
-    createNewVideo,
-    getAllVideos,
-    getAnVideoById,
-    getAnVideoByCategory,
-    deleteAnVideoById,
-    deleteAnVideoByUserId,
-    updateAnVideoById,
-    addToLikedVideos,
+  createNewVideo,
+  getAllVideos,
+  getAnVideoById,
+  getAnVideoByCategory,
+  deleteAnVideoById,
+  deleteAnVideoByUserId,
+  updateAnVideoById,
+  addLikeOnVideo,
   removedisLikeVideo,
   removeLikeOnVideo,
-  disLikeVideo
+  disLikeVideo,
 } = require("../controllers/videoController.js");
 
 //create end points
@@ -44,20 +44,19 @@ videoRouter.delete("/delete_1/:id", authentication, deleteAnVideoById);
 
 //6- delete video by user_id
 
-videoRouter.delete(
-  "/delete_2/:user_id",
-  authentication,
-  deleteAnVideoByUserId
-);
+videoRouter.delete("/delete_2/:user_id", authentication, deleteAnVideoByUserId);
 ////////////////////////////// add like on specific video
-videoRouter.post("/addLikeOnVideo/:id", authentication, addToLikedVideos);
+videoRouter.post("/addLikeOnVideo/:id", authentication, addLikeOnVideo);
 
 videoRouter.delete("/removeLikeOnVideo/:id", authentication, removeLikeOnVideo);
 
 videoRouter.post("/addDisLikeOnVideo/:id", authentication, disLikeVideo);
 
-
-videoRouter.delete("/removeDisLikeOnVideo/:id", authentication, removedisLikeVideo);
+videoRouter.delete(
+  "/removeDisLikeOnVideo/:id",
+  authentication,
+  removedisLikeVideo
+);
 
 //7- update video
 
