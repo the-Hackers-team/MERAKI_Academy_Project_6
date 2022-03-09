@@ -11,78 +11,49 @@ import "./login.css";
 
 toast.configure();
 
-
 const Login = () => {
-    //// redux logic
-    const dispatch = useDispatch();
-    const state = useSelector((state) => {
-      return {
-        token: state.loginReducer.token,
-        isLoggedIn: state.loginReducer.isLoggedIn,
-      };
+  //// redux logic
+  const dispatch = useDispatch();
+  const state = useSelector((state) => {
+    return {
+      token: state.loginReducer.token,
+      isLoggedIn: state.loginReducer.isLoggedIn,
+    };
+  });
+
+  const [email, setfirstName] = useState("");
+  const [password, setlastName] = useState("");
+
+  const notifyLoginError = () => {
+    toast.warn("Please fill All The Fields", {
+      position: toast.POSITION.TOP_RIGHT,
     });
+  };
 
-    const [email, setfirstName] = useState("");
-    const [password, setlastName] = useState("");
-    
-    const notifyLoginError = () => {
-        toast.warn("Please fill All The Fields", {
-          position: toast.POSITION.TOP_RIGHT,
+  const loginFunction = () => {
+    if (email && password) {
+      const userLogin = { email, password };
+
+      const myUser = axios
+        .post(`http://localhost:5000/user/login`, userLogin)
+        .then((response) => {
+          if (response.data.success) {
+            localStorage.setItem("token", response.data.token);
+            dispatch(login(response.data.token));
+
+            navigate("/");
+          }
+        })
+        .catch((err) => {
+          console.log(err.meseage);
+          toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         });
-      };
+    } else {
+      notifyLoginError();
+    }
+  };
+};
 
-    const loginFunction = () => {
-        if (email && password) {
-          const userLogin = { email, password };
-    
-          const myUser = axios
-            .post(`http://localhost:5000/user/login`, userLogin)
-            .then((response) => {
-              if (response.data.success) {
-                localStorage.setItem("token", response.data.token);
-                dispatch(login(response.data.token));
-               
-                navigate("/");
-              }
-            })
-            .catch((err) => {
-              console.log(err.meseage);
-              toast.error(err.response.data.message, {
-                position: toast.POSITION.TOP_RIGHT,
-              });
-            });
-        } else {
-          notifyLoginError();
-        }
-      };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-export default Login
+export default Login;
