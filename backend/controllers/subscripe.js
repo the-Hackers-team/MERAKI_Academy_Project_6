@@ -3,10 +3,10 @@ const { connection } = require("../database/db");
 const addToSubscription = (req, res) => {
   const chanelId = req.params.id;
   const userId = req.token.userId;
-  const query = `insert into subscriptions where chanel_id = ? and user_id = ?`;
+  const query = `insert into subscriptions (chanel_id , user_id) values (?,?)`;
 
   const data = [chanelId, userId];
-  connection.query(query, data, (req, res) => {
+  connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -28,7 +28,7 @@ const removeFromMySubscription = (req, res) => {
   const query = `update subscriptions set is_deleted = 1 where user_id = ? and chanel_id = ? where is_deleted=0`;
 
   const data = [chanelId, userId];
-  connection.query(query, data, (req, res) => {
+  connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
@@ -42,13 +42,14 @@ const removeFromMySubscription = (req, res) => {
       results: result,
     });
   });
+  ``;
 };
 
 const getMySubscriptionChannels = (req, res) => {
   const userId = req.token.userId;
-  const query = `select firstName,lastName,users_image from subscriptions INNER JOIN users ON users.id = subscriptions.user_id where user_id=? is_deleted = 0  `;
+  const query = `select users.id,firstName,lastName,users.user_image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
   const data = [userId];
-  connection.query(query, (err, result) => {
+  connection.query(query, data, (err, result) => {
     if (err) {
       console.log(err);
       res
@@ -57,7 +58,24 @@ const getMySubscriptionChannels = (req, res) => {
     } else {
       res
         .status(200)
-        .json({ success: true, message: `All the videos`, results: result });
+        .json({ success: true, message: `All the channels`, results: result });
+    }
+  });
+};
+const getAllvideossubscripes = (req, res) => {
+  const userId = req.token.userId;
+  const query = `select users.id,firstName,lastName,users.user_image ,video_link,video.image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
+  const data = [userId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All the channels`, results: result });
     }
   });
 };
