@@ -28,5 +28,9 @@ export const login = (token) => {
     return { type: "LOG_IN", payload: token };
   };
   
- 
+  export const logout = () => {
+    return { type: "LOG_OUT" };
+  };
+  
+  export default loginReducer;
   
