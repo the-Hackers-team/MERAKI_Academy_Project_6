@@ -16,7 +16,7 @@ const createNewVideo = (req, res) => {
   } = req.body;
   const user_id = req.token.userId;
 
-  const query = `insert into videos (title, description, video_link, image,user_id,category,video_views,Likes,Dislikes) values (?,?,?,?,?,?,?,?,?)`;
+  const query = `insert into videos (title, description, video_link, image,user_id,category) values (?,?,?,?,?,?)`;
 
   const data = [
     title,
@@ -25,16 +25,13 @@ const createNewVideo = (req, res) => {
     image,
     user_id,
     category,
-    video_views,
-    Likes,
-    Dislikes,
   ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.status(500).json({
         success: false,
-        message: `Something went wrong While creating product`,
+        message: `Something went wrong While creating video`,
         err: err,
       });
     }

@@ -1,4 +1,4 @@
--- DROP DATABASE MERAKI_Academy_Project_6;
+DROP DATABASE MERAKI_Academy_Project_6;
 CREATE DATABASE MERAKI_Academy_Project_6 ;
 USE  MERAKI_Academy_Project_6 ;
 
@@ -16,7 +16,7 @@ age INT(3),
 country VARCHAR(255),
 email VARCHAR(255) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL,
-subscripes INT default 0
+subscripes INT default 0,
 user_image MEDIUMTEXT,
 role_id INT,
 FOREIGN KEY (role_id) REFERENCES roles(id),
@@ -33,8 +33,8 @@ description TEXT,
 user_id INT,
 video_link MEDIUMTEXT,
 video_views INT DEFAULT 0,
-Likes INT DEFAULT 0,
-Dislikes INT DEFAULT 0,
+Likes INT DEFAULT 0 NOT NULL,
+Dislikes INT DEFAULT 0 NOT NULL,
 image MEDIUMTEXT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -49,6 +49,7 @@ video_id INT,
 user_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (video_id) REFERENCES videos(id),
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
@@ -58,6 +59,7 @@ video_id INT,
 user_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (video_id) REFERENCES videos(id),
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
