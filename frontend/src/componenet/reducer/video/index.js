@@ -8,7 +8,7 @@ const initialState = {
     switch (type) {
       case "ADD_VIDEO":
         return {
-         videos = [...state,payload]
+         videos : [...state.videos,payload]
         };
       case "UPDATE_VIDEO":
         return {
@@ -25,7 +25,7 @@ const initialState = {
         case "DELETE_VIDEO":
             return {
                videos: state.videos.filter(video=>{
-                   return video.id === payload
+                   return video.id !== payload
                })
             };
         
