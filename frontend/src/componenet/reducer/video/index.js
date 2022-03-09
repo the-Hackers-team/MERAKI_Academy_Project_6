@@ -59,3 +59,7 @@ const initialState = {
   export const udateVideos = (updatedVideo)=>{
       return {type:"UPDATE_VIDEO",payload:updatedVideo}
   }
+
+
+
+  export default videoReducer;
