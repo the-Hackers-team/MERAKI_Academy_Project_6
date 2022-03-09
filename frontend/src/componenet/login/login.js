@@ -142,7 +142,7 @@ const Login = () => {
                   <button
                     type="button"
                     class="btn btn-primary btn-lg"
-                    style={{paddingLeft: "2.5rem" ,paddingRight: "2.5rem"}}
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   >
                     Login
                   </button>
@@ -176,7 +176,6 @@ const Login = () => {
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
-         
         </div>
       </section>
     </>
