@@ -12,15 +12,20 @@ const initialState = {
         };
       case "UPDATE_VIDEO":
         return {
-          token: null,
-          isLoggedIn: false,
+         videos: state.videos.map((element, index) =>{
+             if(element.id == payload.id){
+                 return payload
+             }else{
+                 return element
+             }
+         })
         };
      
 
         case "DELETE_VIDEO":
             return {
                videos: state.videos.filter(video=>{
-                   return video.id === payload.
+                   return video.id === payload
                })
             };
         
