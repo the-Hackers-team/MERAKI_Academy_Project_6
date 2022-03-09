@@ -42,3 +42,9 @@ const initialState = {
                         return state;
     }
   };
+
+
+  export const setVideos = (videos)=>{
+    return {type:"SET_VIDEOs",payload:videos} 
+
+  }
