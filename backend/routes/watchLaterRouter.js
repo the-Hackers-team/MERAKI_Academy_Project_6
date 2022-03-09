@@ -22,5 +22,9 @@ watch_laterRouter.post("/add/:id", authentication, addVideoTowatch_later);
 
 //create end point to delete Video from watch_later
 
-watch_laterRouter.delete("/delete/:id", authentication, deleteVideoFromwatch_later);
+watch_laterRouter.delete(
+  "/delete/:id",
+  authentication,
+  deleteVideoFromwatch_later
+);
 module.exports = { watch_laterRouter };

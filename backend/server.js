@@ -9,7 +9,7 @@ const { roleRouter } = require("./routes/roleRouter");
 const { commentRouter } = require("./routes/commentRouter");
 const { watch_laterRouter } = require("./routes/watchLaterRouter");
 const { LikedRouter } = require("./routes/likeRouter");
-const { subsciptionRouter } = require("./routes/subscriptionRouter")
+const { subsciptionRouter } = require("./routes/subscriptionRouter");
 app.use(cors());
 
 app.use(express.json());
@@ -37,7 +37,7 @@ app.use("/watchLater", watch_laterRouter);
 
 app.use("/like", LikedRouter);
 
-app.use("/subscription,",subsciptionRouter)
+app.use("/subscription,", subsciptionRouter);
 
 const PORT = 5000;
 

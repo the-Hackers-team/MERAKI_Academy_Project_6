@@ -9,8 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 import "./login.css";
 
-import bootstrap from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import "react-bootstrap";
 
 toast.configure();
 
@@ -98,7 +97,6 @@ const Login = () => {
                   <p class="text-center fw-bold mx-3 mb-0">Or</p>
                 </div>
 
-                {/* <!-- Email input --> */}
                 <div class="form-outline mb-4">
                   <input
                     type="email"
@@ -111,7 +109,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* <!-- Password input --> */}
                 <div class="form-outline mb-3">
                   <input
                     type="password"
@@ -125,7 +122,6 @@ const Login = () => {
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center">
-                  {/* <!-- Checkbox --> */}
                   <div class="form-check mb-0">
                     <input
                       class="form-check-input me-2"
@@ -146,7 +142,7 @@ const Login = () => {
                   <button
                     type="button"
                     class="btn btn-primary btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   >
                     Login
                   </button>
@@ -162,28 +158,24 @@ const Login = () => {
           </div>
         </div>
         <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-          {/* <!-- Copyright --> */}
           <div class="text-white mb-3 mb-md-0">
             Copyright © 2020. All rights reserved.
           </div>
-          {/* <!-- Copyright --> */}
 
-          {/* <!-- Right --> */}
           <div>
-            <a href="#!" class="text-white me-4">
+            <a href="#" class="text-white me-4">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#!" class="text-white me-4">
+            <a href="#" class="text-white me-4">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#!" class="text-white me-4">
+            <a href="#" class="text-white me-4">
               <i class="fab fa-google"></i>
             </a>
-            <a href="#!" class="text-white">
+            <a href="#" class="text-white">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
-          {/* <!-- Right --> */}
         </div>
       </section>
     </>

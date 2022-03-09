@@ -67,13 +67,15 @@ const addVideoTowatch_later = (req, res) => {
 
 const deleteVideoFromwatch_later = (req, res) => {
   const videoId = req.params.id;
-  const query = `UPDATE watch_later SET is_deleted=1 WHERE is_deleted=0 AND video_id = ?`;
-  const data = [videoId];
+  const userId = req.token.userId;
+  const query = `UPDATE watch_later SET is_deleted=1 WHERE is_deleted=0 AND video_id = ? And user_id = ?`;
+  const data = [videoId, userId];
   connection.query(query, data, (err, result) => {
     if (err) {
+      console.log(err);
       return res.status(500).json({
         success: false,
-        message: `Something went wrong while adding to watch_later`,
+        message: `Something went wrong while deleting to watch_later`,
         err: err,
       });
     } else {

@@ -7,9 +7,9 @@ const LikedRouter = express.Router();
 // import LikedController controllers from "LikesContoller"
 
 const {
-    deleteLikedVideos,
-    addToLikedVideos,
-    getLikedVideosByUserId
+  deleteLikedVideos,
+  addToLikedVideos,
+  getLikedVideosByUserId,
 } = require("../controllers/LikesController");
 
 //cerate end point to get LikesContoller
