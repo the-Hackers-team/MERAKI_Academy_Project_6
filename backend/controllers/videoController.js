@@ -139,7 +139,7 @@ const deleteAnVideoById = (req, res) => {
     if (err) {
       res.status(500).json({
         success: false,
-        message: "Un Authorized",
+        message: "server error",
         err: err,
       });
     } else {
@@ -186,24 +186,40 @@ const deleteAnVideoByUserId = (req, res) => {
 
 //create controller for updateAnVideoById
 const updateAnVideoById = (req, res) => {
+  const userId = req.token.userId;
+  console.log(userId);
   const video_Id = req.params.id;
+  console.log(video_Id);
   const { title, description, image, category, video_link } = req.body;
 
-  const query = `UPDATE videos SET title=?,description=?,video_link=?,image=? , category=?  where id=?`;
-  const data = [title, description, video_link, image, category, video_Id];
+  const query = `UPDATE videos SET title=?,description=?,video_link=?,image=? , category=?  where id=? and user_id=? and is_deleted =0`;
+  const data = [
+    title,
+    description,
+    video_link,
+    image,
+    category,
+    video_Id,
+    userId,
+  ];
 
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(404).json({
         success: false,
-        message: `The video with id: ${video_Id} is not found`,
+        message: `server error`,
         err: err,
       });
     } else {
+      if (!result.affectedRows) {
+        return res.status(404).json({
+          success: false,
+          message: `The video: ${video_Id} is not found or un authorized`,
+        });
+      }
       res.status(200).json({
         success: true,
-        message: `Videos with id :${video_Id} is updated`,
-        results: result,
+        message: `Succeeded to update video with id: ${video_Id}`,
       });
     }
   });
@@ -212,9 +228,8 @@ const updateAnVideoById = (req, res) => {
 //////////////////////////////////////////////
 const addLikeOnVideo = (req, res) => {
   const videoId = req.params.id;
-  const userId = req.token.userId;
-  const query = ` updated videos SET Likes = Like+1 where user_id = ? and id = ?`;
-  const data = [userId, videoId];
+  const query = ` update videos SET Likes = Likes+1 where  id = ?`;
+  const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -239,9 +254,8 @@ const addLikeOnVideo = (req, res) => {
 
 const disLikeVideo = (req, res) => {
   const videoId = req.params.id;
-  const userId = req.token.userId;
-  const query = ` updated videos SET Dislikes = Dislikes+1 where user_id = ? and id = ?`;
-  const data = [userId, videoId];
+  const query = ` update videos SET Dislikes = Dislikes+1 where  id = ?`;
+  const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -266,9 +280,8 @@ const disLikeVideo = (req, res) => {
 
 const removeLikeOnVideo = (req, res) => {
   const videoId = req.params.id;
-  const userId = req.token.userId;
-  const query = ` updated videos SET Likes = Like-1 where user_id = ? and id = ?`;
-  const data = [userId, videoId];
+  const query = ` update videos SET Likes = Likes-1 where  id = ?`;
+  const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -293,9 +306,8 @@ const removeLikeOnVideo = (req, res) => {
 
 const removedisLikeVideo = (req, res) => {
   const videoId = req.params.id;
-  const userId = req.token.userId;
-  const query = ` updated videos SET Dislikes = Dislikes-1 where user_id = ? and id = ?`;
-  const data = [userId, videoId];
+  const query = ` update videos SET Dislikes = Dislikes-1 where  id = ?`;
+  const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.status(500).json({
