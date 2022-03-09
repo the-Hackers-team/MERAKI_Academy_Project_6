@@ -48,3 +48,6 @@ const initialState = {
     return {type:"SET_VIDEOs",payload:videos} 
 
   }
+  export const addVideos = (newVideo)=>{
+      return {type:"ADD_VIDEO",payload:newVideo}
+  }
