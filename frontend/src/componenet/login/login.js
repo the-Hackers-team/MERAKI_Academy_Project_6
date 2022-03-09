@@ -10,3 +10,44 @@ import { login, logout } from "../reducer/login/index";
 import "./login.css";
 
 toast.configure();
+
+
+const Login = () => {
+    const dispatch = useDispatch();
+    const state = useSelector((state) => {
+      return {
+        token: state.loginReducer.token,
+        isLoggedIn: state.loginReducer.isLoggedIn,
+      };
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
