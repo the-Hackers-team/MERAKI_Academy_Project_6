@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../reducer/login/index";
+// import { login, logout } from "../reducer/login/index";
 import "./login.css";
 
-import bootstrap from "bootstrap";
+import bootstrap from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 
 toast.configure();
 
@@ -41,9 +42,9 @@ const Login = () => {
         .then((response) => {
           if (response.data.success) {
             localStorage.setItem("token", response.data.token);
-            dispatch(login(response.data.token));
+            // dispatch(login(response.data.token));
 
-            navigate("/");
+           
           }
         })
         .catch((err) => {
