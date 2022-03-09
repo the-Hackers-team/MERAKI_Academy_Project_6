@@ -22,10 +22,33 @@ const Login = () => {
       };
     });
 
-    const [firstName, setfirstName] = useState("");
-    const [lastName, setlastName] = useState("");
-    const [age, setAge] = useState(0);
-
+    const [email, setfirstName] = useState("");
+    const [password, setlastName] = useState("");
+    
+    const loginFunction = () => {
+        if (email && password) {
+          const userLogin = { email, password };
+    
+          const myUser = axios
+            .post(`http://localhost:5000/user/login`, userLogin)
+            .then((response) => {
+              if (response.data.success) {
+                localStorage.setItem("token", response.data.token);
+                dispatch(login(response.data.token));
+               
+                navigate("/");
+              }
+            })
+            .catch((err) => {
+              console.log(err.meseage);
+              toast.error(err.response.data.message, {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+            });
+        } else {
+          notifyLoginError();
+        }
+      };
 
 
 
@@ -54,3 +77,6 @@ const Login = () => {
 
 
 }
+
+
+export default Login
