@@ -25,6 +25,12 @@ const Login = () => {
     const [email, setfirstName] = useState("");
     const [password, setlastName] = useState("");
     
+    const notifyLoginError = () => {
+        toast.warn("Please fill All The Fields", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      };
+
     const loginFunction = () => {
         if (email && password) {
           const userLogin = { email, password };
