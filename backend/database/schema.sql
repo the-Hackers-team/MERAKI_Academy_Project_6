@@ -71,6 +71,7 @@ video_id INT,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (video_id) REFERENCES videos(id),
 publish_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 );
 
@@ -80,5 +81,6 @@ chanel_id INT,
 user_id INT,
 FOREIGN KEY (chanel_id) REFERENCES users(id),
 FOREIGN KEY (user_id) REFERENCES users(id),
+is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 )

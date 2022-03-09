@@ -15,7 +15,7 @@ const {
 //cerate end point to get LikesContoller
 
 subsciptionRouter.delete(
-  "/delete/subscripe/:id",
+  "/delete/:id",
   authentication,
   removeFromMySubscription
 );

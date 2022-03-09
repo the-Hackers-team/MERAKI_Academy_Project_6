@@ -37,7 +37,7 @@ app.use("/watchLater", watch_laterRouter);
 
 app.use("/like", LikedRouter);
 
-app.use("/subscription,", subsciptionRouter);
+app.use("/subscription", subsciptionRouter);
 
 const PORT = 5000;
 
