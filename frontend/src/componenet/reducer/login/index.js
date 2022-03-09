@@ -20,3 +20,13 @@ const loginReducer = (state = initialState, { type, payload }) => {
         return state;
     }
   };
+
+
+  //Create actions
+
+export const login = (token) => {
+    return { type: "LOG_IN", payload: token };
+  };
+  
+ 
+  
