@@ -22,7 +22,9 @@ const Login = () => {
       };
     });
 
-
+    const [firstName, setfirstName] = useState("");
+    const [lastName, setlastName] = useState("");
+    const [age, setAge] = useState(0);
 
 
 
