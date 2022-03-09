@@ -56,3 +56,6 @@ const initialState = {
   export const deleteVideos = (id)=>{
   return { type: "DELETE_VIDEO", payload: id}
   }
+  export const udateVideos = (updatedVideo)=>{
+      return {type:"UPDATE_VIDEO",payload:updatedVideo}
+  }
