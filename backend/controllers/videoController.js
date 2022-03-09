@@ -296,7 +296,7 @@ const removeLikeOnVideo = (req, res) => {
 
 const removedisLikeVideo = (req, res) => {
   const videoId = req.params.id;
-  const query = ` update videos SET Dislikes = Dislikes-1 where  id = ?`;
+  const query = `update videos SET Dislikes = Dislikes-1 where  id = ?`;
   const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {

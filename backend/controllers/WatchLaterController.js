@@ -4,8 +4,8 @@ const { connection } = require("../database/db");
 
 const getwatch_laterByUserId = (req, res) => {
   const userId = req.token.userId;
-  const query = `SELECT
-  videos.id,title,description,,firstName,videos.user_id, users.users_image,videos.image,category
+  const query = `SELECT 
+  videos.id,title,description,firstName,videos.user_id, users.user_image,videos.image,category
   FROM
     watch_later
   INNER JOIN
@@ -15,7 +15,7 @@ const getwatch_laterByUserId = (req, res) => {
   INNER JOIN
     users
   ON
-    users.id=watch_later.user_id where users.id = ? and users.is_deleted =0 and watch_later.is_deleted=0`;
+    users.id=watch_later.user_id where users.id = ? and users.is_deleted =0 and videos.is_deleted =0 and watch_later.is_deleted=0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {

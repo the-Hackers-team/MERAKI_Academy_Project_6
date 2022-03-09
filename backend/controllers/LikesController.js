@@ -1,9 +1,9 @@
 const { connection } = require("../database/db");
 
-const getLikedVideosByUserId = () => {
+const getLikedVideosByUserId = (req, res) => {
   const userId = req.token.userId;
-  const query = `select videos.image,videos.user_id,users.image,description,title,video_views,firstName,lastName from Liked_videos inner 
-  join users on Liked_videos.user_id = users.id inner join videos on Liked_videos.video_id = videos.id where users.id = ? and videos.is_deleted =0`;
+  const query = `select videos.image,videos.user_id,users.user_image,description,title,video_views,firstName,lastName from Liked_videos inner 
+  join users on Liked_videos.user_id = users.id inner join videos on Liked_videos.video_id = videos.id where users.id = ? and videos.is_deleted =0 and liked_videos.is_deleted =0`;
 
   const data = [userId];
 
