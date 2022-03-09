@@ -18,14 +18,7 @@ const createNewVideo = (req, res) => {
 
   const query = `insert into videos (title, description, video_link, image,user_id,category) values (?,?,?,?,?,?)`;
 
-  const data = [
-    title,
-    description,
-    video_link,
-    image,
-    user_id,
-    category,
-  ];
+  const data = [title, description, video_link, image, user_id, category];
 
   connection.query(query, data, (err, result) => {
     if (err) {
