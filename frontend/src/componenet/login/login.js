@@ -23,8 +23,8 @@ const Login = () => {
     };
   });
 
-  const [email, setfirstName] = useState("");
-  const [password, setlastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const notifyLoginError = () => {
     toast.warn("Please fill All The Fields", {
@@ -103,7 +103,10 @@ const Login = () => {
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter a valid email address"
-                    onChange={this.}
+                    onChange={(e)=>{
+
+                        setEmail(e.target.value);
+                    }}
                   />
                   <label class="form-label" for="form3Example3">
                     Email address
@@ -116,13 +119,16 @@ const Login = () => {
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter password"
+                    onChange = {(e)=>{
+                        setPassword(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example4">
                     Password
                   </label>
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center">
+                {/* <div class="d-flex justify-content-between align-items-center">
                   <div class="form-check mb-0">
                     <input
                       class="form-check-input me-2"
@@ -137,7 +143,7 @@ const Login = () => {
                   <a href="#!" class="text-body">
                     Forgot password?
                   </a>
-                </div>
+                </div> */}
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button
