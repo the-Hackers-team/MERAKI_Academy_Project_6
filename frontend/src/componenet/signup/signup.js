@@ -9,12 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 import "./signup.css";
 
-
 toast.configure();
 const Register = () => {
-
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -42,7 +39,7 @@ const Register = () => {
     });
   };
 
-  const register = async() => {
+  const register = async () => {
     if (
       firstName &&
       lastName &&
@@ -52,45 +49,42 @@ const Register = () => {
       password &&
       userImage
     ) {
-        const newUser = {
-            firstName,
-            lastName,
-            age,
-            country,
-            email,
-            password,
-            userImage,
-          };
-          await axios
-          .post(`http://localhost:5000/user/register`, newUser)
-          .then((response) => {
-            if (response.data.success) {
-              notifyRegisterSuccess();
-              navigate("/login")
-            }
-          })
-          .catch((err) => {
-            console.log(err.response.data.message);
-            toast.error(err.response.data.message, {
-              position: toast.POSITION.TOP_RIGHT,
-            });
+      const newUser = {
+        firstName,
+        lastName,
+        age,
+        country,
+        email,
+        password,
+        userImage,
+      };
+      await axios
+        .post(`http://localhost:5000/user/register`, newUser)
+        .then((response) => {
+          if (response.data.success) {
+            notifyRegisterSuccess();
+            navigate("/login");
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+          toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
           });
-          
-     
-
-    }else {
-        if (
-          !firstName ||
-          !lastName ||
-          !age ||
-          !country ||
-          !email ||
-          !password ||
-          !userImage
-        ) {
-          notifyRegisterError();
-        }
+        });
+    } else {
+      if (
+        !firstName ||
+        !lastName ||
+        !age ||
+        !country ||
+        !email ||
+        !password ||
+        !userImage
+      ) {
+        notifyRegisterError();
       }
+    }
   };
 
   return (
@@ -117,83 +111,75 @@ const Register = () => {
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your first Name"
-                   
                   />
                   <label class="form-label" for="form3Example3">
                     firstName
                   </label>
-                
+
                   <input
                     type="text"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your last name"
-                    
                   />
                   <label class="form-label" for="form3Example4">
                     lastName
                   </label>
                 </div>
-         
-          <div class="form-outline mb-4">
+
+                <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your Age"
-                   
                   />
                   <label class="form-label" for="form3Example3">
-                   age
+                    age
                   </label>
-              
+
                   <input
                     type="text"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your country"
-                    
                   />
                   <label class="form-label" for="form3Example4">
                     country
                   </label>
                 </div>
-               
-                 <div class="form-outline mb-4">
+
+                <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your /Email"
-                   
                   />
                   <label class="form-label" for="form3Example3">
                     email
                   </label>
-                
+
                   <input
                     type="text"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your password"
-                    
                   />
                   <label class="form-label" for="form3Example4">
-                  password
+                    password
                   </label>
-                
+
                   <input
                     type="file"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter image"
-                    
                   />
                   <label class="form-label" for="form3Example4">
-                  image
+                    image
                   </label>
                 </div>
-
 
                 {/* <div class="text-center text-lg-start mt-4 pt-2">
                   {isRegister?<button
@@ -227,47 +213,44 @@ const Register = () => {
                   </button>:null}
                   
                 </div> */}
-                {istrue4? <div class="text-center text-lg-start mt-3 pt-2">
+                {istrue4 ? (
+                  <div class="text-center text-lg-start mt-3 pt-2">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-lg"
+                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+                      onClick={() => {
+                        if (istrue3) {
+                          setisRegister(true);
+                          setistrue3(false);
+                          setistrue2(false);
+                          setistrue1(true);
+                        }
+                        if (count === 1) {
+                        }
+                      }}
+                    >
+                      previous
+                    </button>
+                  </div>
+                ) : null}
+                <div class="text-center text-lg-start mt-3 pt-2">
                   <button
                     type="button"
                     class="btn btn-primary btn-lg"
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                    onClick={() =>{
-                        if(istrue3){
-                            setisRegister(true)
-                            setistrue3(false)
-                            setistrue2(false)
-                            setistrue1(true)
-                        }
-                        if(count ===1){
-                            
-                        }
+                    onClick={() => {
+                      register();
                     }}
                   >
-                  previous
+                    Rgister
                   </button>
-                  
-                </div>:null}
-                 <div class="text-center text-lg-start mt-3 pt-2">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-
-                    onClick={()=>{
-                        register()
-
-                    }}
-                  >
-                   Rgister
-                  </button>
-                  
                 </div>
               </form>
             </div>
           </div>
         </div>
-      </section> 
+      </section>
     </>
   );
 };
