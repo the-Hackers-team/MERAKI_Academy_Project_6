@@ -8,36 +8,54 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 
-import "./signup.css"
+import "./signup.css";
 
-
-
-const Register = ()=>{
+const Register = () => {
   const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("")
+  const [lastName, setlastName] = useState("");
   const [age, setAge] = useState(0);
   const [country, setcountry] = useState("");
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [userImage, setUserImage] = useState("")
-  const [istrue,setistrue] = useState(true)
-  const [istrue1,setistrue1] = useState(false)
-  const [istrue2,setistrue2] = useState(false)
-  const [istrue3,setistrue3] = useState(false)
-  const [istrue4,setistrue4] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userImage, setUserImage] = useState("");
+  const [istrue, setistrue] = useState(true);
+  const [istrue1, setistrue1] = useState(false);
+  const [istrue2, setistrue2] = useState(false);
+  const [istrue3, setistrue3] = useState(false);
+  const [istrue4, setistrue4] = useState(false);
 
-  const [isRegister,setisRegister] = useState(true)
- const [count,setcount] = useState(0)
-    
+  const [isRegister, setisRegister] = useState(true);
+  const [count, setcount] = useState(0);
 
- const register = ()=>{
+  const register = () => {
+    if (
+      firstName &&
+      lastName &&
+      age &&
+      country &&
+      email &&
+      password &&
+      userImage
+    ) {
+        const newUser = {
+            firstName,
+            lastName,
+            age,
+            country,
+            email,
+            password,
+            userImage,
+          };
+
+          
      
- }
-  
 
-return (
-<>
-{/* <section class="vh-100">
+    }
+  };
+
+  return (
+    <>
+      {/* <section class="vh-100">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -205,34 +223,8 @@ return (
           </div>
         </div>
       </section>  */}
+    </>
+  );
+};
 
-
-
-
-
-
-
-
-
-
-
-</>
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-
-
-}
-
-export default Register
+export default Register;
