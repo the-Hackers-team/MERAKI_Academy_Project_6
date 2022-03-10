@@ -10,6 +10,7 @@ const {
   addToSubscription,
   removeFromMySubscription,
   getMySubscriptionChannels,
+  getAllvideossubscripes,
 } = require("../controllers/subscripe.js");
 
 //cerate end point to get LikesContoller
@@ -23,6 +24,10 @@ subsciptionRouter.delete(
 //create end point to add Video to LikesContoller
 
 subsciptionRouter.post("/add/:id", authentication, addToSubscription);
+
+subsciptionRouter.get("/allVideos", authentication, getAllvideossubscripes);
+
+
 
 subsciptionRouter.get(
   "/mySubsciption",

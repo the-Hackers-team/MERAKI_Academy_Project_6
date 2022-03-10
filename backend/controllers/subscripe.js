@@ -64,7 +64,8 @@ const getMySubscriptionChannels = (req, res) => {
 };
 const getAllvideossubscripes = (req, res) => {
   const userId = req.token.userId;
-  const query = `select users.id,firstName,lastName,users.user_image ,video_link,video.image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
+  const videosuserId = req.params.id;
+  const query = `select users.id,firstName, lastName,users.user_image ,video_link,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -73,9 +74,14 @@ const getAllvideossubscripes = (req, res) => {
         .status(404)
         .json({ success: false, message: "server error", err: err });
     } else {
+      if (!result.length) {
+        return res
+          .status(200)
+          .json({ success: false, message: "No videos", err: err });
+      }
       res
         .status(200)
-        .json({ success: true, message: `All the channels`, results: result });
+        .json({ success: true, message: `All the Videos`, results: result });
     }
   });
 };
@@ -84,4 +90,5 @@ module.exports = {
   addToSubscription,
   removeFromMySubscription,
   getMySubscriptionChannels,
+  getAllvideossubscripes,
 };
