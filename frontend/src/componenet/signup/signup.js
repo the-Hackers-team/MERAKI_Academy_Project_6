@@ -46,11 +46,36 @@ const Register = () => {
             password,
             userImage,
           };
-
+          await axios
+          .post(`/user/register`, newUser)
+          .then((response) => {
+            console.log("hello");
+            if (response.data.success) {
+              notifyRegisterSuccess();
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data.message);
+            toast.error(err.response.data.message, {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+          });
           
      
 
-    }
+    }else {
+        if (
+          !firstName ||
+          !lastName ||
+          !age ||
+          !country ||
+          !email ||
+          !password ||
+          !users_image
+        ) {
+          notifyRegisterError();
+        }
+      }
   };
 
   return (
