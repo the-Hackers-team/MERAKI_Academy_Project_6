@@ -66,6 +66,7 @@ const Register = () => {
           .then((response) => {
             if (response.data.success) {
               notifyRegisterSuccess();
+              navigate("/login")
             }
           })
           .catch((err) => {
@@ -110,7 +111,7 @@ const Register = () => {
                   e.preventDefault();
                 }}
               >
-               {istrue? <div class="form-outline mb-4">
+                <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
@@ -132,9 +133,9 @@ const Register = () => {
                   <label class="form-label" for="form3Example4">
                     lastName
                   </label>
-                </div>:null}
+                </div>
          
-          {istrue1? <div class="form-outline mb-4">
+          <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
@@ -156,9 +157,9 @@ const Register = () => {
                   <label class="form-label" for="form3Example4">
                     country
                   </label>
-                </div>:null}
+                </div>
                
-                {istrue2? <div class="form-outline mb-4">
+                 <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
@@ -182,7 +183,7 @@ const Register = () => {
                   </label>
                 
                   <input
-                    type="text"
+                    type="file"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter image"
@@ -191,10 +192,10 @@ const Register = () => {
                   <label class="form-label" for="form3Example4">
                   image
                   </label>
-                </div>:null}
+                </div>
 
 
-                <div class="text-center text-lg-start mt-4 pt-2">
+                {/* <div class="text-center text-lg-start mt-4 pt-2">
                   {isRegister?<button
                     type="button"
                     class="btn btn-primary btn-lg"
@@ -225,7 +226,7 @@ const Register = () => {
                     Next
                   </button>:null}
                   
-                </div>
+                </div> */}
                 {istrue4? <div class="text-center text-lg-start mt-3 pt-2">
                   <button
                     type="button"
@@ -247,16 +248,21 @@ const Register = () => {
                   </button>
                   
                 </div>:null}
-                {istrue3? <div class="text-center text-lg-start mt-3 pt-2">
+                 <div class="text-center text-lg-start mt-3 pt-2">
                   <button
                     type="button"
                     class="btn btn-primary btn-lg"
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+
+                    onClick={()=>{
+                        register()
+
+                    }}
                   >
                    Rgister
                   </button>
                   
-                </div>:null}
+                </div>
               </form>
             </div>
           </div>
