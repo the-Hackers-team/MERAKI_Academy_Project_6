@@ -20,6 +20,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userImage, setUserImage] = useState("");
+  //////////////////// for the hide and show
   const [istrue, setistrue] = useState(true);
   const [istrue1, setistrue1] = useState(false);
   const [istrue2, setistrue2] = useState(false);
@@ -28,7 +29,7 @@ const Register = () => {
 
   const [isRegister, setisRegister] = useState(true);
   const [count, setcount] = useState(0);
-
+/////////////////////////////////////
   const notifyRegisterSuccess = () => {
     toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
     navigate("/login");
@@ -111,6 +112,10 @@ const Register = () => {
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your first Name"
+                    onChange={(e) => {
+
+                        setfirstName(e.target.value);
+                    }}
                   />
                   <label class="form-label" for="form3Example3">
                     firstName
@@ -121,60 +126,71 @@ const Register = () => {
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your last name"
+                    onChange={(e) => {
+                        setlastName(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example4">
                     lastName
                   </label>
                 </div>
-
                 <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your Age"
+                    onChange={(e) => {setAge(e.target.value)}}
                   />
                   <label class="form-label" for="form3Example3">
                     age
                   </label>
-
                   <input
                     type="text"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your country"
+                    onChange={(e) => {
+                        setcountry(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example4">
                     country
                   </label>
                 </div>
-
                 <div class="form-outline mb-4">
                   <input
                     type="text"
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter your /Email"
+                    onChange={(e) => {
+                        setEmail(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example3">
                     email
                   </label>
-
                   <input
                     type="text"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter your password"
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example4">
                     password
                   </label>
-
                   <input
                     type="file"
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter image"
+                    onChange={(e) => {
+                        setUserImage(e.target.value)
+                    }}
                   />
                   <label class="form-label" for="form3Example4">
                     image
