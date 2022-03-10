@@ -68,7 +68,11 @@ const Login = () => {
               />
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                   <button
@@ -103,9 +107,8 @@ const Login = () => {
                     id="form3Example3"
                     class="form-control form-control-lg"
                     placeholder="Enter a valid email address"
-                    onChange={(e)=>{
-
-                        setEmail(e.target.value);
+                    onChange={(e) => {
+                      setEmail(e.target.value);
                     }}
                   />
                   <label class="form-label" for="form3Example3">
@@ -119,8 +122,8 @@ const Login = () => {
                     id="form3Example4"
                     class="form-control form-control-lg"
                     placeholder="Enter password"
-                    onChange = {(e)=>{
-                        setPassword(e.target.value)
+                    onChange={(e) => {
+                      setPassword(e.target.value);
                     }}
                   />
                   <label class="form-label" for="form3Example4">
@@ -150,6 +153,9 @@ const Login = () => {
                     type="button"
                     class="btn btn-primary btn-lg"
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+                    onClick={() => {
+                      loginFunction();
+                    }}
                   >
                     Login
                   </button>
