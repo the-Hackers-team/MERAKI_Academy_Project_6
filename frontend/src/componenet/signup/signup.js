@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
-
 import "./signup.css";
 
+toast.configure();
 const Register = () => {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -27,7 +27,17 @@ const Register = () => {
   const [isRegister, setisRegister] = useState(true);
   const [count, setcount] = useState(0);
 
-  const register = () => {
+  const notifyRegisterSuccess = () => {
+    toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
+    navigate("/login");
+  };
+  const notifyRegisterError = () => {
+    toast.warn("Please fill All The Fields", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const register = async() => {
     if (
       firstName &&
       lastName &&
@@ -47,9 +57,8 @@ const Register = () => {
             userImage,
           };
           await axios
-          .post(`/user/register`, newUser)
+          .post(`http://localhost:5000/user/register`, newUser)
           .then((response) => {
-            console.log("hello");
             if (response.data.success) {
               notifyRegisterSuccess();
             }
@@ -71,7 +80,7 @@ const Register = () => {
           !country ||
           !email ||
           !password ||
-          !users_image
+          !userImage
         ) {
           notifyRegisterError();
         }
