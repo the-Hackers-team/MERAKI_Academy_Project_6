@@ -9,8 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 import "./signup.css";
 
+
 toast.configure();
 const Register = () => {
+
+
+    const navigate = useNavigate();
+
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
   const [age, setAge] = useState(0);
@@ -89,7 +94,7 @@ const Register = () => {
 
   return (
     <>
-      {/* <section class="vh-100">
+      <section class="vh-100">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -256,7 +261,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </section>  */}
+      </section> 
     </>
   );
 };
