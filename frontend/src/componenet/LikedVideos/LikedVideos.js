@@ -20,6 +20,8 @@ const LikedVideos = () => {
   });
 
   const [LikedVideos, setLikedVideos] = useState([]);
+
+  ///// this state is render the function after deleted the video from the liked videos
   const [is_deletedVideos, set_deletedVideos] = useState(false);
 
   const getVideosByLiks = () => {
