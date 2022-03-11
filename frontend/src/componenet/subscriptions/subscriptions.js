@@ -7,3 +7,16 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
+
+
+
+const Subcriptions = ()=>{
+
+    return (
+
+<></>
+
+    )
+}
+
+export default Subcriptions;
