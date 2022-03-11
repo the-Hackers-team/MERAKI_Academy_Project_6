@@ -12,6 +12,8 @@ toast.configure();
 const WatchLater = () => {
   const [watchLaterVideos, setwatchLaterVideos] = useState([]);
 
+  const [iswatchLaterVideos, setiswatchLaterVideos] = useState(false);
+
   const getWatchLaterVideosByUserId = () => {
     axios
       .get("http://localhost:5000/watchLater")
@@ -20,15 +22,14 @@ const WatchLater = () => {
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       });
   };
 
-  useEffect(()=>{
-    getWatchLaterVideosByUserId()
-
-  },[])
+  useEffect(() => {
+    getWatchLaterVideosByUserId();
+  }, [iswatchLaterVideos]);
 
   return <></>;
 };
