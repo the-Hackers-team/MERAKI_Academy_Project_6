@@ -10,9 +10,13 @@ import { login, logout } from "../reducer/login/index";
 
 const ChannelDetails = () => {
 
+
+ const [channelDetails,setchannelDetails]   = useState([])
 const getChannelById = (id)=>{
     axios.get(`http://localhost:5000/channelDetails/${id}`).then(response=>{
-        
+        setchannelDetails(response.data.results)
+    }).catch(error=>{
+ 
     })
 }
 
