@@ -20,18 +20,20 @@ const LikedVideos = () => {
 
   const [LikedVideos, setLikedVideos] = useState([]);
 
-  axios
-    .get("http://localhost:5000/like", {
-      headers: {
-        Authorization: `Basic ${state.token}`,
-      },
-    })
-    .then((response) => {
-      setLikedVideos(response.data.results);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const getVideosByLiks = () => {
+    axios
+      .get("http://localhost:5000/like", {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setLikedVideos(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return <></>;
 };
