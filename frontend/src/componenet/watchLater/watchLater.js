@@ -16,7 +16,11 @@ const WatchLater = () => {
 
   const getWatchLaterVideosByUserId = () => {
     axios
-      .get("http://localhost:5000/watchLater")
+      .get("http://localhost:5000/watchLater", {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
       .then((response) => {
         setwatchLaterVideos(response.data.results);
       })
@@ -29,7 +33,11 @@ const WatchLater = () => {
 
   const deleteFromWatchLaterVideos = (id) => {
     axios
-      .delete(`http://localhost:5000/watchLater/delete/${id}`)
+      .delete(`http://localhost:5000/watchLater/delete/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
       .then((response) => {
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_RIGHT,
