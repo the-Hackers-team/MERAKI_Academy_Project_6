@@ -46,8 +46,8 @@ const LikedVideos = () => {
       })
       .then((response) => {
         toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
       .catch((error) => {
         console.log(error);
