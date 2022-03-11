@@ -19,7 +19,7 @@ const ChannelDetails = () => {
         token: state.loginReducer.token,
       };
     });
-
+ const [channelVideos,setchannelVideos] = useState([])
  const [channelDetails,setchannelDetails]   = useState([])
  
 const getChannelById = ()=>{
@@ -42,13 +42,21 @@ const getAllVideosBuChannelId = ()=>{
           Authorization: `Basic ${state.token}`,
         },
       }).then(response=>{
-          
+        setchannelVideos(response.data.results)
+      }).catch(err=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
       })
 }
 
 
 useEffect(() => {
     getChannelById()
+},[])
+
+useEffect(() => {
+    getAllVideosBuChannelId()
 },[])
 
   return <></>;
