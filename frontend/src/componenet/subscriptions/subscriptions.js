@@ -11,7 +11,7 @@ import { login, logout } from "../reducer/login/index";
 toast.configure();
 
 const Subcriptions = () => {
-    
+
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -26,7 +26,7 @@ const Subcriptions = () => {
 
   const getAllvideossubscripes = () => {
     axios
-      .get("https://localhost:5000/subscription/allVideos", {
+      .get("https://localhost:5000/subscription/mySubsciption", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
