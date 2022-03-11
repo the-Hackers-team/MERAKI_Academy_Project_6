@@ -10,6 +10,7 @@ import { login, logout } from "../reducer/login/index";
 
 toast.configure();
 const LikedVideos = () => {
+    
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -49,8 +50,10 @@ const LikedVideos = () => {
           position: toast.POSITION.TOP_RIGHT,
         });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
       });
   };
 
