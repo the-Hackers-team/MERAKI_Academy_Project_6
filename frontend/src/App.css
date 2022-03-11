@@ -19,3 +19,7 @@ body {
 .mainBody {
   display: flex;
 }
+a{
+  color: #5a5a5a;
+  font-size: 1em;
+}

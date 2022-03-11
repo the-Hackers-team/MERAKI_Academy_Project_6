@@ -40,7 +40,7 @@
     border: none;
   }
    */
-
+/*real*/
 :root {
   --accent-color: rgb(204, 0, 0);
   --lightest-gray: rgb(244, 244, 244);
@@ -55,11 +55,9 @@
 .main-header {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   position: sticky;
   top: 0;
   background-color: white;
-  /* box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.4); */
   padding: 0 0.5rem;
   height: var(--header-height);
 }
