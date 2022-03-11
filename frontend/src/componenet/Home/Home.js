@@ -2,12 +2,12 @@ import React from "react";
 import Sidebar from "../SideBar/Sidebar";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Categories from "../Categories/Categories"
+import Categories from "../Categories/Categories";
 const menuIcon = document.querySelector(".logo");
 const Home = () => {
   return (
     <div className="videos">
-        <Categories/>
+      <Categories />
       <h1>Recommended</h1>
 
       <div className="videos__container">
@@ -456,12 +456,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        
-      
-     
-
-       
       </div>
     </div>
   );
