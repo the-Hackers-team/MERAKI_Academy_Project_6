@@ -64,7 +64,19 @@ const getMySubscriptionChannels = (req, res) => {
 };
 const getAllvideossubscripes = (req, res) => {
   const userId = req.token.userId;
-  const query = `select users.id,firstName,lastName,users.user_image ,video_link,video.image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
+  const query = `SELECT
+  videos.id,title,description,firstName,videos.user_id, users.user_image,videos.image,category
+  FROM
+  subscriptions
+  INNER JOIN
+    users
+  ON
+    users.id=watch_later.user_id where users.id = ? and users.is_deleted =0 and watch_later.is_deleted=0
+  INNER JOIN
+  videos
+  ON
+  videos.id = watch_later.video_id`;
+  // const query = `select users.id,firstName,lastName,users.user_image ,video_link,video.image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
