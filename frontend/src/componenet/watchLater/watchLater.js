@@ -32,13 +32,13 @@ const WatchLater = () => {
       .delete(`http://localhost:5000/watchLater/delete/${id}`)
       .then((response) => {
         toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       });
   };
 
