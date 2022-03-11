@@ -18,7 +18,7 @@ const LikedVideos = () => {
       token: state.loginReducer.token,
     };
   });
-
+  //////////// this state is to save the liked videos from the function getVideosByLiks.
   const [LikedVideos, setLikedVideos] = useState([]);
 
   ///// this state is render the function after deleted the video from the liked videos
