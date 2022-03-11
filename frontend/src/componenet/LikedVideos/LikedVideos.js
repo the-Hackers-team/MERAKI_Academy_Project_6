@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 
+toast.configure();
 const LikedVideos = () => {
   const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ const LikedVideos = () => {
   });
 
   const [LikedVideos, setLikedVideos] = useState([]);
+  const [is_deletedVideos, set_deletedVideos] = useState(false);
 
   const getVideosByLiks = () => {
     axios
@@ -35,9 +37,26 @@ const LikedVideos = () => {
       });
   };
 
+  const deleteLikedVideos = (id) => {
+    axios
+      .delete(`http://localhost:5000/like/delete/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        toast.success(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getVideosByLiks();
-  }, []);
+  }, [is_deletedVideos]);
 
   return <></>;
 };
