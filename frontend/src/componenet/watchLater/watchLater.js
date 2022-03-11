@@ -10,6 +10,14 @@ import { login, logout } from "../reducer/login/index";
 
 toast.configure();
 const WatchLater = () => {
+  const navigate = useNavigate();
+
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
   //////// this state is ti save the watchLater videos
   const [watchLaterVideos, setwatchLaterVideos] = useState([]);
   ///////// this state is to render the getWatchLaterVideosByUserId after each delete process
