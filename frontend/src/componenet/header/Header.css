@@ -30,7 +30,6 @@
 }
 
 .header__search form {
- 
   border: 1px solid #ccc;
   margin-right: 15px;
   padding: 8px 12px;
@@ -39,7 +38,7 @@
 }
 
 .header__search input {
- font-size: 1em;
+  font-size: 1em;
   width: 500px;
   border: 0;
   outline: 0;
@@ -94,7 +93,6 @@
     top: 4.4rem;
     height: auto;
   }
-
 }
 
 @media (max-width: 941px) {
@@ -102,13 +100,13 @@
     width: 300px;
   }
 }
-.main-header{
+.main-header {
   display: flex;
   flex-direction: column;
-  position:sticky;
+  position: sticky;
   top: 0;
   /* border-bottom: 1px solid #ddd; */
 }
-.dropdown-toggle::after{
-display: none !important
+.dropdown-toggle::after {
+  display: none !important;
 }
