@@ -7,8 +7,8 @@ const PlayVideo = () => {
       <div className="row-video">
         <div className="play-video">
           <video controls autoplay>
-          <source src="images/video.mp4" type="video/mp4" />
-          {/* <iframe
+            <source src="images/video.mp4" type="video/mp4" />
+            {/* <iframe
             width="100%"
             height="720"
             src="https://www.youtube.com/embed/gb429WQuAFo"
