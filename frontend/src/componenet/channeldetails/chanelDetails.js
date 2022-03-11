@@ -10,9 +10,13 @@ import { login, logout } from "../reducer/login/index";
 
 const ChannelDetails = () => {
 
+const getChannelById = (id)=>{
+    axios.get(`http://localhost:5000/channelDetails/${id}`).then(response=>{
+        
+    })
+}
 
 
-    
   return <></>;
 };
 
