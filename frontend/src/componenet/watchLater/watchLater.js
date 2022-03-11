@@ -65,3 +65,5 @@ const WatchLater = () => {
 
   return <></>;
 };
+
+export default WatchLater;
