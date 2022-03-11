@@ -18,8 +18,17 @@ const WatchLater = () => {
       .then((response) => {
         setwatchLaterVideos(response.data.results);
       })
-      .catch((error) => {});
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+      });
   };
+
+  useEffect(()=>{
+    getWatchLaterVideosByUserId()
+
+  },[])
 
   return <></>;
 };
