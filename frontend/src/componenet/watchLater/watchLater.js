@@ -8,24 +8,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 
-
 toast.configure();
-const WatchLater = ()=>{
+const WatchLater = () => {
+  const [watchLaterVideos, setwatchLaterVideos] = useState([]);
 
-  const getWatchLaterVideosByUserId = ()=>{
-      axios.get("http://localhost:5000/watchLater").then((response)=>{
-
-      }).catch((error)=>{
-
-
+  const getWatchLaterVideosByUserId = () => {
+    axios
+      .get("http://localhost:5000/watchLater")
+      .then((response) => {
+        setwatchLaterVideos(response.data.results);
       })
-  }
+      .catch((error) => {});
+  };
 
-return(
-<>
-
-</>
-
-) 
-
-}
+  return <></>;
+};
