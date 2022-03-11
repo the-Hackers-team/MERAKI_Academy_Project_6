@@ -18,17 +18,26 @@ const ChannelDetails = () => {
         token: state.loginReducer.token,
       };
     });
-    
+
  const [channelDetails,setchannelDetails]   = useState([])
  
 const getChannelById = (id)=>{
-    axios.get(`http://localhost:5000/channelDetails/${id}`).then(response=>{
+    axios.get(`http://localhost:5000/channelDetails/${id}`,{
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then(response=>{
         setchannelDetails(response.data.results)
-    }).catch(error=>{
- 
+    }).catch(err=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
     })
 }
 
+useEffect(() => {
+    getChannelById()
+},[])
 
   return <></>;
 };
