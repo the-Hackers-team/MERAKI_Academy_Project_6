@@ -1,11 +1,9 @@
 .categories {
- 
-  
   display: flex;
   justify-content: center;
   /* position: fixed; */
- /* background-color: white */
- /* top: 70px; */
+  /* background-color: white */
+  /* top: 70px; */
 }
 
 .category-section {
