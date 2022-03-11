@@ -24,9 +24,9 @@ commentRouter.put("/:id", authentication, updateCommentById);
 
 commentRouter.delete("/delete_1/:id", authentication, deleteCommentById);
 
-//create end point for delete comment by user_id
+//create end point for get comment by user_id
 
-commentRouter.get("/video/:id", getAllComments);
+commentRouter.get("/:id", getAllComments);
 
 commentRouter.delete(
   "/delete_2/:user_id",
