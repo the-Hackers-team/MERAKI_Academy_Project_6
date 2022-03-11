@@ -12,6 +12,7 @@
   position: sticky;
   top: 0;
   background-color: white;
+  z-index: 999;
 }
 
 .header__left {
@@ -109,4 +110,19 @@
 }
 .dropdown-toggle::after {
   display: none !important;
+}
+.display-none {
+  display: none;
+}
+.header-border {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 999;
 }

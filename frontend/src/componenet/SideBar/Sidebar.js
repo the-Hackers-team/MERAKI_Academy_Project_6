@@ -46,6 +46,7 @@ const Sidebar = ({ sideClick }) => {
     //     <hr />
     //   </div>
     // </div>
+    ////////////////////////////////////////////////////////////////////////////////////////////actual
     <aside className={sideClick ? "sidebar open" : "sidebar"}>
       <div className="top-sidebar">
         <Link to="#" className="channel-logo">
