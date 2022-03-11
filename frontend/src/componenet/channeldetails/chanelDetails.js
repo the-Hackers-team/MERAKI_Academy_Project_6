@@ -36,7 +36,15 @@ const getChannelById = ()=>{
     })
 }
 
-
+const getAllVideosBuChannelId = ()=>{
+    axios.get(`http://localhost:5000/video/${id}`,{
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then(response=>{
+          
+      })
+}
 
 
 useEffect(() => {
