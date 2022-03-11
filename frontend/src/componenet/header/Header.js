@@ -6,15 +6,16 @@ import Categories from "../Categories/Categories";
 import { useLocation } from "react-router-dom";
 const Header = ({ setSideClick, sideClick }) => {
   const location = useLocation();
- 
 
   return (
     // <div classNameName="main-header">
-    <div className={location.pathname=="/video"?"header-border":"header"} >
+    <div className={location.pathname == "/video" ? "header-border" : "header"}>
       <div className="header__left">
         <i
           id="menu"
-          className={location.pathname=="/video"?"display-none":"material-icons"}
+          className={
+            location.pathname == "/video" ? "display-none" : "material-icons"
+          }
           onClick={() => {
             setSideClick(!sideClick);
           }}
