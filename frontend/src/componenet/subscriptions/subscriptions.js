@@ -12,6 +12,20 @@ import { login, logout } from "../reducer/login/index";
 
 const Subcriptions = ()=>{
 
+    const getAllvideossubscripes = ()=>{
+        axios.get("https://localhost:5000/subscription/allVideos", {
+            headers: {
+              Authorization: `Basic ${state.token}`,
+            },
+          }).then(response => {
+
+          }).catch(error => {
+              
+          })
+    }
+
+
+
     return (
 
 <></>
