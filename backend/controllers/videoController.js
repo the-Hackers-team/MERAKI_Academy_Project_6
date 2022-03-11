@@ -38,9 +38,10 @@ const createNewVideo = (req, res) => {
 
 //create controller for getAllVideos
 const getAllVideos = (req, res) => {
-  const query = `select * from videos  where is_deleted = 0  `;
-
-  connection.query(query, (err, result) => {
+  const userId = req.params.id
+  const query = `select * from videos  where is_deleted = 0 and user_id =?`;
+   const data = [userId]
+  connection.query(query, data,(err, result) => {
     if (err) {
       console.log(err);
       res
