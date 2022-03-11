@@ -35,6 +35,10 @@ const LikedVideos = () => {
       });
   };
 
+  useEffect(() => {
+    getVideosByLiks();
+  }, []);
+
   return <></>;
 };
 
