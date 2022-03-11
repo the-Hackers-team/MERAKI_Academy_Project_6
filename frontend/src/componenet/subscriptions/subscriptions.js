@@ -11,6 +11,16 @@ import { login, logout } from "../reducer/login/index";
 toast.configure();
 
 const Subcriptions = () => {
+  const navigate = useNavigate();
+
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
+
+  const [isallSubscriptVideos, setisallSubscriptVideos] = useState(false);
   const [allSubscriptVideos, setallSubscriptVideos] = useState([]);
 
   const getAllvideossubscripes = () => {
@@ -51,7 +61,7 @@ const Subcriptions = () => {
 
   useEffect(() => {
     getAllvideossubscripes();
-  }, []);
+  }, [isallSubscriptVideos]);
 
   return <></>;
 };
