@@ -10,8 +10,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Profile = ()=>{
 
+    const navigate = useNavigate();
 
+    const state = useSelector((state) => {
+      return {
+        isLoggedIn: state.loginReducer.isLoggedIn,
+        token: state.loginReducer.token,
+      };
+    });
+    
     const getUserById = ()=>{
     axios.get(`http://localhost:5000/user/profile`,)
     }
+    
 }
