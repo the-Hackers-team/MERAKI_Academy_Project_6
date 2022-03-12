@@ -11,6 +11,7 @@ toast.configure();
 const Profile = () => {
   const [userProfile, setuserProfile] = useState([]);
   const [profileVideos, setprofileVideos] = useState([]);
+  const [isDeleted, setisDeleted] = useState(false);
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -82,5 +83,5 @@ const Profile = () => {
 
   useEffect(() => {
     getAllVideosBuChannelId();
-  }, []);
+  }, [isDeleted]);
 };
