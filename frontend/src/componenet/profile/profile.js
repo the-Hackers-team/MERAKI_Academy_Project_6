@@ -19,6 +19,9 @@ const Profile = () => {
     };
   });
 
+  const decode = state.token && jwt_decode(state.token);
+  let user_id = decode && decode.userId;
+
   const getUserById = () => {
     axios
       .get(`http://localhost:5000/user/profile`, {
@@ -28,6 +31,23 @@ const Profile = () => {
       })
       .then((response) => {
         setuserProfile(response.data.results);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
+
+  const getAllVideosBuChannelId = () => {
+    axios
+      .get(`http://localhost:5000/video/${user_id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setchannelVideos(response.data.results);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
