@@ -6,3 +6,12 @@ import { useNavigate, useEffect } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
+
+
+const Profile = ()=>{
+
+
+    const getUserById = ()=>{
+    axios.get(`http://localhost:5000/user/profile`,)
+    }
+}
