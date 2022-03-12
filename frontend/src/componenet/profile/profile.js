@@ -8,36 +8,35 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 
 toast.configure();
-const Profile = ()=>{
+const Profile = () => {
+  const [userProfile, setuserProfile] = useState([]);
+  const navigate = useNavigate();
 
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
 
-    const [userProfile,setuserProfile] = useState([])
-    const navigate = useNavigate();
-
-    const state = useSelector((state) => {
-      return {
-        isLoggedIn: state.loginReducer.isLoggedIn,
-        token: state.loginReducer.token,
-      };
-    });
-
-    const getUserById = ()=>{
-    axios.get(`http://localhost:5000/user/profile`,{
+  const getUserById = () => {
+    axios
+      .get(`http://localhost:5000/user/profile`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
-      }).then((response)=>{
+      })
+      .then((response) => {
         setuserProfile(response.data.results);
       })
-      .catch((err)=>{
+      .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-      })
-    }
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
 
-    useEffect(() => {
-        
-    },[])
-    
-}
+  useEffect(() => {
+    getUserById();
+  }, []);
+};
