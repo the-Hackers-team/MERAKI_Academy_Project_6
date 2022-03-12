@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 toast.configure();
 const Profile = () => {
   const [userProfile, setuserProfile] = useState([]);
+  const [profileVideos, setprofileVideos] = useState([]);
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -47,7 +48,7 @@ const Profile = () => {
         },
       })
       .then((response) => {
-        setchannelVideos(response.data.results);
+        setprofileVideos(response.data.results);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -58,5 +59,9 @@ const Profile = () => {
 
   useEffect(() => {
     getUserById();
+  }, []);
+
+  useEffect(() => {
+    getAllVideosBuChannelId();
   }, []);
 };
