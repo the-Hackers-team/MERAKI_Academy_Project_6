@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 toast.configure();
 const Profile = () => {
   const [userProfile, setuserProfile] = useState([]);
+  
   const [profileVideos, setprofileVideos] = useState([]);
   const [isDeleted, setisDeleted] = useState(false);
   const navigate = useNavigate();
