@@ -57,6 +57,25 @@ const Profile = () => {
       });
   };
 
+  const deleteAnVideoById = (id) => {
+    axios
+      .delete(`http://localhost:5000/video/delete_1/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
+
   useEffect(() => {
     getUserById();
   }, []);
