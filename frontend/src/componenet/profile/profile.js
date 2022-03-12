@@ -125,9 +125,7 @@ const Profile = () => {
       </div>;
     });
 
-  return <>
-  {profileDetails? profileDetails:null}
-  </>;
+  return <>{profileDetails ? profileDetails : null}</>;
 };
 
 export default Profile;
