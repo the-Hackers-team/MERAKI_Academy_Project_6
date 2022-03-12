@@ -7,9 +7,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 
-
+toast.configure();
 const Profile = ()=>{
 
+
+    const [userProfile,setuserProfile] = useState([])
     const navigate = useNavigate();
 
     const state = useSelector((state) => {
@@ -25,7 +27,7 @@ const Profile = ()=>{
           Authorization: `Basic ${state.token}`,
         },
       }).then((response)=>{
-
+        setuserProfile(response.data.results);
       })
       .catch((err)=>{
           
