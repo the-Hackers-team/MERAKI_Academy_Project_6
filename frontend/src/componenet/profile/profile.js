@@ -30,8 +30,14 @@ const Profile = ()=>{
         setuserProfile(response.data.results);
       })
       .catch((err)=>{
-          
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
       })
     }
+
+    useEffect(() => {
+        
+    },[])
     
 }
