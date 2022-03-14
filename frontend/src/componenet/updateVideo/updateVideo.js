@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 
+toast.configure();
 const updateAnVideoById = () => {
 
     const [title,setTitle] = useState("")
@@ -39,8 +40,32 @@ const updateAnVideoById = () => {
         setcategory(response.data.results[0].category)
         setvideo_link(response.data.results[0].video_link)
       })
-      .catch((error) => {
-          
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
       });
   };
+
+  const updateAnVideoById = ()=>{
+      axios.put(`http://localhost:5000/video/update/${id}`,{title,description,image,category,video_link}, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      }).then(response => {
+        toast.success(response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+      }).catch((err)=>{
+        toast.error(err.response.data.message, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+      })
+  }
+
+  useEffect(() => {
+    getVideoById()
+  },[])
 };
+
+export default updateAnVideoById;
