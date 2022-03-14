@@ -56,3 +56,10 @@
     align-items: center;
     gap: 2%;
 }
+
+
+.image-upload-video{
+    width:5rem;
+    height:5rem;
+    border-radius:50%;
+}
