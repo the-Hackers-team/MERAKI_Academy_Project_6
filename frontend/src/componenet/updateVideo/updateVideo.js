@@ -6,7 +6,8 @@ import { useNavigate, useEffect, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-
+import Swal from "sweetalert2";
+import "./updateVideo.css";
 toast.configure();
 const updateAnVideoById = () => {
   const [title, setTitle] = useState("");
@@ -72,7 +73,113 @@ const updateAnVideoById = () => {
     getVideoById();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <span className="create">Update Product</span>
+
+      <div className="form">
+        <input
+          type="text"
+          defaultValue={title}
+          id="product-name"
+          placeholder="product name"
+          className="inputprod"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          id="short-des"
+          placeholder="short line about the product"
+          className="inputprod"
+        />
+        <textarea
+          className="text-area"
+          id="des"
+          defaultValue={description}
+          placeholder="detail description"
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+        ></textarea>
+
+        <div className="product-price">
+          <input
+            type="file"
+            defaultValue={image}
+            id="actual-price"
+            placeholder="background image"
+            className="inputprod"
+            onChange={(e) => {
+              setimage(e.target.value);
+            }}
+          />
+          <input
+            type="file"
+            defaultValue={video_link}
+            id="actual-price"
+            placeholder="update video Link"
+            className="inputprod"
+            onChange={(e) => {
+              setvideo_link(e.target.value);
+            }}
+          />
+        </div>
+
+        <input
+          type="number"
+          id="stock"
+          min="20"
+          placeholder="item in stocks"
+          className="inputprod"
+        />
+
+        <textarea
+          className="text-area"
+          id="tags"
+          defaultValue={category}
+          placeholder="Enter categories here, for example - cars, Electonics, Clothes, "
+          onChange={(e) => {
+            setcategory(e.target.value);
+          }}
+        ></textarea>
+        {/* <div className="product-info">
+    <p className="text">upload image</p>
+
+    <Cloudinary setImage={setImage} defaultValue={image} />
+  </div> */}
+
+        <div className="buttons">
+          <button
+            className="btn"
+            onClick={() => {
+              Swal.fire({
+                title: "Do you want to save the changes?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                confirmButtonColor: "#4267b3",
+                denyButtonText: `Don't save`,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  updateAnVideoById();
+                  Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                  Swal.fire("Changes are not saved", "", "info");
+                }
+              });
+            }}
+          >
+            update product
+          </button>
+          <button className="btn" id="save-btn">
+            save draft
+          </button>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default updateAnVideoById;
