@@ -9,13 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 toast.configure();
 const updateAnVideoById = () => {
-
-    const [title,setTitle] = useState("")
-    const [description,setDescription] = useState("")
-    const [image,setimage] = useState("")
-    const [category,setcategory] = useState("")
-    const [video_link,setvideo_link] = useState("")
-
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setimage] = useState("");
+  const [category, setcategory] = useState("");
+  const [video_link, setvideo_link] = useState("");
 
   const state = useSelector((state) => {
     return {
@@ -34,38 +32,47 @@ const updateAnVideoById = () => {
         },
       })
       .then((response) => {
-        setTitle(response.data.results[0].title)
-        setDescription(response.data.results[0].description)
-        setimage(response.data.results[0].image)
-        setcategory(response.data.results[0].category)
-        setvideo_link(response.data.results[0].video_link)
+        setTitle(response.data.results[0].title);
+        setDescription(response.data.results[0].description);
+        setimage(response.data.results[0].image);
+        setcategory(response.data.results[0].category);
+        setvideo_link(response.data.results[0].video_link);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       });
   };
 
-  const updateAnVideoById = ()=>{
-      axios.put(`http://localhost:5000/video/update/${id}`,{title,description,image,category,video_link}, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      }).then(response => {
+  const updateAnVideoById = () => {
+    axios
+      .put(
+        `http://localhost:5000/video/update/${id}`,
+        { title, description, image, category, video_link },
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
         toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-      }).catch((err)=>{
-        toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          position: toast.POSITION.TOP_RIGHT,
+        });
       })
-  }
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
 
   useEffect(() => {
-    getVideoById()
-  },[])
+    getVideoById();
+  }, []);
+
+  return <></>;
 };
 
 export default updateAnVideoById;
