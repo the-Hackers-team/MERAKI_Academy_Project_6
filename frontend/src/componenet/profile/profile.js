@@ -114,7 +114,7 @@ const Profile = () => {
           <div className="profile-upload-image">
             <img src="https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg" />
           </div>
-          <div>
+          <div className="uplaod-video-paragraph">
             <p>Upload a video to get started</p>
             <p>
               Start sharing your story and connecting with viewers. Videos you

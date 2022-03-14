@@ -1,0 +1,58 @@
+.profile-main{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.profile-div-container{
+    display:flex;
+    flex-direction:column;
+    gap: 2%;
+}
+
+.container-above-div{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    gap: 10%;
+    justify-content:flex-start;
+
+}
+
+.image-name{
+    display:flex;
+
+    flex-direction:row;
+    gap: 2%;
+}
+
+.videos-profile{
+    display:flex;
+    flex-direction:row;
+    gap: 5%;
+}
+
+.home-videos-playList{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+    gap: 2%;
+}
+
+.profile-upload-videos{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    gap: 2%;
+}
+
+.uplaod-video-paragraph{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+}
