@@ -21,14 +21,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [userImage, setUserImage] = useState("");
   //////////////////// for the hide and show
-  const [istrue, setistrue] = useState(true);
-  const [istrue1, setistrue1] = useState(false);
-  const [istrue2, setistrue2] = useState(false);
-  const [istrue3, setistrue3] = useState(false);
-  const [istrue4, setistrue4] = useState(false);
-
-  const [isRegister, setisRegister] = useState(true);
-  const [count, setcount] = useState(0);
+ 
 /////////////////////////////////////
   const notifyRegisterSuccess = () => {
     toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
@@ -40,15 +33,14 @@ const Register = () => {
     });
   };
 
-  const register = async () => {
+  const register =  () => {
     if (
       firstName &&
       lastName &&
       age &&
       country &&
       email &&
-      password &&
-      userImage
+      password 
     ) {
       const newUser = {
         firstName,
@@ -57,9 +49,9 @@ const Register = () => {
         country,
         email,
         password,
-        userImage,
+        
       };
-      await axios
+       axios
         .post(`http://localhost:5000/user/register`, newUser)
         .then((response) => {
           if (response.data.success) {
@@ -80,8 +72,7 @@ const Register = () => {
         !age ||
         !country ||
         !email ||
-        !password ||
-        !userImage
+        !password 
       ) {
         notifyRegisterError();
       }
@@ -316,7 +307,8 @@ const Register = () => {
             }}
             required
           />
-
+        
+        
           {/* <label className="image-label">
             <b>Choose Profile Image</b>
           </label>
