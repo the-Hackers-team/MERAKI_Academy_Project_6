@@ -117,3 +117,14 @@ const CreateNewVideo = () => {
           <span class="input-group-text" id="basic-addon3"></span>
           upload
           </span>
+          </div>
+        <input
+          type="file"
+          class="form-control"
+          id="basic-url"
+          aria-describedby="basic-addon3"
+          onChange={(e) => {
+            setvideo_link(e.target.value);
+          }}
+        />
+      </div>
