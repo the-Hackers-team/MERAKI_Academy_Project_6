@@ -88,4 +88,10 @@ const CreateNewVideo = () => {
             setcategory(e.target.value);
           }}
         />
+            <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">
+            Categories
+          </span>
+        </div>
+      </div>
 
