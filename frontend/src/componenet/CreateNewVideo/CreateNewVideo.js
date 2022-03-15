@@ -34,4 +34,9 @@ const CreateNewVideo = () => {
                 },
               }
             )
+            .then((response) => {
+                toast.success(response.data.message, {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              })
 
