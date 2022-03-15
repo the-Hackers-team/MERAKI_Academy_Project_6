@@ -32,7 +32,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-
+{/* 
         <div className="video">
           <div className="video__thumbnail">
             <img
@@ -52,7 +52,7 @@ const Home = () => {
               <span>10M Views • 3 Months Ago</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="video">
           <div className="video__thumbnail">
@@ -101,7 +101,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="video">
+        {/* <div className="video">
           <div className="video__thumbnail">
             <img
               src="https://img.youtube.com/vi/2Ji-clqUYnA/maxresdefault.jpg"
@@ -433,8 +433,8 @@ const Home = () => {
               <span>10M Views • 11 Months Ago</span>
             </div>
           </div>
-        </div>
-
+        </div> */}
+{/* 
         <div className="video">
           <div className="video__thumbnail">
             <img
@@ -455,7 +455,7 @@ const Home = () => {
               <span>10M Views • 1 Month Ago</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
