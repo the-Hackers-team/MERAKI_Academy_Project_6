@@ -28,4 +28,10 @@ const CreateNewVideo = () => {
             .post(
               "http://localhost:5000/video",
               { title, description, image, category, video_link },
+              {
+                headers: {
+                  Authorization: `Basic ${state.token}`,
+                },
+              }
+            )
 
