@@ -34,7 +34,11 @@ subsciptionRouter.get(
   authentication,
   getMySubscriptionChannels
 );
-
+subsciptionRouter.get(
+  "/videos",
+  authentication,
+  getAllvideossubscripes
+);
 //create end point to delete Video from LikesContoller
 
 module.exports = { subsciptionRouter };
