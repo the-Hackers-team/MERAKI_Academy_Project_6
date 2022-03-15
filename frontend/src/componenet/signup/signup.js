@@ -89,185 +89,250 @@ const Register = () => {
   };
 
   return (
-    <>
-      <section class="vh-100">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                class="img-fluid"
-                alt="Sample image"
-              />
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <div class="form-outline mb-4">
-                  <input
-                    type="text"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your first Name"
-                    onChange={(e) => {
+    // <>
+    //   <section class="vh-100">
+    //     <div class="container-fluid h-custom">
+    //       <div class="row d-flex justify-content-center align-items-center h-100">
+    //         <div class="col-md-9 col-lg-6 col-xl-5">
+    //           <img
+    //             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+    //             class="img-fluid"
+    //             alt="Sample image"
+    //           />
+    //         </div>
+    //         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+    //           <form
+    //             onSubmit={(e) => {
+    //               e.preventDefault();
+    //             }}
+    //           >
+    //             <div class="form-outline mb-4">
+    //               <input
+    //                 type="text"
+    //                 id="form3Example3"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your first Name"
+    //                 onChange={(e) => {
 
-                        setfirstName(e.target.value);
-                    }}
-                  />
-                  <label class="form-label" for="form3Example3">
-                    firstName
-                  </label>
+    //                     setfirstName(e.target.value);
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example3">
+    //                 firstName
+    //               </label>
 
-                  <input
-                    type="text"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your last name"
-                    onChange={(e) => {
-                        setlastName(e.target.value)
-                    }}
-                  />
-                  <label class="form-label" for="form3Example4">
-                    lastName
-                  </label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input
-                    type="text"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your Age"
-                    onChange={(e) => {setAge(e.target.value)}}
-                  />
-                  <label class="form-label" for="form3Example3">
-                    age
-                  </label>
-                  <input
-                    type="text"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your country"
-                    onChange={(e) => {
-                        setcountry(e.target.value)
-                    }}
-                  />
-                  <label class="form-label" for="form3Example4">
-                    country
-                  </label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input
-                    type="text"
-                    id="form3Example3"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your /Email"
-                    onChange={(e) => {
-                        setEmail(e.target.value)
-                    }}
-                  />
-                  <label class="form-label" for="form3Example3">
-                    email
-                  </label>
-                  <input
-                    type="text"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter your password"
-                    onChange={(e) => {
-                        setPassword(e.target.value)
-                    }}
-                  />
-                  <label class="form-label" for="form3Example4">
-                    password
-                  </label>
-                  <input
-                    type="file"
-                    id="form3Example4"
-                    class="form-control form-control-lg"
-                    placeholder="Enter image"
-                    onChange={(e) => {
-                        setUserImage(e.target.value)
-                    }}
-                  />
-                  <label class="form-label" for="form3Example4">
-                    image
-                  </label>
-                </div>
+    //               <input
+    //                 type="text"
+    //                 id="form3Example4"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your last name"
+    //                 onChange={(e) => {
+    //                     setlastName(e.target.value)
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example4">
+    //                 lastName
+    //               </label>
+    //             </div>
+    //             <div class="form-outline mb-4">
+    //               <input
+    //                 type="text"
+    //                 id="form3Example3"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your Age"
+    //                 onChange={(e) => {setAge(e.target.value)}}
+    //               />
+    //               <label class="form-label" for="form3Example3">
+    //                 age
+    //               </label>
+    //               <input
+    //                 type="text"
+    //                 id="form3Example4"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your country"
+    //                 onChange={(e) => {
+    //                     setcountry(e.target.value)
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example4">
+    //                 country
+    //               </label>
+    //             </div>
+    //             <div class="form-outline mb-4">
+    //               <input
+    //                 type="text"
+    //                 id="form3Example3"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your /Email"
+    //                 onChange={(e) => {
+    //                     setEmail(e.target.value)
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example3">
+    //                 email
+    //               </label>
+    //               <input
+    //                 type="text"
+    //                 id="form3Example4"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter your password"
+    //                 onChange={(e) => {
+    //                     setPassword(e.target.value)
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example4">
+    //                 password
+    //               </label>
+    //               <input
+    //                 type="file"
+    //                 id="form3Example4"
+    //                 class="form-control form-control-lg"
+    //                 placeholder="Enter image"
+    //                 onChange={(e) => {
+    //                     setUserImage(e.target.value)
+    //                 }}
+    //               />
+    //               <label class="form-label" for="form3Example4">
+    //                 image
+    //               </label>
+    //             </div>
 
-                {/* <div class="text-center text-lg-start mt-4 pt-2">
-                  {isRegister?<button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                       onClick={(e) => {
-                          console.log(count);
-                           if (count === 0) {
-                             setistrue(false)
-                             setistrue1(true)
-                             setcount(count + 1)
-                             setistrue4(true)
-                           }else{
+               
+    //             <div class="text-center text-lg-start mt-3 pt-2">
+    //               <button
+    //                 type="button"
+    //                 class="btn btn-primary btn-lg"
+    //                 style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
+    //                 onClick={() => {
+    //                   register();
+    //                 }}
+    //               >
+    //                 Rgister
+    //               </button>
+    //             </div>
+    //           </form>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </section>
+    // </>
 
-                            
-                            setistrue1(false)
-                               setistrue2(true)
-                             
-                              setisRegister(false) 
-                               setcount(0)
-                               setistrue3(true)
-                               setistrue4(true)
-                              
-                           }
-                        
-                       
-                       }}
-                  >
-                    Next
-                  </button>:null}
-                  
-                </div> */}
-                {istrue4 ? (
-                  <div class="text-center text-lg-start mt-3 pt-2">
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-lg"
-                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                      onClick={() => {
-                        if (istrue3) {
-                          setisRegister(true);
-                          setistrue3(false);
-                          setistrue2(false);
-                          setistrue1(true);
-                        }
-                        if (count === 1) {
-                        }
-                      }}
-                    >
-                      previous
-                    </button>
-                  </div>
-                ) : null}
-                <div class="text-center text-lg-start mt-3 pt-2">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-lg"
-                    style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                    onClick={() => {
-                      register();
-                    }}
-                  >
-                    Rgister
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div class="card1">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          register();
+        }}
+      >
+        <h2 class="title"> Sign Up</h2>
+
+        <div class="email-login">
+          <label for="First Name">
+            {" "}
+            <b>First Name</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter First Name"
+            name="First Name"
+            className="log-reg"
+            required
+            value={firstName}
+            onChange={(e) => {
+              setfirstName(e.target.value);
+            }}
+          />
+          <label for="Last Name">
+            <b>Last Name</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Last Name"
+            name="Last Name"
+            className="log-reg"
+            value={lastName}
+            onChange={(e) => {
+              setlastName(e.target.value);
+            }}
+            required
+          />
+          <label for="email">
+            {" "}
+            <b>Email</b>
+          </label>
+
+          <input
+            className="log-reg"
+            type="text"
+            placeholder="Enter Email"
+            name="uname"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            required
+          />
+          <label for="Age">
+            {" "}
+            <b>Age</b>
+          </label>
+          <input
+            type="number"
+            placeholder="Enter Age"
+            name="Age"
+            className="log-reg"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            required
+          />
+          <label for="Country">
+            {" "}
+            <b>Country</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Country"
+            name="Country"
+            className="log-reg"
+            value={country}
+            onChange={(e) => {
+              setcountry(e.target.value);
+            }}
+            required
+          />
+          <label for="psw">
+            <b>Password</b>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            className="log-reg"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            required
+          />
+
+          {/* <label className="image-label">
+            <b>Choose Profile Image</b>
+          </label>
+
+          <Cloudinary setImage={setUserImage} /> */}
         </div>
-      </section>
-    </>
+
+        <button class="cta-btn">Sign Up</button>
+        <p className="subtitle">
+          Already have an account?{" "}
+          <Link className="forget-pass" to="/login">
+            Log In
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 };
 
