@@ -26,7 +26,7 @@ videoRouter.post("/", authentication, createNewVideo);
 
 //2-  get all videos
 
-videoRouter.get("/:id",authentication ,getAllVideos);
+videoRouter.get("/:id", authentication, getAllVideos);
 
 //3- for get video by id
 
