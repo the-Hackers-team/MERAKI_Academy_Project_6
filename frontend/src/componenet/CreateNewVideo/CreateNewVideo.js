@@ -95,4 +95,6 @@ const CreateNewVideo = () => {
         </div>
       </div>
       <label for="basic-url">Video background image</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend"></div>
 
