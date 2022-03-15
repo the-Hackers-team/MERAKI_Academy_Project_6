@@ -66,4 +66,14 @@ const CreateNewVideo = () => {
                 Video Title
               </span>
             </div>
+            <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+        />
 
