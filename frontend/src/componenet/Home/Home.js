@@ -46,7 +46,7 @@ const Home = () => {
                 </div>
                 <div className="video__details">
                   <div className="author">
-                    <img src={videos.user_image} alt="" />
+                    <img src={video.user_image} alt="" />
                   </div>
                   <div className="title">
                     <h3>{video.title}</h3>
