@@ -22,3 +22,10 @@ const CreateNewVideo = () => {
       };
     });
 
+    const createNewVideo = () => {
+        if (title && description && image && category && video_link) {
+          axios
+            .post(
+              "http://localhost:5000/video",
+              { title, description, image, category, video_link },
+
