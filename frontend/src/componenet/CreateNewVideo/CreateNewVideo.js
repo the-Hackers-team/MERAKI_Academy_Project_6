@@ -137,3 +137,4 @@ const CreateNewVideo = () => {
     <span class="input-group-text">.00</span>
   </div>
 </div> */}
+<div class="input-group">
