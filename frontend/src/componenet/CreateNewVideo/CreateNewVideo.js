@@ -39,4 +39,9 @@ const CreateNewVideo = () => {
                   position: toast.POSITION.TOP_RIGHT,
                 });
               })
+              .catch((err) => {
+                toast.error(err.response.data.message, {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              });
 
