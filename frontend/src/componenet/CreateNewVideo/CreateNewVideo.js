@@ -113,3 +113,5 @@ const CreateNewVideo = () => {
       </div>
            <label for="basic-url">Video Link</label>
            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3"></span>
