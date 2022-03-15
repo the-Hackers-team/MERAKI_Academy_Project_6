@@ -1,0 +1,8 @@
+.sub-create {
+  width: 70%;
+  height: 100vh;
+}
+.main-create {
+  display: flex;
+  justify-content: center;
+}

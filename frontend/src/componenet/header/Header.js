@@ -4,6 +4,7 @@ import "./Header.css";
 import logo from "./youtube-logo.png";
 import Categories from "../Categories/Categories";
 import { useLocation } from "react-router-dom";
+
 const Header = ({ setSideClick, sideClick }) => {
   const location = useLocation();
 
@@ -22,7 +23,10 @@ const Header = ({ setSideClick, sideClick }) => {
         >
           menu
         </i>
-        <img src={logo} />
+        <Link to="/">
+          {" "}
+          <img src={logo} />
+        </Link>
       </div>
 
       <div className="header__search">
@@ -35,8 +39,13 @@ const Header = ({ setSideClick, sideClick }) => {
 
       <div className="header__icons">
         {/* <i className="material-icons display-this">search</i> */}
-        <i className="material-icons">video_call</i>
-        <i className="material-icons">apps</i>
+        <Link to="/create">
+          <i className="material-icons">video_call</i>
+        </Link>
+        <Link to="">
+          {" "}
+          <i className="material-icons">apps</i>
+        </Link>
         <i className="material-icons">notifications</i>{" "}
         <div className="dropdown text-end">
           {" "}

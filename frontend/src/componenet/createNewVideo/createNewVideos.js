@@ -6,7 +6,7 @@ import { useNavigate, useEffect, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./createNewVideo.css";
 toast.configure();
 const CreateNewVideo = () => {
   const [title, setTitle] = useState("");
@@ -54,42 +54,44 @@ const CreateNewVideo = () => {
   };
 
   return (
-    <>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">
-            Video Title
-          </span>
+    <div className="main-create">
+      <div className="sub-create">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              Video Title
+            </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-      </div>
 
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-          onChange={(e) => {
-            setcategory(e.target.value);
-          }}
-        />
-        <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon2">
-            Categories
-          </span>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Recipient's username"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            onChange={(e) => {
+              setcategory(e.target.value);
+            }}
+          />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">
+              Categories
+            </span>
+          </div>
         </div>
-      </div>
+
 
       <label for="basic-url">Video background image</label>
       
@@ -98,37 +100,45 @@ const CreateNewVideo = () => {
           <span class="input-group-text" id="basic-addon3">
             https://example.com/users/
           </span>
-        </div>
-        <input
-          type="file"
-          class="form-control"
-          id="basic-url"
-          aria-describedby="basic-addon3"
-          onChange={(e) => {
-            setimage(e.target.value);
-          }}
-        />
-      </div>
 
-      <label for="basic-url">Video Link</label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">
-            upload
-          </span>
-        </div>
-        <input
-          type="file"
-          class="form-control"
-          id="basic-url"
-          aria-describedby="basic-addon3"
-          onChange={(e) => {
-            setvideo_link(e.target.value);
-          }}
-        />
-      </div>
+        <label for="basic-url">Video background image</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">
+              https://example.com/users/
+            </span>
+          </div>
+          <input
+            type="file"
+            class="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3"
+            onChange={(e) => {
+              setimage(e.target.value);
+            }}
+          />
 
-      {/* <div class="input-group mb-3">
+        </div>
+
+        <label for="basic-url">Video Link</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">
+              upload
+            </span>
+          </div>
+          <input
+            type="file"
+            class="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3"
+            onChange={(e) => {
+              setvideo_link(e.target.value);
+            }}
+          />
+        </div>
+
+        {/* <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
   </div>
@@ -138,28 +148,29 @@ const CreateNewVideo = () => {
   </div>
 </div> */}
 
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Video Description</span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Video Description</span>
+          </div>
+          <textarea
+            class="form-control"
+            aria-label="With textarea"
+            onChange={(e) => {
+              setdescription(e.target.value);
+            }}
+          ></textarea>
         </div>
-        <textarea
-          class="form-control"
-          aria-label="With textarea"
-          onChange={(e) => {
-            setdescription(e.target.value);
+        <button
+          type="button"
+          class="btn btn-danger"
+          onClick={(e) => {
+            createNewVideo();
           }}
-        ></textarea>
+        >
+          Create New Video
+        </button>
       </div>
-      <button
-        type="button"
-        class="btn btn-danger"
-        onClick={(e) => {
-          createNewVideo();
-        }}
-      >
-        Create New Video
-      </button>
-    </>
+    </div>
   );
 };
 

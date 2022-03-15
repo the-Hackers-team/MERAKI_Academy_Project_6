@@ -11,7 +11,6 @@ import { login, logout } from "../reducer/login/index";
 toast.configure();
 
 const ChannelDetails = () => {
-    
   let { id } = useParams();
   const navigate = useNavigate();
 
