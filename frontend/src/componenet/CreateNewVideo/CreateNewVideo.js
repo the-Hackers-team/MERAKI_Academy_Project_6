@@ -76,4 +76,16 @@ const CreateNewVideo = () => {
             setTitle(e.target.value);
           }}
         />
+              </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          onChange={(e) => {
+            setcategory(e.target.value);
+          }}
+        />
 
