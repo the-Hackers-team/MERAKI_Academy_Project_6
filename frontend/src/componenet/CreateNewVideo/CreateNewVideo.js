@@ -100,3 +100,14 @@ const CreateNewVideo = () => {
         <span class="input-group-text" id="basic-addon3">
             https://example.com/users/
           </span>
+          </div>
+        <input
+          type="file"
+          class="form-control"
+          id="basic-url"
+          aria-describedby="basic-addon3"
+          onChange={(e) => {
+            setimage(e.target.value);
+          }}
+        />
+      </div>
