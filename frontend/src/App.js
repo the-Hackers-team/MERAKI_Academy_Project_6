@@ -10,7 +10,7 @@ import UpdateAnVideoById from "./componenet/updateVideo/updateVideo.js"
 import { Routes, Route, Link } from "react-router-dom";
 import Register from "./componenet/signup/signup";
 import Profile from "./componenet/profile/profile.js"
-import CreateNewVideo from "./componenet/createNewVideo/createNewVideos.js"
+import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js"
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
