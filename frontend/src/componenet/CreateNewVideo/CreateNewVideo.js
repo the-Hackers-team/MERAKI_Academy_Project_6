@@ -149,3 +149,12 @@ const CreateNewVideo = () => {
           }}
         ></textarea>
       </div>
+       <button
+       type="button"
+       class="btn btn-danger"
+       onClick={(e) => {
+         createNewVideo();
+       }}
+     >
+       Create New Video
+     </button>
