@@ -38,7 +38,6 @@ const Cloudinary = ({ setImage }) => {
       >
         Upload
       </button>
-     
     </div>
   );
 };
