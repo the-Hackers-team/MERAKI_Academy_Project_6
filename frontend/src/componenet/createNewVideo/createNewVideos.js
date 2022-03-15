@@ -6,7 +6,7 @@ import { useNavigate, useEffect, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import "./createNewVideo.css"
+import "./createNewVideo.css";
 toast.configure();
 const CreateNewVideo = () => {
   const [title, setTitle] = useState("");

@@ -32,7 +32,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-{/* 
+        {/* 
         <div className="video">
           <div className="video__thumbnail">
             <img
@@ -434,7 +434,7 @@ const Home = () => {
             </div>
           </div>
         </div> */}
-{/* 
+        {/* 
         <div className="video">
           <div className="video__thumbnail">
             <img
