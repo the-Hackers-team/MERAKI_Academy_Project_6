@@ -44,4 +44,9 @@ const CreateNewVideo = () => {
                   position: toast.POSITION.TOP_RIGHT,
                 });
               });
+            } else {
+                if (!title || !description || !image || !category || !video_link) {
+                  toast.warn("pleas Fill All The Field", {
+                    position: toast.POSITION.TOP_RIGHT,
+                  });
 
