@@ -140,3 +140,12 @@ const CreateNewVideo = () => {
 <div class="input-group">
 <div class="input-group-prepend">
 <span class="input-group-text">Video Description</span>
+</div>
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          onChange={(e) => {
+            setdescription(e.target.value);
+          }}
+        ></textarea>
+      </div>
