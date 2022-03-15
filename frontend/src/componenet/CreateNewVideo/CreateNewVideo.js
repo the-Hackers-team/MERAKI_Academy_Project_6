@@ -94,4 +94,5 @@ const CreateNewVideo = () => {
           </span>
         </div>
       </div>
+      <label for="basic-url">Video background image</label>
 
