@@ -64,7 +64,17 @@ const PlayVideo = () => {
         console.log(err);
       });
   };
-
+const createComment = ()=>{
+  axios.post(`http://localhost:5000/comment/${id}`, {
+    headers: {
+      Authorization: `Basic ${state.token}`,
+    },
+  }).then((response)=>{
+    console.log(response);
+  }).catch((err)=>{
+    console.log(err);
+  })
+}
   useEffect(() => {
     getVideoById();
   }, []);
