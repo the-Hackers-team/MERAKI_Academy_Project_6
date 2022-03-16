@@ -25,10 +25,13 @@ const PlayVideo = () => {
 
   const [chanelVideos, setChanelVideos] = useState([]);
 
-  //create state for comments
+  //create state for comment
   const [comment, setComment] = useState("");
-
+  //create state for comments
+  const [comments, setComments] = useState([]);
   //find user_id from token
+  //create state to render on comment
+  const [iscomment, setIscomment] = useState(true)
 
   const decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
@@ -85,10 +88,29 @@ const PlayVideo = () => {
         console.log(err);
       });
   };
+
+  const getAllComment = () => {
+    axios
+      .get(`http://localhost:5000/comment/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setComments(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getVideoById();
   }, []);
-  console.log(video);
+  useEffect(() => {
+    getAllComment();
+  },[iscomment]);
+ 
   return (
     <div className="container-Play-video play-container">
       <div className="row-video">
@@ -163,29 +185,27 @@ const PlayVideo = () => {
                         className="comment"
                         onClick={() => {
                           createComment();
+                          setIscomment(!iscomment)
+                          
                         }}
                       >
                         comment
                       </button>
                     </div>
                     {
-                      <div className="old-comment">
-                        <img
-                          src="https://yt3.ggpht.com/ytc/AAUvwnh53ZRIGnyzC28QrfuggCINb3cfNbNWo4Uc6qR9=s48-c-k-c0x00ffffff-no-rj"
-                          alt=""
-                        />
+                      comments&&comments.map((comment)=>{
+                        return(<div className="old-comment">
+                          <img src={comment.user_image} alt="" />
                         <div>
                           <h3>
-                            Jack Nicholson <span>2 days ago</span>
+                          {`${comment.firstName} ${comment.lastName}`}{" "} <span>2 days ago</span>
                           </h3>
                           <p>
-                            A global computer network providing a variety of
-                            information and communication facilities, consisting
-                            of interconnected networks using standardized
-                            communication protocols.
+                          <p>{comment.comment}</p>
                           </p>
                         </div>
-                      </div>
+                      </div>)
+                      })
                     }
                   </div>
                 </div>
