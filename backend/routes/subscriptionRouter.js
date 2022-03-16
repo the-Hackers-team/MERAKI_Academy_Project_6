@@ -27,14 +27,12 @@ subsciptionRouter.post("/add/:id", authentication, addToSubscription);
 
 subsciptionRouter.get("/allVideos", authentication, getAllvideossubscripes);
 
-
-
 subsciptionRouter.get(
   "/mySubsciption",
   authentication,
   getMySubscriptionChannels
 );
-
+subsciptionRouter.get("/videos", authentication, getAllvideossubscripes);
 //create end point to delete Video from LikesContoller
 
 module.exports = { subsciptionRouter };
