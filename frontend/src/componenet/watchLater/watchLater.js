@@ -82,6 +82,7 @@ const WatchLater = () => {
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
                     <span>{video.video_views} • 3 Months Ago</span>
                   </div>
+                  
                 </div>
               </div>
             );

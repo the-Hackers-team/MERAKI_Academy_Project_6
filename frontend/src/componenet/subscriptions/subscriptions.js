@@ -11,7 +11,6 @@ import { login, logout } from "../reducer/login/index";
 toast.configure();
 
 const Subcriptions = () => {
-
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -64,7 +63,32 @@ const Subcriptions = () => {
     getAllvideossubscripes();
   }, [isallSubscriptVideos]);
 
-  return <></>;
+  return (
+    <div className="videos">
+      <div className="videos__container">
+        {allSubscriptVideos &&
+          allSubscriptVideos.map((video) => {
+            return (
+              <div className="video">
+                <div className="video__thumbnail">
+                  <img src={video.image} alt="" />
+                </div>
+                <div className="video__details">
+                  <div className="author">
+                    <img src={video.user_image} alt="" />
+                  </div>
+                  <div className="title">
+                    <h3>{video.title}</h3>
+                    <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                    <span>{video.video_views} • 3 Months Ago</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
 };
 
 export default Subcriptions;
