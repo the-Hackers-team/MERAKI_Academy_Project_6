@@ -13,7 +13,7 @@ const {
   deleteUserById,
   getAllUsers,
   getUserById,
-  getchannelById
+  getchannelById,
 } = require("../controllers/UsersController");
 
 //create end points
@@ -41,6 +41,6 @@ userRouter.get("/", authentication, getAllUsers);
 //4- create end points for get user
 userRouter.get("/profile", authentication, getUserById);
 
-userRouter.get("/channelDetails/:id",getchannelById)
+userRouter.get("/channelDetails/:id", getchannelById);
 
 module.exports = { userRouter };
