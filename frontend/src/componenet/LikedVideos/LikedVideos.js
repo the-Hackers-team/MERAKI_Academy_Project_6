@@ -62,7 +62,30 @@ const LikedVideos = () => {
     getVideosByLiks();
   }, [is_deletedVideos]);
 
-  return <></>;
+  return <><div className="videos">
+  <div className="videos__container">
+    {watchLaterVideos &&
+      watchLaterVideos.map((video) => {
+        return (
+          <div className="video">
+            <div className="video__thumbnail">
+              <img src={video.image} alt="" />
+            </div>
+            <div className="video__details">
+              <div className="author">
+                <img src={video.user_image} alt="" />
+              </div>
+              <div className="title">
+                <h3>{video.title}</h3>
+                <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                <span>{video.video_views} • 3 Months Ago</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+  </div>
+</div></>;
 };
 
 export default LikedVideos;
