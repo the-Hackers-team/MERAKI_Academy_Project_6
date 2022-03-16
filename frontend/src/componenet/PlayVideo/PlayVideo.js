@@ -31,7 +31,7 @@ const PlayVideo = () => {
   const [comments, setComments] = useState([]);
   //find user_id from token
   //create state to render on comment
-  const [iscomment, setIscomment] = useState(true)
+  const [iscomment, setIscomment] = useState(true);
 
   const decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
@@ -109,8 +109,8 @@ const PlayVideo = () => {
   }, []);
   useEffect(() => {
     getAllComment();
-  },[iscomment]);
- 
+  }, [iscomment]);
+
   return (
     <div className="container-Play-video play-container">
       <div className="row-video">
@@ -185,28 +185,29 @@ const PlayVideo = () => {
                         className="comment"
                         onClick={() => {
                           createComment();
-                          setIscomment(!iscomment)
-                          
+                          setIscomment(!iscomment);
                         }}
                       >
                         comment
                       </button>
                     </div>
-                    {
-                      comments&&comments.map((comment)=>{
-                        return(<div className="old-comment">
-                          <img src={comment.user_image} alt="" />
-                        <div>
-                          <h3>
-                          {`${comment.firstName} ${comment.lastName}`}{" "} <span>2 days ago</span>
-                          </h3>
-                          <p>
-                          <p>{comment.comment}</p>
-                          </p>
-                        </div>
-                      </div>)
-                      })
-                    }
+                    {comments &&
+                      comments.map((comment) => {
+                        return (
+                          <div className="old-comment">
+                            <img src={comment.user_image} alt="" />
+                            <div>
+                              <h3>
+                                {`${comment.firstName} ${comment.lastName}`}{" "}
+                                <span>2 days ago</span>
+                              </h3>
+                              <p>
+                                <p>{comment.comment}</p>
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
