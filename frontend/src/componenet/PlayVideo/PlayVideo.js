@@ -230,39 +230,9 @@ const PlayVideo = () => {
               <p>10M Views • 3 Months Ago</p>
             </div>
           </div>
-          <div className="side-video-list">
-            <Link to="" className="small-thumbnail">
-              <img
-                src="https://img.youtube.com/vi/PpXUTUXU7Qc/maxresdefault.jpg"
-                alt=""
-              />
-            </Link>
-            <div className="vid-info">
-              <Link to="">
-                Top 5 Programming Languages to Learn in 2021 | Best Programming
-                Languages to Learn
-              </Link>
-              <p>Easy Tutorials</p>
-              <p>10M Views • 3 Months Ago</p>
-            </div>
-          </div>
+         
 
-          <div className="side-video-list">
-            <Link to="" className="small-thumbnail">
-              <img
-                src="https://img.youtube.com/vi/PpXUTUXU7Qc/maxresdefault.jpg"
-                alt=""
-              />
-            </Link>
-            <div className="vid-info">
-              <Link to="">
-                Top 5 Programming Languages to Learn in 2021 | Best Programming
-                Languages to Learn
-              </Link>
-              <p>Easy Tutorials</p>
-              <p>10M Views • 3 Months Ago</p>
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>
