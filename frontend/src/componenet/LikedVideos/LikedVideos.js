@@ -66,8 +66,8 @@ const LikedVideos = () => {
     <>
       <div className="videos">
         <div className="videos__container">
-          {watchLaterVideos &&
-            watchLaterVideos.map((video) => {
+          {LikedVideos &&
+            LikedVideos.map((video) => {
               return (
                 <div className="video">
                   <div className="video__thumbnail">
