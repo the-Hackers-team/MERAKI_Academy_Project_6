@@ -64,17 +64,20 @@ const PlayVideo = () => {
         console.log(err);
       });
   };
-const createComment = ()=>{
-  axios.post(`http://localhost:5000/comment/${id}`, {
-    headers: {
-      Authorization: `Basic ${state.token}`,
-    },
-  }).then((response)=>{
-    console.log(response);
-  }).catch((err)=>{
-    console.log(err);
-  })
-}
+  const createComment = () => {
+    axios
+      .post(`http://localhost:5000/comment/${id}`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     getVideoById();
   }, []);
@@ -141,29 +144,28 @@ const createComment = ()=>{
                     <h4>134 Comments</h4>
 
                     <div className="add-comment">
-                      <img
-                        src={user_img}
-                        alt=""
-                      />
+                      <img src={user_img} alt="" />
                       <input type="text" placeholder="Write comments..." />
                     </div>
-                 {   <div className="old-comment">
-                      <img
-                        src="https://yt3.ggpht.com/ytc/AAUvwnh53ZRIGnyzC28QrfuggCINb3cfNbNWo4Uc6qR9=s48-c-k-c0x00ffffff-no-rj"
-                        alt=""
-                      />
-                      <div>
-                        <h3>
-                          Jack Nicholson <span>2 days ago</span>
-                        </h3>
-                        <p>
-                          A global computer network providing a variety of
-                          information and communication facilities, consisting
-                          of interconnected networks using standardized
-                          communication protocols.
-                        </p>
+                    {
+                      <div className="old-comment">
+                        <img
+                          src="https://yt3.ggpht.com/ytc/AAUvwnh53ZRIGnyzC28QrfuggCINb3cfNbNWo4Uc6qR9=s48-c-k-c0x00ffffff-no-rj"
+                          alt=""
+                        />
+                        <div>
+                          <h3>
+                            Jack Nicholson <span>2 days ago</span>
+                          </h3>
+                          <p>
+                            A global computer network providing a variety of
+                            information and communication facilities, consisting
+                            of interconnected networks using standardized
+                            communication protocols.
+                          </p>
+                        </div>
                       </div>
-                    </div>}
+                    }
                   </div>
                 </div>
               </div>
