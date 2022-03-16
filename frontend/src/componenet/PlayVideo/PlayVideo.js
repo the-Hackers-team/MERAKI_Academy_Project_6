@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import "./PlayVideo.css";
+import moment from "moment"
 const PlayVideo = () => {
   //params initialization
   const params = useParams();
   //get id from params
   const { id } = params;
+  
 
   const state = useSelector((state) => {
     return {
@@ -38,7 +40,7 @@ const PlayVideo = () => {
   let user_img = decode && decode.image;
   let userFirstName = decode && decode.firstName;
   let userLastName = decode && decode.lastName;
-
+  console.log(comments);
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -130,7 +132,7 @@ const PlayVideo = () => {
 
                 <h3>{element.title}</h3>
                 <div className="play-video-info">
-                  <p>{element.video_views} &bull; 2 days ago</p>
+                  <p>{element.video_views} &bull; {moment(element.publish_date).fromNow()}</p>
                   <div>
                     <Link to="">
                       <span className="material-icons-outlined">thumb_up</span>
@@ -170,7 +172,7 @@ const PlayVideo = () => {
                     <p>{element.title}</p>
                     <p>{element.description}</p>
                     <hr />
-                    <h4>134 Comments</h4>
+                    <h4>{comments.length} Comments</h4>
 
                     <div className="add-comment">
                       <img src={user_img} alt="" />
@@ -199,7 +201,7 @@ const PlayVideo = () => {
                             <div>
                               <h3>
                                 {`${comment.firstName} ${comment.lastName}`}{" "}
-                                <span>2 days ago</span>
+                                <span>{moment(comment.publish_date).fromNow()}</span>
                               </h3>
                               <p>
                                 <p>{comment.comment}</p>
