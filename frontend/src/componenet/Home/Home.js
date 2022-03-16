@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../SideBar/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 import Categories from "../Categories/Categories";
 import axios from "axios";
 import { useSelector } from "react-redux";
 const menuIcon = document.querySelector(".logo");
 const Home = () => {
+  //Navigate initialization
+  const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const state = useSelector((state) => {
     return {
@@ -40,7 +42,10 @@ const Home = () => {
         {videos &&
           videos.map((video) => {
             return (
-              <div className="video">
+              <div className="video" onClick={() => {
+                navigate(`/video/${video.id}`)
+                
+              }}>
                 <div className="video__thumbnail">
                   <img src={video.image} alt="" />
                 </div>

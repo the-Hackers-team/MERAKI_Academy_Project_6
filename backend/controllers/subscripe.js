@@ -64,7 +64,7 @@ const getMySubscriptionChannels = (req, res) => {
 };
 const getAllvideossubscripes = (req, res) => {
   const userId = req.token.userId;
-  const query = `select users.id,video_views,firstName,description, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
+  const query = `select users.id,video_views,firstName,description,videos.id, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {

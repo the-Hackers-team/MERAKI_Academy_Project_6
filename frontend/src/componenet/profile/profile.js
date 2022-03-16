@@ -42,7 +42,7 @@ const Profile = () => {
       });
   };
 
-  const getAllVideosBuChannelId = () => {
+  const getAllVideosByChannelId = () => {
     axios
       .get(`http://localhost:5000/video/${user_id}`, {
         headers: {
@@ -83,7 +83,7 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    getAllVideosBuChannelId();
+    getAllVideosByChannelId();
   }, [isDeleted]);
 
   const profileDetails =

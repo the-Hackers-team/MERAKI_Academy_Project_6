@@ -37,7 +37,7 @@ const createNewVideo = (req, res) => {
 };
 
 //create controller for getAllVideos
-const getAllVideos = (req, res) => {
+const getChannelVideos = (req, res) => {
   const userId = req.params.id;
   const query = `select * from videos  where is_deleted = 0 and user_id =?`;
   const data = [userId];
@@ -325,7 +325,7 @@ const removedisLikeVideo = (req, res) => {
 
 module.exports = {
   createNewVideo,
-  getAllVideos,
+  getChannelVideos,
   getAnVideoById,
   getAnVideoByCategory,
   deleteAnVideoById,

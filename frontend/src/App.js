@@ -34,7 +34,7 @@ function App() {
             </div>
           }
         />
-        <Route path="/video" element={<PlayVideo />} />
+        <Route path="/video/:id" element={<PlayVideo />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
