@@ -69,11 +69,15 @@ const PlayVideo = () => {
   };
   const createComment = () => {
     axios
-      .post(`http://localhost:5000/comment/${id}`, {
-        headers: {
-          Authorization: `Basic ${state.token}`,
-        },
-      })
+      .post(
+        `http://localhost:5000/comment/${id}`,
+        { comment },
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
       })
@@ -155,6 +159,14 @@ const PlayVideo = () => {
                           setComment(e.target.value);
                         }}
                       />
+                      <button
+                        className="comment"
+                        onClick={() => {
+                          createComment();
+                        }}
+                      >
+                        comment
+                      </button>
                     </div>
                     {
                       <div className="old-comment">
