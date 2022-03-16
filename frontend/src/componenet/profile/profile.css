@@ -3,7 +3,7 @@
   flex-direction: column;
   /* justify-content: center;
   align-items: center; */
-  gap:15rem;
+  gap:10rem;
   width: 100%;
   height: 100%;
   padding-top:10rem;
@@ -12,16 +12,16 @@
 .profile-div-container {
   display: flex;
   flex-direction: column;
-  gap: 2%;
+  gap: 2rem;
 }
 
 .container-above-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 100rem;
+  gap: 90rem;
   justify-content: flex-start;
-  padding-left: 10rem;
+  padding-left: 15rem;
 }
 
 .image-name {
@@ -155,7 +155,7 @@
   font-family: Inter,sans-serif;
   font-size: 16px;
   font-weight: 600;
-  height: 48px;
+  height: 40px;
   justify-content: center;
   letter-spacing: -.8px;
   line-height: 24px;
@@ -190,4 +190,15 @@
   .all-videos{
     min-width: 170px;
   }
+}
+
+.home-videos-playList2{
+  font-size:17px;
+  font-weight:bold transparent;
+  padding-bottom: 1rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.home-videos-playList{
+  border-bottom:1px solid rgb(211, 190, 190);
 }

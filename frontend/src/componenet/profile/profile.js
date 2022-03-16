@@ -95,8 +95,8 @@ console.log(userProfile);
           <div className="container-above-div">
             <div className="image-name">
               <img src={profile.user_image} />
-              <span>{profile.firstName}</span>
-              <span>{profile.lastName}</span>
+              <span className="home-videos-playList2">{profile.firstName}</span>
+              <span className="home-videos-playList2">{profile.lastName}</span>
             </div>
             <div className="videos-profile">
               <button className="all-videos"> My Videos</button>
@@ -104,10 +104,10 @@ console.log(userProfile);
             </div>
           </div>
           <div className="home-videos-playList">
-            <div>home</div>
-            <div>Videos</div>
-            <div>Channels</div>
-            <div>About</div>
+            <div className="home-videos-playList2">Home</div>
+            <div className="home-videos-playList2">Videos</div>
+            <div className="home-videos-playList2">Channels</div>
+            <div className="home-videos-playList2">About</div>
           </div>
         </div>
        
