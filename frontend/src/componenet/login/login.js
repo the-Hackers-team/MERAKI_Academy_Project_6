@@ -14,6 +14,7 @@ import "react-bootstrap";
 toast.configure();
 
 const Login = () => {
+  const navigate = useNavigate();
   //// redux logic
   const dispatch = useDispatch();
   const state = useSelector((state) => {
@@ -155,15 +156,21 @@ const Login = () => {
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     onClick={() => {
                       loginFunction();
+                      navigate("/");
                     }}
                   >
                     Login
                   </button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">
                     Don't have an account?{" "}
-                    <a href="#!" class="link-danger">
+                    <span
+                      class="link-danger"
+                      onClick={() => {
+                        navigate("/register");
+                      }}
+                    >
                       Register
-                    </a>
+                    </span>
                   </p>
                 </div>
               </form>

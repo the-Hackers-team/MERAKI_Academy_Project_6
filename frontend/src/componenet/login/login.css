@@ -13,3 +13,7 @@
     height: 100%;
   }
 }
+
+.link-danger{
+  cursor: pointer;
+}

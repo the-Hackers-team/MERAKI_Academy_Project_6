@@ -56,113 +56,35 @@ const CreateNewVideo = () => {
   };
 
   return (
-    //     <div className=" d-flex justify-content-center ">
-    //       <div class="col">
-    //         <div class="input-group mb-3">
-    //           <div class="input-group-prepend">
-    //             <span class="input-group-text" id="basic-addon1">
-    //               Video Title
-    //             </span>
-    //           </div>
-    //           <input
-    //             type="text"
-    //             class="form-control"
-    //             placeholder="Username"
-    //             aria-label="Username"
-    //             aria-describedby="basic-addon1"
-    //             onChange={(e) => {
-    //               setTitle(e.target.value);
-    //             }}
-    //           />
-    //         </div>
 
-    //         <div class="input-group mb-3">
-    //           <input
-    //             type="text"
-    //             class="form-control"
-    //             placeholder="Recipient's username"
-    //             aria-label="Recipient's username"
-    //             aria-describedby="basic-addon2"
-    //             onChange={(e) => {
-    //               setcategory(e.target.value);
-    //             }}
-    //           />
-    //           <div class="input-group-append">
-    //             <span class="input-group-text" id="basic-addon2">
-    //               Categories
-    //             </span>
-    //           </div>
-    //         </div>
+      <label for="basic-url">Video background image</label>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">
+            https://example.com/users/
+          </span>
 
-    //         <label for="basic-url">Video background image</label>
-    //         <div class="input-group mb-3">
-    //           <div class="input-group-prepend">
-    //             <span class="input-group-text" id="basic-addon3">
-    //               https://example.com/users/
-    //             </span>
-    //           </div>
-    //           <input
-    //             type="file"
-    //             class="form-control"
-    //             id="basic-url"
-    //             aria-describedby="basic-addon3"
-    //             onChange={(e) => {
-    //               setimage(e.target.value);
-    //             }}
-    //           />
-    //         </div>
+        <label for="basic-url">Video background image</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">
+              https://example.com/users/
+            </span>
+          </div>
+          <input
+            type="file"
+            class="form-control"
+            id="basic-url"
+            aria-describedby="basic-addon3"
+            onChange={(e) => {
+              setimage(e.target.value);
+            }}
+          />
 
-    //         <label for="basic-url">Video Link</label>
-    //         <div class="input-group mb-3">
-    //           <div class="input-group-prepend">
-    //             <span class="input-group-text" id="basic-addon3">
-    //               upload
-    //             </span>
-    //           </div>
-    //           <input
-    //             type="file"
-    //             class="form-control"
-    //             id="basic-url"
-    //             aria-describedby="basic-addon3"
-    //             onChange={(e) => {
-    //               setvideo_link(e.target.value);
-    //             }}
-    //           />
-    //         </div>
+        </div>
 
-    //         {/* <div class="input-group mb-3">
-    //   <div class="input-group-prepend">
-    //     <span class="input-group-text">$</span>
-    //   </div>
-    //   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
-    //   <div class="input-group-append">
-    //     <span class="input-group-text">.00</span>
-    //   </div>
-    // </div> */}
-
-    //         <div class="input-group">
-    //           <div class="input-group-prepend">
-    //             <span class="input-group-text">Video Description</span>
-    //           </div>
-    //           <textarea
-    //             class="form-control"
-    //             aria-label="With textarea"
-    //             onChange={(e) => {
-    //               setdescription(e.target.value);
-    //             }}
-    //           ></textarea>
-    //         </div>
-    //         <button
-    //           type="button"
-    //           class="btn btn-danger"
-    //           onClick={(e) => {
-    //             createNewVideo();
-    //           }}
-    //         >
-    //           Create New Video
-    //         </button>
-    //         </div>
-    //         </div>
+ 
     <div className="create-new-video-main">
       <span className="create">Create Video</span>
 
@@ -186,23 +108,7 @@ const CreateNewVideo = () => {
             setdescription(e.target.value);
           }}
         ></textarea>
-        {/* <div className="product-price">
-    <input
-      type="number"
-      id="actual-price"
-      placeholder="video image"
-      className="inputprod"
-      onChange={(e) => {
-        setimage(e.target.value);
-      }}
-    />
-    <input
-      type="number"
-      id="discount"
-      placeholder="Video image"
-      className="inputprod"
-    />
-  </div> */}
+       
         <br />
         <br />
         <textarea
@@ -225,8 +131,7 @@ const CreateNewVideo = () => {
           <Cloudinary setImage={setvideo_link} />
         </div>
 
-        {/* <input type="checkbox" className="checkbox" id="tac" checked />
-  <label for="tac">OpenSooq take 5% from your total sell</label> */}
+       
         <div className="buttons">
           <button
             className="btn"
