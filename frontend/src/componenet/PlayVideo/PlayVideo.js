@@ -24,7 +24,10 @@ const PlayVideo = () => {
   //create state for chanelVideos
 
   const [chanelVideos, setChanelVideos] = useState([]);
-  console.log(chanelVideos);
+  
+  //create state for comments
+  const [comment, setComment] = useState("")
+  
   //find user_id from token
 
   const decode = state.token && jwt_decode(state.token);
@@ -145,7 +148,9 @@ const PlayVideo = () => {
 
                     <div className="add-comment">
                       <img src={user_img} alt="" />
-                      <input type="text" placeholder="Write comments..." />
+                      <input type="text" placeholder="Write comments..." onChange={(e)=>{
+setComment(e.target.value)
+                      }} />
                     </div>
                     {
                       <div className="old-comment">
