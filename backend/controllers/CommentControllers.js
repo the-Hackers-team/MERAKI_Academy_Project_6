@@ -108,7 +108,7 @@ const deleteCommentByUserId = (req, res) => {
 /// create get all comment function/backend
 const getAllComments = (req, res) => {
   const videoId = req.params.id;
-  const query = `select firstName,lastName,users.users_image,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join videos on comments.video_id = videos.id where videos.id =? and comments.is_deleted= 0`;
+  const query = `select firstName,lastName,users.user_image,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join videos on comments.video_id = videos.id where videos.id =? `;
   const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {

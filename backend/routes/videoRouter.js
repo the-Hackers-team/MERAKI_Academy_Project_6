@@ -6,7 +6,7 @@ const videoRouter = express.Router();
 
 const {
   createNewVideo,
-  getAllVideos,
+  getChannelVideos,
   getAnVideoById,
   getAnVideoByCategory,
   deleteAnVideoById,
@@ -24,18 +24,18 @@ const {
 
 videoRouter.post("/", authentication, createNewVideo);
 
-//2-  get all videos
 
-videoRouter.get("/:id", authentication, getAllVideos);
-
-//3- for get video by id
+//2- for get video by id
 
 videoRouter.get("/search_1", getAnVideoById);
 
-//4- get video by category
+//3- get video by category
 
 videoRouter.get("/search_2", getAnVideoByCategory);
 
+//4-  get all videos
+
+videoRouter.get("/:id", authentication, getChannelVideos);
 //5- delete video by id
 
 videoRouter.delete("/delete_1/:id", authentication, deleteAnVideoById);
