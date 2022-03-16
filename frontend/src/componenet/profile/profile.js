@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./profile.css"
 toast.configure();
 const Profile = () => {
   const [userProfile, setuserProfile] = useState([]);
@@ -22,7 +22,7 @@ const Profile = () => {
     };
   });
 
-  const decode = state.token && jwt_decode(state.token);
+  let decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
 
   const getUserById = () => {
@@ -81,7 +81,7 @@ const Profile = () => {
   useEffect(() => {
     getUserById();
   }, []);
-
+console.log(userProfile);
   useEffect(() => {
     getAllVideosByChannelId();
   }, [isDeleted]);
@@ -89,13 +89,14 @@ const Profile = () => {
   const profileDetails =
     userProfile &&
     userProfile.map((profile) => {
+      return(
       <div className="profile-main">
         <div className="profile-div-container">
           <div className="container-above-div">
             <div className="image-name">
               <img src={profile.user_image} />
-              <span>{profile.firstName}</span>
-              <span>{profile.lastName}</span>
+              <span className="home-videos-playList2">{profile.firstName}</span>
+              <span className="home-videos-playList2">{profile.lastName}</span>
             </div>
             <div className="videos-profile">
               <button className="all-videos"> My Videos</button>
@@ -103,10 +104,10 @@ const Profile = () => {
             </div>
           </div>
           <div className="home-videos-playList">
-            <div>home</div>
-            <div>Videos</div>
-            <div>Channels</div>
-            <div>About</div>
+            <div className="home-videos-playList2">Home</div>
+            <div className="home-videos-playList2">Videos</div>
+            <div className="home-videos-playList2">Channels</div>
+            <div className="home-videos-playList2">About</div>
           </div>
         </div>
        
@@ -115,15 +116,16 @@ const Profile = () => {
             <img src="https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg" className="image-upload-video" />
           </div>
           <div className="uplaod-video-paragraph">
-            <p>Upload a video to get started</p>
-            <p>
+            <p className="upload-pargraph">Upload a video to get started</p>
+            <p className="upload-pargraph-2">
               Start sharing your story and connecting with viewers. Videos you
               upload will show up here.
             </p>
             <button className="uplaod-button">Create New Video</button>
           </div>
         </div>
-      </div>;
+      </div>
+      )
     });
 
   return <>{profileDetails ? profileDetails : null}</>;
