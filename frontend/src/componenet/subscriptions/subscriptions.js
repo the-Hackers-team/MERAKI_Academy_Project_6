@@ -62,6 +62,7 @@ const Subcriptions = () => {
 
   useEffect(() => {
     getAllvideossubscripes();
+    
   }, [isallSubscriptVideos]);
 
   return <></>;
