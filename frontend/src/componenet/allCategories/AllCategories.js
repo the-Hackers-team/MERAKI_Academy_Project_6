@@ -64,3 +64,5 @@ const AllCategories = () => {
     </div>
   );
 };
+
+export default AllCategories;
