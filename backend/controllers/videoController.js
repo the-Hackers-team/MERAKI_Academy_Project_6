@@ -223,7 +223,7 @@ const addLikeOnVideo = (req, res) => {
   const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: "Server Error",
         err: err,

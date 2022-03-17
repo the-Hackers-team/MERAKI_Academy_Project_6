@@ -106,16 +106,37 @@ const PlayVideo = () => {
   };
 
   //create function to add like
-  const addLike = () => {
-    axios
-      .post(`http://localhost:5000/like/add/${id}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const addLike = () => {
+  //   axios
+  //     .post(
+  //       `http://localhost:5000/like/add/${id}`,
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: `Basic ${state.token}`,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+const addLikeOnVideo = ()=>{
+  axios.post(`http://localhost:5000/video/addLikeOnVideo/${id}`,{}, {
+            headers: {
+             Authorization: `Basic ${state.token}`,
+            },
+           }).then((response)=>{
+             console.log(response);
+           }).catch((err)=>{
+             console.log(err);
+           })
+}
+
 
   useEffect(() => {
     getVideoById();
@@ -148,15 +169,22 @@ const PlayVideo = () => {
                     {moment(element.publish_date).fromNow()}
                   </p>
                   <div>
-                    <Link to="">
+                    <Link
+                      to=""
+                      onClick={() => {
+                        addLike();
+                        setIscomment(!iscomment);
+                        console.log("ssssss");
+                      }}
+                    >
                       <span className="material-icons-outlined">thumb_up</span>
-                      125
+                      {element.Likes}
                     </Link>
                     <Link to="">
                       <span className="material-icons-outlined">
                         thumb_down
                       </span>
-                      2
+                      {element.Dislikes}
                     </Link>
                     <Link to="">
                       <span className="material-icons-outlined">reply</span>
