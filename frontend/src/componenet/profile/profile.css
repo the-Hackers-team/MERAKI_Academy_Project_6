@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  height: 100%;
+  width: 100%;
 }
 
 .container-above-div {
@@ -52,6 +54,7 @@
   align-items: center;
   justify-content: center;
   gap: 6rm;
+  height: 100%;
 }
 
 .uplaod-video-paragraph {
