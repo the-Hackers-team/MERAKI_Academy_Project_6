@@ -10,7 +10,6 @@ import { login, logout } from "../reducer/login/index";
 import moment from "moment";
 import "./Categories.css";
 const Categories = () => {
-
   return (
     <div className="categories">
       <section className="category-section">
