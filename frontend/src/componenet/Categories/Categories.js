@@ -10,19 +10,38 @@ import { login, logout } from "../reducer/login/index";
 import moment from "moment";
 import "./Categories.css";
 const Categories = () => {
+  const navigate = useNavigate();
   return (
     <div className="categories">
       <section className="category-section">
         <button className="category active">All</button>
-        <button className="category">Educational Videos</button>
-        <button className="category">Unboxing Videos</button>
-        <button className="category">Learning Videos</button>
-        <button className="category">Actions Films</button>
-        <button className="category">Trailers</button>
-        <button className="category">Challenge Video</button>
-        <button className="category">Product Demo</button>
-        <button className="category">Reaction Videos</button>
-        <button className="category">Video Blogs</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Educational Videos`)
+        }}>Educational Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Unboxing Videos`)
+        }}>Unboxing Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Learning Videos`)
+        }}>Learning Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Actions Films`)
+        }}>Actions Films</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Trailers`)
+        }}>Trailers</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Challenge Video`)
+        }}>Challenge Video</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Product Demo`)
+        }}>Product Demo</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Reaction Videos`)
+        }}>Reaction Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/video/Video Blogs`)
+        }}>Video Blogs</button>
       </section>
     </div>
   );
