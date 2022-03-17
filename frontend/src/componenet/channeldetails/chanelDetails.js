@@ -25,7 +25,6 @@ const ChannelDetails = () => {
   /// this state to save the information for the user
   const [channelDetails, setchannelDetails] = useState([]);
 
-  const [myVideos,setmyVideos] = useState(true)
   const getChannelById = () => {
     axios
       .get(`http://localhost:5000/channelDetails/${id}`, {
@@ -69,22 +68,22 @@ const ChannelDetails = () => {
   }, []);
 
   const profileDetails =
-  channelDetails &&
-  channelDetails.map((profile) => {
-    return (
-      <div className="profile-main">
-        <div className="profile-div-container">
-          <div className="container-above-div">
-            <div className="image-name">
-              <img src={profile.user_image} />
-              <span className="home-videos-playList3">
-                {profile.firstName}
-              </span>
-              <span className="home-videos-playList2">
-                {profile.lastName}
-              </span>
-            </div>
-            {/* <div className="videos-profile">
+    channelDetails &&
+    channelDetails.map((profile) => {
+      return (
+        <div className="profile-main">
+          <div className="profile-div-container">
+            <div className="container-above-div">
+              <div className="image-name">
+                <img src={profile.user_image} />
+                <span className="home-videos-playList3">
+                  {profile.firstName}
+                </span>
+                <span className="home-videos-playList2">
+                  {profile.lastName}
+                </span>
+              </div>
+              {/* <div className="videos-profile">
               <button
                 className="all-videos"
                 onClick={() => {
@@ -103,8 +102,8 @@ const ChannelDetails = () => {
                 Back To Home
               </button>
             </div> */}
-          </div>
-          {/* <div className="home-videos-playList">
+            </div>
+            {/* <div className="home-videos-playList">
             <div
               className="home-videos-playList2"
               onClick={() => {
@@ -124,8 +123,8 @@ const ChannelDetails = () => {
             <div className="home-videos-playList2">Channels</div>
             <div className="home-videos-playList2">About</div>
           </div> */}
-        </div>
-        {/*  */}
+          </div>
+          {/*  */}
           <div className="videos">
             <div className="videos__container">
               {channelVideos &&
@@ -153,10 +152,9 @@ const ChannelDetails = () => {
                 })}
             </div>
           </div>
-       
-      </div>
-    );
-  });
+        </div>
+      );
+    });
   return <>{profileDetails ? profileDetails : null}</>;
 };
 
