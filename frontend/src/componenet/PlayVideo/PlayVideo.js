@@ -125,22 +125,47 @@ const PlayVideo = () => {
   //     });
   // };
 
-const addLikeOnVideo = ()=>{
-  axios.post(`http://localhost:5000/video/addLikeOnVideo/${id}`,{}, {
-            headers: {
-             Authorization: `Basic ${state.token}`,
-            },
-           }).then((response)=>{
-             console.log(response);
-           }).catch((err)=>{
-             console.log(err);
-           })
-}
+  const addLikeOnVideo = () => {
+    axios
+      .post(
+        `http://localhost:5000/video/addLikeOnVideo/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const disLikeOnVideo = () => {
+    axios
+      .post(
+        `http://localhost:5000/video/addDisLikeOnVideo/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     getVideoById();
-  }, []);
+  }, [iscomment]);
   useEffect(() => {
     getAllComment();
   }, [iscomment]);
@@ -170,17 +195,22 @@ const addLikeOnVideo = ()=>{
                   </p>
                   <div>
                     <Link
-                      to=""
+                      to="#"
                       onClick={() => {
-                        addLike();
+                        addLikeOnVideo();
                         setIscomment(!iscomment);
-                        console.log("ssssss");
                       }}
                     >
                       <span className="material-icons-outlined">thumb_up</span>
                       {element.Likes}
                     </Link>
-                    <Link to="">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        disLikeOnVideo();
+                        setIscomment(!iscomment);
+                      }}
+                    >
                       <span className="material-icons-outlined">
                         thumb_down
                       </span>
