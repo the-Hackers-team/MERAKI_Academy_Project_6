@@ -19,8 +19,11 @@ const WatchLater = () => {
     };
   });
   //////// this state is ti save the watchLater videos
+
   const [watchLaterVideos, setwatchLaterVideos] = useState([]);
+
   ///////// this state is to render the getWatchLaterVideosByUserId after each delete process
+
   const [iswatchLaterVideos, setiswatchLaterVideos] = useState(false);
 
   const getWatchLaterVideosByUserId = () => {
@@ -32,6 +35,7 @@ const WatchLater = () => {
       })
       .then((response) => {
         setwatchLaterVideos(response.data.results);
+        console.log(response.data);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -64,7 +68,7 @@ const WatchLater = () => {
   return (
     <div className="videos">
       <div className="videos__container">
-        {watchLaterVideos &&
+        {watchLaterVideos&&watchLaterVideos.length &&
           watchLaterVideos.map((video) => {
             return (
               <div
