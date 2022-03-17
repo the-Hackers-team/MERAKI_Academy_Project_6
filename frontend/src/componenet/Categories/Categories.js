@@ -14,15 +14,15 @@ const Categories = () => {
     <div className="categories">
       <section className="category-section">
         <button className="category active">All</button>
-        <button className="category">Category 1</button>
-        <button className="category">Category 2</button>
-        <button className="category">Category 3</button>
-        <button className="category">Category 4</button>
-        <button className="category">Category 5</button>
-        <button className="category">Category 6</button>
-        <button className="category">Category 7</button>
-        <button className="category">Category 8</button>
-        <button className="category">Category 9</button>
+        <button className="category">Educational Videos</button>
+        <button className="category">Unboxing Videos</button>
+        <button className="category">Learning Videos</button>
+        <button className="category">Actions Films</button>
+        <button className="category">Trailers</button>
+        <button className="category">Challenge Video</button>
+        <button className="category">Product Demo</button>
+        <button className="category">Reaction Videos</button>
+        <button className="category">Video Blogs</button>
       </section>
     </div>
   );
