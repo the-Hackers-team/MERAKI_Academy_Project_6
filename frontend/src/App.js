@@ -14,6 +14,7 @@ import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js"
 import LikedVideos from "./componenet/LikedVideos/LikedVideos"
 import Subcriptions from "./componenet/subscriptions/subscriptions"
 import WatchLater from "./componenet/watchLater/watchLater"
+import ChannelDetails from "./componenet/channeldetails/chanelDetails"
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
@@ -50,6 +51,7 @@ function App() {
 
         <Route path="/watchLater" element={<WatchLater/>}/>
         
+        <Route path="/channelDetails/:id" element={<ChannelDetails/>}/>
       </Routes>
     </div>
   );

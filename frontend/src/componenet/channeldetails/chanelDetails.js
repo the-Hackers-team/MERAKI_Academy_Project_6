@@ -25,6 +25,7 @@ const ChannelDetails = () => {
   /// this state to save the information for the user
   const [channelDetails, setchannelDetails] = useState([]);
 
+  const [myVideos,setmyVideos] = useState(true)
   const getChannelById = () => {
     axios
       .get(`http://localhost:5000/channelDetails/${id}`, {
@@ -67,7 +68,96 @@ const ChannelDetails = () => {
     getAllVideosBuChannelId();
   }, []);
 
-  return <></>;
+  const profileDetails =
+  channelDetails &&
+  channelDetails.map((profile) => {
+    return (
+      <div className="profile-main">
+        <div className="profile-div-container">
+          <div className="container-above-div">
+            <div className="image-name">
+              <img src={profile.user_image} />
+              <span className="home-videos-playList3">
+                {profile.firstName}
+              </span>
+              <span className="home-videos-playList2">
+                {profile.lastName}
+              </span>
+            </div>
+            <div className="videos-profile">
+              <button
+                className="all-videos"
+                onClick={() => {
+                  setmyVideos(false);
+                }}
+              >
+                {" "}
+                My Videos
+              </button>
+              <button
+                className="all-videos"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Back To Home
+              </button>
+            </div>
+          </div>
+          <div className="home-videos-playList">
+            <div
+              className="home-videos-playList2"
+              onClick={() => {
+                setmyVideos(true);
+              }}
+            >
+              Home
+            </div>
+            <div
+              className="home-videos-playList2"
+              onClick={() => {
+                setmyVideos(false);
+              }}
+            >
+              Videos
+            </div>
+            <div className="home-videos-playList2">Channels</div>
+            <div className="home-videos-playList2">About</div>
+          </div>
+        </div>
+        {/*  */}
+          <div className="videos">
+            <div className="videos__container">
+              {channelVideos &&
+                channelVideos.map((video) => {
+                  return (
+                    <div className="video">
+                      <div className="video__thumbnail">
+                        <img src={video.image} alt="" />
+                      </div>
+                      <div className="video__details">
+                        <div className="author">
+                          <img src={video.user_image} alt="" />
+                        </div>
+                        <div className="title">
+                          <h3>{video.title}</h3>
+                          <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                          <span>
+                            {video.video_views} •{" "}
+                            {moment(video.publish_date).fromNow()}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+       
+      </div>
+    );
+  });
+  return <>{profileDetails ? profileDetails : null}</>;
 };
 
 export default ChannelDetails;
