@@ -4,13 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import "./PlayVideo.css";
-import moment from "moment"
+import moment from "moment";
 const PlayVideo = () => {
   //params initialization
   const params = useParams();
   //get id from params
   const { id } = params;
+
+
   const navigate = useNavigate();
+
 
   const state = useSelector((state) => {
     return {
@@ -32,6 +35,7 @@ const PlayVideo = () => {
   //create state for comments
   const [comments, setComments] = useState([]);
   //find user_id from token
+
   //create state to render on comment
   const [iscomment, setIscomment] = useState(true);
 
@@ -40,7 +44,7 @@ const PlayVideo = () => {
   let user_img = decode && decode.image;
   let userFirstName = decode && decode.firstName;
   let userLastName = decode && decode.lastName;
-  console.log(comments);
+  const chanelId = video.length && video[0].user_id;
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -66,6 +70,7 @@ const PlayVideo = () => {
       })
       .then((response) => {
         setChanelVideos(response.data.results);
+        // console.log(response.data.results);
       })
 
       .catch((err) => {
@@ -106,13 +111,101 @@ const PlayVideo = () => {
       });
   };
 
+  // create function to add like
+  const addVideotosave = () => {
+    axios
+      .post(
+        `http://localhost:5000/like/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addLikeOnVideo = () => {
+    axios
+      .post(
+        `http://localhost:5000/video/addLikeOnVideo/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const disLikeOnVideo = () => {
+    axios
+      .post(
+        `http://localhost:5000/video/addDisLikeOnVideo/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const subscribe = () => {
+    axios
+      .post(
+        `http://localhost:5000/subscription/add/${chanelId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const getChanelVideos = () => {
+    axios
+      .get(`http://localhost:5000/videos/${chanelId}`)
+      .then((response) => {
+        console.log(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getVideoById();
-  }, []);
+    getChanelVideos();
+  }, [iscomment]);
   useEffect(() => {
     getAllComment();
   }, [iscomment]);
-
+  // console.log(video[0].user_id);
   return (
     <div className="container-Play-video play-container">
       <div className="row-video">
@@ -132,23 +225,43 @@ const PlayVideo = () => {
 
                 <h3>{element.title}</h3>
                 <div className="play-video-info">
-                  <p>{element.video_views} &bull; {moment(element.publish_date).fromNow()}</p>
+                  <p>
+                    {element.video_views} &bull;{" "}
+                    {moment(element.publish_date).fromNow()}
+                  </p>
                   <div>
-                    <Link to="">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        addLikeOnVideo();
+                        setIscomment(!iscomment);
+                      }}
+                    >
                       <span className="material-icons-outlined">thumb_up</span>
-                      125
+                      {element.Likes}
                     </Link>
-                    <Link to="">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        disLikeOnVideo();
+                        setIscomment(!iscomment);
+                      }}
+                    >
                       <span className="material-icons-outlined">
                         thumb_down
                       </span>
-                      2
+                      {element.Dislikes}
                     </Link>
                     <Link to="">
                       <span className="material-icons-outlined">reply</span>
                       Share
                     </Link>
-                    <Link to="">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        addVideotosave();
+                      }}
+                    >
                       <span className="material-icons-outlined">
                         playlist_add
                       </span>
@@ -168,7 +281,14 @@ const PlayVideo = () => {
                       </p>
                       <span>500k Subscribers</span>
                     </div>
-                    <button type="button">Subscribe</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        subscribe();
+                      }}
+                    >
+                      Subscribe
+                    </button>
                   </div>
                   <div className="vid-description">
                     <p>{element.title}</p>
@@ -203,7 +323,9 @@ const PlayVideo = () => {
                             <div>
                               <h3>
                                 {`${comment.firstName} ${comment.lastName}`}{" "}
-                                <span>{moment(comment.publish_date).fromNow()}</span>
+                                <span>
+                                  {moment(comment.publish_date).fromNow()}
+                                </span>
                               </h3>
                               <p>
                                 <p>{comment.comment}</p>
@@ -218,25 +340,26 @@ const PlayVideo = () => {
             );
           })}
         <div className="right-sidebar-video">
-          <div className="side-video-list">
-            <Link to="" className="small-thumbnail">
-              <img
-                src="https://img.youtube.com/vi/PpXUTUXU7Qc/maxresdefault.jpg"
-                alt=""
-              />
-            </Link>
-            <div className="vid-info">
-              <Link to="">
-                Top 5 Programming Languages to Learn in 2021 | Best Programming
-                Languages to Learn
-              </Link>
-              <p>Easy Tutorials</p>
-              <p>10M Views • 3 Months Ago</p>
-            </div>
-          </div>
-         
-
-        
+          {chanelVideos &&
+            chanelVideos.map((element) => {
+              return (
+                <div className="side-video-list">
+                  <Link to="" className="small-thumbnail">
+                    <img src={element.image} alt="" />
+                  </Link>
+                  <div className="vid-info">
+                    <Link to="">{element.title}</Link>
+                    <p>{`${video.length && video[0].firstName} ${
+                      video.length && video[0].lastName
+                    }`}</p>
+                    <p>
+                      {element.video_views} Views •{" "}
+                      {moment(element.publish_date).fromNow()}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
