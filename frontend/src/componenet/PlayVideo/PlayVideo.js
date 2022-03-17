@@ -31,6 +31,7 @@ const PlayVideo = () => {
   //create state for comments
   const [comments, setComments] = useState([]);
   //find user_id from token
+
   //create state to render on comment
   const [iscomment, setIscomment] = useState(true);
 
@@ -39,7 +40,7 @@ const PlayVideo = () => {
   let user_img = decode && decode.image;
   let userFirstName = decode && decode.firstName;
   let userLastName = decode && decode.lastName;
-
+  const chanelId = video.length && video[0].user_id;
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -65,6 +66,7 @@ const PlayVideo = () => {
       })
       .then((response) => {
         setChanelVideos(response.data.results);
+        // console.log(response.data.results);
       })
 
       .catch((err) => {
@@ -166,7 +168,7 @@ const PlayVideo = () => {
   const subscribe = () => {
     axios
       .post(
-        `http://localhost:5000/subscription/add/${video[0].user_id}`,
+        `http://localhost:5000/subscription/add/${chanelId}`,
         {},
         {
           headers: {
@@ -183,23 +185,23 @@ const PlayVideo = () => {
   };
   const getChanelVideos = () => {
     axios
-      .get(`http://localhost:5000/videos/${video[0].user_id}`)
+      .get(`http://localhost:5000/videos/${chanelId}`)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  console.log(video);
   useEffect(() => {
     getVideoById();
+    getChanelVideos();
   }, [iscomment]);
   useEffect(() => {
     getAllComment();
   }, [iscomment]);
-
+  // console.log(video[0].user_id);
   return (
     <div className="container-Play-video play-container">
       <div className="row-video">
@@ -332,22 +334,27 @@ const PlayVideo = () => {
             );
           })}
         <div className="right-sidebar-video">
-          <div className="side-video-list">
-            <Link to="" className="small-thumbnail">
-              <img
-                src="https://img.youtube.com/vi/PpXUTUXU7Qc/maxresdefault.jpg"
-                alt=""
-              />
-            </Link>
-            <div className="vid-info">
-              <Link to="">
-                Top 5 Programming Languages to Learn in 2021 | Best Programming
-                Languages to Learn
-              </Link>
-              <p>Easy Tutorials</p>
-              <p>10M Views • 3 Months Ago</p>
-            </div>
-          </div>
+          {chanelVideos &&
+            chanelVideos.map((element) => {
+              return (
+                <div className="side-video-list">
+                  <Link to="" className="small-thumbnail">
+                    <img
+                      src="https://img.youtube.com/vi/PpXUTUXU7Qc/maxresdefault.jpg"
+                      alt=""
+                    />
+                  </Link>
+                  <div className="vid-info">
+                    <Link to="">
+                      Top 5 Programming Languages to Learn in 2021 | Best
+                      Programming Languages to Learn
+                    </Link>
+                    <p>Easy Tutorials</p>
+                    <p>10M Views • 3 Months Ago</p>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
