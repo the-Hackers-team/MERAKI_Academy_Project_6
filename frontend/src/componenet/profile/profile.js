@@ -96,7 +96,7 @@ const Profile = () => {
             <div className="container-above-div">
               <div className="image-name">
                 <img src={profile.user_image} />
-                <span className="home-videos-playList2">
+                <span className="home-videos-playList3">
                   {profile.firstName}
                 </span>
                 <span className="home-videos-playList2">
@@ -113,11 +113,25 @@ const Profile = () => {
                   {" "}
                   My Videos
                 </button>
-                <button className="all-videos">Delete Profile</button>
+                <button
+                  className="all-videos"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Back To Home
+                </button>
               </div>
             </div>
             <div className="home-videos-playList">
-              <div className="home-videos-playList2">Home</div>
+              <div
+                className="home-videos-playList2"
+                onClick={() => {
+                  setmyVideos(true);
+                }}
+              >
+                Home
+              </div>
               <div
                 className="home-videos-playList2"
                 onClick={() => {
@@ -174,6 +188,22 @@ const Profile = () => {
                             <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
                             <span>{video.video_views} • 3 Months Ago</span>
                           </div>
+                        </div>
+                        <div>
+                          <button
+                            className="all-videos-video"
+                            onClick={() => {}}
+                          >
+                            Update
+                          </button>
+                          <button
+                            className="all-videos-video"
+                            onClick={() => {
+                              deleteAnVideoById(video.id);
+                            }}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     );

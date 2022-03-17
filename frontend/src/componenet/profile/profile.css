@@ -220,7 +220,41 @@
   font-size: 1rem;
 }
 
-.home-videos-playList2 :hover::after{
-  border-bottom: rgb(0, 0, 0) solid 1px;
-  width: 100%;
+.home-videos-playList3{
+  font-size:17px;
+  display:flex;
+  justify-content: center;
+  width:4rem;
+  cursor: pointer;
+  font-weight:bold transparent;
+  padding-bottom: 1rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.all-videos-video{
+  align-items: center;
+  background-color: #06f;
+  border: 2px solid #06f;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 30px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
