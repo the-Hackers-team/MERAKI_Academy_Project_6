@@ -68,9 +68,7 @@ const Profile = () => {
         },
       })
       .then((response) => {
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        setisDeleted(!isDeleted)
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
