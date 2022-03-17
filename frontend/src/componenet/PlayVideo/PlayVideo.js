@@ -158,7 +158,9 @@ const PlayVideo = () => {
 
                   <hr />
                   <div className="plublisher">
-                    <img src={element.user_image} alt="" />
+                    <img src={element.user_image} alt="" onClick={()=>{
+                      navigate(`/channelDetails/${element.id}`)
+                    }}/>
                     <div>
                       <p>
                         {element.firstName}{" "}
