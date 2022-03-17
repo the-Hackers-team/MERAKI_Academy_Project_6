@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
-
+import moment from "moment";
 toast.configure();
 
 const Subcriptions = () => {
@@ -85,7 +85,10 @@ const Subcriptions = () => {
                   <div className="title">
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                    <span>{video.video_views} • 3 Months Ago</span>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
                   </div>
                 </div>
               </div>
