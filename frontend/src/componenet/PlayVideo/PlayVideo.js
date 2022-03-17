@@ -166,7 +166,7 @@ const PlayVideo = () => {
   const subscribe = () => {
     axios
       .post(
-        `http://localhost:5000/subscription//add/${id}`,
+        `http://localhost:5000/subscription//add/${video[0].user_id}`,
         {},
         {
           headers: {
@@ -181,7 +181,7 @@ const PlayVideo = () => {
         console.log(err);
       });
   };
-
+  console.log(video);
   useEffect(() => {
     getVideoById();
   }, [iscomment]);
@@ -262,7 +262,14 @@ const PlayVideo = () => {
                       </p>
                       <span>500k Subscribers</span>
                     </div>
-                    <button type="button">Subscribe</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        subscribe();
+                      }}
+                    >
+                      Subscribe
+                    </button>
                   </div>
                   <div className="vid-description">
                     <p>{element.title}</p>
