@@ -11,6 +11,10 @@ import { Routes, Route, Link } from "react-router-dom";
 import Register from "./componenet/signup/signup";
 import Profile from "./componenet/profile/profile.js"
 import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js"
+import LikedVideos from "./componenet/LikedVideos/LikedVideos"
+import Subcriptions from "./componenet/subscriptions/subscriptions"
+import WatchLater from "./componenet/watchLater/watchLater"
+import ChannelDetails from "./componenet/channeldetails/chanelDetails"
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
@@ -39,8 +43,19 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
         <Route path="/profile" element={<Profile/>} />
-        <Route path="/create" element={<CreateNewVideo/>} />
+
         
+
+        {/* <Route path="/create" element={<CreateNewVideo/>} /> */}
+
+        <Route path="/likedVideos" element={<LikedVideos/>}/>
+
+        <Route path="/mySubscription" element={<Subcriptions/>}/>
+
+        <Route path="/watchLater" element={<WatchLater/>}/>
+
+        
+        <Route path="/channelDetails/:id" element={<ChannelDetails/>}/>
       </Routes>
     </div>
   );

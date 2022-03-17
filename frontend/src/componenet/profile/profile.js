@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./profile.css";
+import moment from "moment";
 toast.configure();
 const Profile = () => {
   const [userProfile, setuserProfile] = useState([]);
-  
+
   const [profileVideos, setprofileVideos] = useState([]);
   const [isDeleted, setisDeleted] = useState(false);
+  const [myVideos, setmyVideos] = useState(true);
   const navigate = useNavigate();
 
   const state = useSelector((state) => {
@@ -22,7 +24,7 @@ const Profile = () => {
     };
   });
 
-  const decode = state.token && jwt_decode(state.token);
+  let decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
 
   const getUserById = () => {
@@ -67,9 +69,7 @@ const Profile = () => {
         },
       })
       .then((response) => {
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        setisDeleted(!isDeleted);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -81,7 +81,7 @@ const Profile = () => {
   useEffect(() => {
     getUserById();
   }, []);
-
+  console.log(userProfile);
   useEffect(() => {
     getAllVideosByChannelId();
   }, [isDeleted]);
@@ -89,41 +89,137 @@ const Profile = () => {
   const profileDetails =
     userProfile &&
     userProfile.map((profile) => {
-      <div className="profile-main">
-        <div className="profile-div-container">
-          <div className="container-above-div">
-            <div className="image-name">
-              <img src={profile.user_image} />
-              <span>{profile.firstName}</span>
-              <span>{profile.lastName}</span>
+      return (
+        <div className="profile-main">
+          <div className="profile-div-container">
+            <div className="container-above-div">
+              <div className="image-name">
+                <img src={profile.user_image} />
+                <span className="home-videos-playList3">
+                  {profile.firstName}
+                </span>
+                <span className="home-videos-playList2">
+                  {profile.lastName}
+                </span>
+              </div>
+              <div className="videos-profile">
+                <button
+                  className="all-videos"
+                  onClick={() => {
+                    setmyVideos(false);
+                  }}
+                >
+                  {" "}
+                  My Videos
+                </button>
+                <button
+                  className="all-videos"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Back To Home
+                </button>
+              </div>
             </div>
-            <div className="videos-profile">
-              <button className="all-videos"> My Videos</button>
-              <button className="all-videos">Delete Profile</button>
+            <div className="home-videos-playList">
+              <div
+                className="home-videos-playList2"
+                onClick={() => {
+                  setmyVideos(true);
+                }}
+              >
+                Home
+              </div>
+              <div
+                className="home-videos-playList2"
+                onClick={() => {
+                  setmyVideos(false);
+                }}
+              >
+                Videos
+              </div>
+              <div className="home-videos-playList2">Channels</div>
+              <div className="home-videos-playList2">About</div>
             </div>
           </div>
-          <div className="home-videos-playList">
-            <div>home</div>
-            <div>Videos</div>
-            <div>Channels</div>
-            <div>About</div>
-          </div>
+
+          {myVideos ? (
+            <div className="profile-upload-videos">
+              <div className="profile-upload-image">
+                <img
+                  src="https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg"
+                  className="image-upload-video"
+                />
+              </div>
+              <div className="uplaod-video-paragraph">
+                <p className="upload-pargraph">Upload a video to get started</p>
+                <p className="upload-pargraph-2">
+                  Start sharing your story and connecting with viewers. Videos
+                  you upload will show up here.
+                </p>
+                <button
+                  className="uplaod-button"
+                  onClick={() => {
+                    navigate("/create");
+                  }}
+                >
+                  Create New Video
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="videos">
+              <div className="videos__container">
+                {profileVideos &&
+                  profileVideos.map((video) => {
+                    return (
+                      <div
+                        className="video"
+                        onClick={() => {
+                          navigate(`/video/${video.id}`);
+                        }}
+                      >
+                        <div className="video__thumbnail">
+                          <img src={video.image} alt="" />
+                        </div>
+                        <div className="video__details">
+                          <div className="author">
+                            <img src={video.user_image} alt="" />
+                          </div>
+                          <div className="title">
+                            <h3>{video.title}</h3>
+                            <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                            <span>
+                              {video.video_views} •{" "}
+                              {moment(video.publish_date).fromNow()}
+                            </span>
+                          </div>
+                        </div>
+                        <div>
+                          <button
+                            className="all-videos-video"
+                            onClick={() => {}}
+                          >
+                            Update
+                          </button>
+                          <button
+                            className="all-videos-video"
+                            onClick={() => {
+                              deleteAnVideoById(video.id);
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          )}
         </div>
-       
-        <div className="profile-upload-videos">
-          <div className="profile-upload-image">
-            <img src="https://www.gstatic.com/youtube/img/channels/empty_channel_illustration.svg" className="image-upload-video" />
-          </div>
-          <div className="uplaod-video-paragraph">
-            <p>Upload a video to get started</p>
-            <p>
-              Start sharing your story and connecting with viewers. Videos you
-              upload will show up here.
-            </p>
-            <button className="uplaod-button">Create New Video</button>
-          </div>
-        </div>
-      </div>;
+      );
     });
 
   return <>{profileDetails ? profileDetails : null}</>;
