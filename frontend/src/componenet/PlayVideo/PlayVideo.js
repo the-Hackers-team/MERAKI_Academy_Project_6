@@ -163,6 +163,25 @@ const PlayVideo = () => {
       });
   };
 
+  const subscribe = () => {
+    axios
+      .post(
+        `http://localhost:5000/subscription//add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getVideoById();
   }, [iscomment]);
@@ -241,7 +260,7 @@ const PlayVideo = () => {
                         {element.firstName}{" "}
                         <span className="material-icons">check_circle</span>
                       </p>
-                      <span>{element} Subscribers</span>
+                      <span>500k Subscribers</span>
                     </div>
                     <button type="button">Subscribe</button>
                   </div>
