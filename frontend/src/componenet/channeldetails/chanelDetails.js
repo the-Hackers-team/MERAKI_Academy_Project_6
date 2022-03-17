@@ -10,7 +10,6 @@ import { login, logout } from "../reducer/login/index";
 import moment from "moment";
 toast.configure();
 
-
 const ChannelDetails = () => {
   let { id } = useParams();
   const navigate = useNavigate();
@@ -131,10 +130,12 @@ const ChannelDetails = () => {
               {channelVideos &&
                 channelVideos.map((video) => {
                   return (
-                    <div className="video" onClick={() => {
-                      navigate(`/video/${video.id}`)
-                      
-                    }}>
+                    <div
+                      className="video"
+                      onClick={() => {
+                        navigate(`/video/${video.id}`);
+                      }}
+                    >
                       <div className="video__thumbnail">
                         <img src={video.image} alt="" />
                       </div>
