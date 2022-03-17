@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
@@ -69,7 +69,12 @@ const Subcriptions = () => {
         {allSubscriptVideos &&
           allSubscriptVideos.map((video) => {
             return (
-              <div className="video">
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
                 <div className="video__thumbnail">
                   <img src={video.image} alt="" />
                 </div>
