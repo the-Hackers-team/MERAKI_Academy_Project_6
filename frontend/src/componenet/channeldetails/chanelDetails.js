@@ -84,7 +84,7 @@ const ChannelDetails = () => {
                 {profile.lastName}
               </span>
             </div>
-            <div className="videos-profile">
+            {/* <div className="videos-profile">
               <button
                 className="all-videos"
                 onClick={() => {
@@ -102,9 +102,9 @@ const ChannelDetails = () => {
               >
                 Back To Home
               </button>
-            </div>
+            </div> */}
           </div>
-          <div className="home-videos-playList">
+          {/* <div className="home-videos-playList">
             <div
               className="home-videos-playList2"
               onClick={() => {
@@ -123,7 +123,7 @@ const ChannelDetails = () => {
             </div>
             <div className="home-videos-playList2">Channels</div>
             <div className="home-videos-playList2">About</div>
-          </div>
+          </div> */}
         </div>
         {/*  */}
           <div className="videos">
