@@ -10,19 +10,38 @@ import { login, logout } from "../reducer/login/index";
 import moment from "moment";
 import "./Categories.css";
 const Categories = () => {
+  const navigate = useNavigate();
   return (
     <div className="categories">
       <section className="category-section">
         <button className="category active">All</button>
-        <button className="category">Educational Videos</button>
-        <button className="category">Unboxing Videos</button>
-        <button className="category">Learning Videos</button>
-        <button className="category">Actions Films</button>
-        <button className="category">Trailers</button>
-        <button className="category">Challenge Video</button>
-        <button className="category">Product Demo</button>
-        <button className="category">Reaction Videos</button>
-        <button className="category">Video Blogs</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Educational Videos`)
+        }}>Educational Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Unboxing Videos`)
+        }}>Unboxing Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Learning Videos`)
+        }}>Learning Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Actions Films`)
+        }}>Actions Films</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Trailers`)
+        }}>Trailers</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Challenge Video`)
+        }}>Challenge Video</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Product Demo`)
+        }}>Product Demo</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Reaction Videos`)
+        }}>Reaction Videos</button>
+        <button className="category" onClick={() =>{
+          navigate(`/categories/Video Blogs`)
+        }}>Video Blogs</button>
       </section>
     </div>
   );

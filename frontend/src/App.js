@@ -42,9 +42,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
-        <Route path="/profile" element={<Profile />} />
 
-        {/* <Route path="/create" element={<CreateNewVideo/>} /> */}
+
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/create" element={<CreateNewVideo />} />
+
+        <Route path="/likedVideos" element={<LikedVideos />} />
 
         <Route path="/likedVideos" element={<LikedVideos />} />
 
@@ -62,6 +65,16 @@ function App() {
         />
 
         <Route path="/channelDetails/:id" element={<ChannelDetails />} />
+
+        <Route path="/mySubscription" element={<Subcriptions />} />
+
+       
+
+        <Route path="/channelDetails/:id" element={<ChannelDetails />} />
+
+        <Route path="/categories/:category" element={<AllCategories />} />
+
+       
       </Routes>
     </div>
   );
