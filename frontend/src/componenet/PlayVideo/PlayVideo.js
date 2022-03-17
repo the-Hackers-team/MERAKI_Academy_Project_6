@@ -339,17 +339,17 @@ const PlayVideo = () => {
               return (
                 <div className="side-video-list">
                   <Link to="" className="small-thumbnail">
-                    <img
-                      src={element.image}
-                      alt=""
-                    />
+                    <img src={element.image} alt="" />
                   </Link>
                   <div className="vid-info">
-                    <Link to="">
-                     {element.title}
-                    </Link>
-                    <p>{`${video.length&&video[0].firstName} ${video.length&&video[0].lastName}`}</p>
-                    <p>{element.video_views} Views • {moment(element.publish_date).fromNow()}</p>
+                    <Link to="">{element.title}</Link>
+                    <p>{`${video.length && video[0].firstName} ${
+                      video.length && video[0].lastName
+                    }`}</p>
+                    <p>
+                      {element.video_views} Views •{" "}
+                      {moment(element.publish_date).fromNow()}
+                    </p>
                   </div>
                 </div>
               );
