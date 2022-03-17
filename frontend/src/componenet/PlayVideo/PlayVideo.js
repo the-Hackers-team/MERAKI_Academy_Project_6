@@ -349,7 +349,7 @@ const PlayVideo = () => {
                      {element.title}
                     </Link>
                     <p>{`${video.length&&video[0].firstName} ${video.length&&video[0].lastName}`}</p>
-                    <p>{element.video_views} Views • {element.publish_date}</p>
+                    <p>{element.video_views} Views • {moment(element.publish_date).fromNow()}</p>
                   </div>
                 </div>
               );
