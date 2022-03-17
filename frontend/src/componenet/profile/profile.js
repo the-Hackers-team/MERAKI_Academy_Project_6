@@ -174,7 +174,12 @@ const Profile = () => {
                 {profileVideos &&
                   profileVideos.map((video) => {
                     return (
-                      <div className="video">
+                      <div
+                        className="video"
+                        onClick={() => {
+                          navigate(`/video/${video.id}`);
+                        }}
+                      >
                         <div className="video__thumbnail">
                           <img src={video.image} alt="" />
                         </div>
