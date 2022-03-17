@@ -1,13 +1,13 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
-
+import moment from "moment";
 toast.configure();
 const WatchLater = () => {
   const navigate = useNavigate();
@@ -69,7 +69,12 @@ const WatchLater = () => {
         {watchLaterVideos &&
           watchLaterVideos.map((video) => {
             return (
-              <div className="video">
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
                 <div className="video__thumbnail">
                   <img src={video.image} alt="" />
                 </div>
@@ -80,9 +85,11 @@ const WatchLater = () => {
                   <div className="title">
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                    <span>{video.video_views} • 3 Months Ago</span>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
                   </div>
-                  
                 </div>
               </div>
             );
