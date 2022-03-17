@@ -48,9 +48,7 @@ const WatchLater = () => {
         },
       })
       .then((response) => {
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        setiswatchLaterVideos(!iswatchLaterVideos);
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -89,6 +87,15 @@ const WatchLater = () => {
                       {video.video_views} •{" "}
                       {moment(video.publish_date).fromNow()}
                     </span>
+                  </div>
+                  <div className="remove-button-watchLater">
+                    <button
+                      onClick={() => {
+                        deleteFromWatchLaterVideos(video.id);
+                      }}
+                    >
+                      remove
+                    </button>
                   </div>
                 </div>
               </div>
