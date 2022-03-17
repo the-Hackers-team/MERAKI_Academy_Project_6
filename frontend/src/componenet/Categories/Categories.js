@@ -16,31 +16,31 @@ const Categories = () => {
       <section className="category-section">
         <button className="category active">All</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Educational Videos`)
+          navigate(`/categories/Educational Videos`)
         }}>Educational Videos</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Unboxing Videos`)
+          navigate(`/categories/Unboxing Videos`)
         }}>Unboxing Videos</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Learning Videos`)
+          navigate(`/categories/Learning Videos`)
         }}>Learning Videos</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Actions Films`)
+          navigate(`/categories/Actions Films`)
         }}>Actions Films</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Trailers`)
+          navigate(`/categories/Trailers`)
         }}>Trailers</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Challenge Video`)
+          navigate(`/categories/Challenge Video`)
         }}>Challenge Video</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Product Demo`)
+          navigate(`/categories/Product Demo`)
         }}>Product Demo</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Reaction Videos`)
+          navigate(`/categories/Reaction Videos`)
         }}>Reaction Videos</button>
         <button className="category" onClick={() =>{
-          navigate(`/video/Video Blogs`)
+          navigate(`/categories/Video Blogs`)
         }}>Video Blogs</button>
       </section>
     </div>
