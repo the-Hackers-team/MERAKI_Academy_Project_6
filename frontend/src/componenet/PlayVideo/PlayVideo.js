@@ -105,25 +105,25 @@ const PlayVideo = () => {
       });
   };
 
-  //create function to add like
-  // const addLike = () => {
-  //   axios
-  //     .post(
-  //       `http://localhost:5000/like/add/${id}`,
-  //       {},
-  //       {
-  //         headers: {
-  //           Authorization: `Basic ${state.token}`,
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  // create function to add like
+  const addVideotosave = () => {
+    axios
+      .post(
+        `http://localhost:5000/like/add/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const addLikeOnVideo = () => {
     axios
@@ -220,7 +220,9 @@ const PlayVideo = () => {
                       <span className="material-icons-outlined">reply</span>
                       Share
                     </Link>
-                    <Link to="">
+                    <Link to="#" onClick={()=>{
+                      addVideotosave()
+                    }}>
                       <span className="material-icons-outlined">
                         playlist_add
                       </span>
@@ -236,7 +238,7 @@ const PlayVideo = () => {
                         {element.firstName}{" "}
                         <span className="material-icons">check_circle</span>
                       </p>
-                      <span>500k Subscribers</span>
+                      <span>{element} Subscribers</span>
                     </div>
                     <button type="button">Subscribe</button>
                   </div>
