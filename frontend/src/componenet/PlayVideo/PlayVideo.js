@@ -166,7 +166,7 @@ const PlayVideo = () => {
   const subscribe = () => {
     axios
       .post(
-        `http://localhost:5000/subscription//add/${video[0].user_id}`,
+        `http://localhost:5000/subscription/add/${video[0].user_id}`,
         {},
         {
           headers: {
@@ -181,6 +181,17 @@ const PlayVideo = () => {
         console.log(err);
       });
   };
+  const getChanelVideos = () => {
+    axios
+      .get(`http://localhost:5000/videos/${video[0].user_id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   console.log(video);
   useEffect(() => {
     getVideoById();
