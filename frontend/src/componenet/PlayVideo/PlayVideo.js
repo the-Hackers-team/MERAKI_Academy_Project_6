@@ -220,9 +220,12 @@ const PlayVideo = () => {
                       <span className="material-icons-outlined">reply</span>
                       Share
                     </Link>
-                    <Link to="#" onClick={()=>{
-                      addVideotosave()
-                    }}>
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        addVideotosave();
+                      }}
+                    >
                       <span className="material-icons-outlined">
                         playlist_add
                       </span>
