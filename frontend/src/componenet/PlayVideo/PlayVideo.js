@@ -4,13 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import "./PlayVideo.css";
-import moment from "moment"
+import moment from "moment";
 const PlayVideo = () => {
   //params initialization
   const params = useParams();
   //get id from params
   const { id } = params;
-  
 
   const state = useSelector((state) => {
     return {
@@ -40,7 +39,7 @@ const PlayVideo = () => {
   let user_img = decode && decode.image;
   let userFirstName = decode && decode.firstName;
   let userLastName = decode && decode.lastName;
-  console.log(comments);
+
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -106,6 +105,18 @@ const PlayVideo = () => {
       });
   };
 
+  //create function to add like
+  const addLike = () => {
+    axios
+      .post(`http://localhost:5000/like/add/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getVideoById();
   }, []);
@@ -132,7 +143,10 @@ const PlayVideo = () => {
 
                 <h3>{element.title}</h3>
                 <div className="play-video-info">
-                  <p>{element.video_views} &bull; {moment(element.publish_date).fromNow()}</p>
+                  <p>
+                    {element.video_views} &bull;{" "}
+                    {moment(element.publish_date).fromNow()}
+                  </p>
                   <div>
                     <Link to="">
                       <span className="material-icons-outlined">thumb_up</span>
@@ -201,7 +215,9 @@ const PlayVideo = () => {
                             <div>
                               <h3>
                                 {`${comment.firstName} ${comment.lastName}`}{" "}
-                                <span>{moment(comment.publish_date).fromNow()}</span>
+                                <span>
+                                  {moment(comment.publish_date).fromNow()}
+                                </span>
                               </h3>
                               <p>
                                 <p>{comment.comment}</p>
@@ -232,9 +248,6 @@ const PlayVideo = () => {
               <p>10M Views • 3 Months Ago</p>
             </div>
           </div>
-         
-
-        
         </div>
       </div>
     </div>

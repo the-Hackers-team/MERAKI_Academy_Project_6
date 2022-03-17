@@ -39,7 +39,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
         <Route path="/profile" element={<Profile/>} />
-        {/* <Route path="/create" element={<CreateNewVideo/>} /> */}
+        <Route path="/create" element={<CreateNewVideo/>} />
         
       </Routes>
     </div>
