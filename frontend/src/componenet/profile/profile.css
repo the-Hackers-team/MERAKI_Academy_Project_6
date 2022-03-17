@@ -13,13 +13,15 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  height: 100%;
+  width: 100%;
 }
 
 .container-above-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 90rem;
+  gap: 80rem;
   justify-content: flex-start;
   padding-left: 15rem;
 }
@@ -52,6 +54,7 @@
   align-items: center;
   justify-content: center;
   gap: 6rm;
+  height: 100%;
 }
 
 .uplaod-video-paragraph {
@@ -194,6 +197,10 @@
 
 .home-videos-playList2{
   font-size:17px;
+  display:flex;
+  justify-content: center;
+  width:7rem;
+  cursor: pointer;
   font-weight:bold transparent;
   padding-bottom: 1rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -202,3 +209,55 @@
 .home-videos-playList{
   border-bottom:1px solid rgb(211, 190, 190);
 }
+
+.home-videos-playList2::after{
+  font-family: "Times New Roman", Times, serif;
+  content: "";
+  display: block;
+  margin: auto;
+  /* height: 3px; */
+  width: 0px;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.home-videos-playList3{
+  font-size:17px;
+  display:flex;
+  justify-content: center;
+  width:4rem;
+  cursor: pointer;
+  font-weight:bold transparent;
+  padding-bottom: 1rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.all-videos-video{
+  align-items: center;
+  background-color: #06f;
+  border: 2px solid #06f;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 30px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
