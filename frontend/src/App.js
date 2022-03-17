@@ -43,6 +43,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
         <Route path="/profile" element={<Profile/>} />
+
+        
+
         {/* <Route path="/create" element={<CreateNewVideo/>} /> */}
 
         <Route path="/likedVideos" element={<LikedVideos/>}/>
@@ -50,6 +53,7 @@ function App() {
         <Route path="/mySubscription" element={<Subcriptions/>}/>
 
         <Route path="/watchLater" element={<WatchLater/>}/>
+
         
         <Route path="/channelDetails/:id" element={<ChannelDetails/>}/>
       </Routes>
