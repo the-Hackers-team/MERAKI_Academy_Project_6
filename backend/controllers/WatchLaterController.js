@@ -5,7 +5,22 @@ const { connection } = require("../database/db");
 const getwatch_laterByUserId = (req, res) => {
   const userId = req.token.userId;
   const query = `SELECT
-  videos.id,title,description,,firstName,videos.user_id, users.users_image,videos.image,category
+  videos.id,title,description,firstName,videos.user_id,lastName,users.user_image,videos.image,category
+  FROM
+    watch_later
+  INNER JOIN
+    videos
+  ON
+  videos.id = watch_later.video_id
+  INNER JOIN
+    users
+  ON
+    users.id=watch_later.user_id where users.id = ? and watch_later.is_deleted=0`;
+
+    //is deleted
+
+/*
+videos.id,title,description,,firstName,videos.user_id, users.user_image,videos.image,category
   FROM
     watch_later
   INNER JOIN
@@ -16,13 +31,17 @@ const getwatch_laterByUserId = (req, res) => {
     users
   ON
     users.id=watch_later.user_id where users.id = ? and users.is_deleted =0 and watch_later.is_deleted=0`;
+ */
+    
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
+      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Server error`,
         err: err,
+
       });
     } else {
       if (!result.length) {

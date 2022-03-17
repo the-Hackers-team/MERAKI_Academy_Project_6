@@ -43,21 +43,38 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
 
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/create" element={<CreateNewVideo />} />
 
         <Route path="/likedVideos" element={<LikedVideos />} />
 
+        <Route path="/likedVideos" element={<LikedVideos />} />
+
         <Route path="/mySubscription" element={<Subcriptions />} />
 
-        <Route path="/watchLater" element={<WatchLater />} />
+        <Route
+          path="/watchLater"
+          element={
+            <div className="mainBody">
+              <Sidebar sideClick={sideClick} />
+
+              <WatchLater />
+            </div>
+          }
+        />
+
+        <Route path="/channelDetails/:id" element={<ChannelDetails />} />
+
+        <Route path="/mySubscription" element={<Subcriptions />} />
+
+       
 
         <Route path="/channelDetails/:id" element={<ChannelDetails />} />
 
         <Route path="/categories/:category" element={<AllCategories />} />
 
        
-
       </Routes>
     </div>
   );
