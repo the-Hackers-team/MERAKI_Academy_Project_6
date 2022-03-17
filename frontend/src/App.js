@@ -6,15 +6,15 @@ import Home from "./componenet/Home/Home.js";
 import Sidebar from "./componenet/SideBar/Sidebar";
 import PlayVideo from "./componenet/PlayVideo/PlayVideo.js";
 import React, { useState } from "react";
-import UpdateAnVideoById from "./componenet/updateVideo/updateVideo.js"
+import UpdateAnVideoById from "./componenet/updateVideo/updateVideo.js";
 import { Routes, Route, Link } from "react-router-dom";
 import Register from "./componenet/signup/signup";
-import Profile from "./componenet/profile/profile.js"
-import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js"
-import LikedVideos from "./componenet/LikedVideos/LikedVideos"
-import Subcriptions from "./componenet/subscriptions/subscriptions"
-import WatchLater from "./componenet/watchLater/watchLater"
-import ChannelDetails from "./componenet/channeldetails/chanelDetails"
+import Profile from "./componenet/profile/profile.js";
+import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js";
+import LikedVideos from "./componenet/LikedVideos/LikedVideos";
+import Subcriptions from "./componenet/subscriptions/subscriptions";
+import WatchLater from "./componenet/watchLater/watchLater";
+import ChannelDetails from "./componenet/channeldetails/chanelDetails";
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
@@ -42,20 +42,22 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
-        <Route path="/profile" element={<Profile/>} />
 
-        
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/create" element={<CreateNewVideo />} />
 
-        {/* <Route path="/create" element={<CreateNewVideo/>} /> */}
+        <Route path="/likedVideos" element={<LikedVideos />} />
 
-        <Route path="/likedVideos" element={<LikedVideos/>}/>
+        <Route path="/mySubscription" element={<Subcriptions />} />
 
-        <Route path="/mySubscription" element={<Subcriptions/>}/>
+        <Route path="/watchLater" element={<WatchLater />} />
 
-        <Route path="/watchLater" element={<WatchLater/>}/>
+        <Route path="/channelDetails/:id" element={<ChannelDetails />} />
 
-        
-        <Route path="/channelDetails/:id" element={<ChannelDetails/>}/>
+        <Route path="/categories/:category" element={<AllCategories />} />
+
+       
+
       </Routes>
     </div>
   );
