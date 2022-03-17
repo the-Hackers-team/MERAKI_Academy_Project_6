@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 90rem;
+  gap: 80rem;
   justify-content: flex-start;
   padding-left: 15rem;
 }
@@ -194,6 +194,10 @@
 
 .home-videos-playList2{
   font-size:17px;
+  display:flex;
+  justify-content: center;
+  width:7rem;
+  cursor: pointer;
   font-weight:bold transparent;
   padding-bottom: 1rem;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -201,4 +205,22 @@
 
 .home-videos-playList{
   border-bottom:1px solid rgb(211, 190, 190);
+}
+
+.home-videos-playList2::after{
+  font-family: "Times New Roman", Times, serif;
+  content: "";
+  display: block;
+  margin: auto;
+  /* height: 3px; */
+  width: 0px;
+  background: transparent;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.home-videos-playList2 :hover::after{
+  border-bottom: rgb(0, 0, 0) solid 1px;
+  width: 100%;
 }
