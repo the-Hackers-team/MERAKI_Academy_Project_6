@@ -29,39 +29,38 @@ const AllCategories = () => {
     getAllVideosByCategories();
   }, []);
 
-
   return (
     <div className="videos">
-    <div className="videos__container">
-      {allVideos &&
-        allVideos.map((video) => {
-          return (
-            <div
-              className="video"
-              onClick={() => {
-                navigate(`/video/${video.id}`);
-              }}
-            >
-              <div className="video__thumbnail">
-                <img src={video.image} alt="" />
-              </div>
-              <div className="video__details">
-                <div className="author">
-                  <img src={video.user_image} alt="" />
+      <div className="videos__container">
+        {allVideos &&
+          allVideos.map((video) => {
+            return (
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
+                <div className="video__thumbnail">
+                  <img src={video.image} alt="" />
                 </div>
-                <div className="title">
-                  <h3>{video.title}</h3>
-                  <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                  <span>
-                    {video.video_views} •{" "}
-                    {moment(video.publish_date).fromNow()}
-                  </span>
+                <div className="video__details">
+                  <div className="author">
+                    <img src={video.user_image} alt="" />
+                  </div>
+                  <div className="title">
+                    <h3>{video.title}</h3>
+                    <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </div>
-  </div>
-  )
+  );
 };
