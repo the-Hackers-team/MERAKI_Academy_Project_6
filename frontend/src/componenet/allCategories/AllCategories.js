@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../reducer/login/index";
+import moment from "moment";
+
+const AllCategories = () => {
+  const navigate = useNavigate();
+  const [allVideos, setallVideos] = useState([]);
+  let { category } = useParams();
+
+  const getAllVideosByCategories = () => {
+    axios
+      .get(`https://localhost:5000/video/search_2?category=${category}`)
+      .then((response) => {
+        setallVideos(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllVideosByCategories();
+  }, []);
+
+
+  return (
+    <div className="videos">
+    <div className="videos__container">
+      {allVideos &&
+        allVideos.map((video) => {
+          return (
+            <div
+              className="video"
+              onClick={() => {
+                navigate(`/video/${video.id}`);
+              }}
+            >
+              <div className="video__thumbnail">
+                <img src={video.image} alt="" />
+              </div>
+              <div className="video__details">
+                <div className="author">
+                  <img src={video.user_image} alt="" />
+                </div>
+                <div className="title">
+                  <h3>{video.title}</h3>
+                  <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                  <span>
+                    {video.video_views} •{" "}
+                    {moment(video.publish_date).fromNow()}
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+    </div>
+  </div>
+  )
+};
