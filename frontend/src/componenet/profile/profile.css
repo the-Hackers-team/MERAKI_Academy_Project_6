@@ -3,10 +3,10 @@
   flex-direction: column;
   /* justify-content: center;
   align-items: center; */
-  gap:10rem;
+  gap: 10rem;
   width: 100%;
   height: 100%;
-  padding-top:10rem;
+  padding-top: 10rem;
 }
 
 .profile-div-container {
@@ -70,30 +70,28 @@
   border-radius: 50%;
 }
 
-.upload-pargraph{
+.upload-pargraph {
   color: black;
-    font-family: "Roboto","Arial",sans-serif;
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    font-weight: 400;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-weight: 400;
 }
 
-.upload-pargraph-2{
+.upload-pargraph-2 {
   text-align: center;
   color: rgb(97, 87, 87);
-  font-family: "Roboto","Arial",sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-size: 1.4rem;
   line-height: 2rem;
   font-weight: 400;
 }
 
-.uplaod-button{
+.uplaod-button {
   color: white;
-    background-color: transparent;
-    text-transform: var(--yt-button-text-transform,inherit);
+  background-color: transparent;
+  text-transform: var(--yt-button-text-transform, inherit);
 }
-
-
 
 /* CSS */
 .uplaod-button {
@@ -105,19 +103,19 @@
   cursor: pointer;
   display: inline-flex;
   fill: #000;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 600;
   height: 48px;
   justify-content: center;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   line-height: 24px;
   min-width: 140px;
   outline: 0;
   padding: 0 17px;
   text-align: center;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -145,8 +143,7 @@
   }
 }
 
-
-.all-videos{
+.all-videos {
   align-items: center;
   background-color: #06f;
   border: 2px solid #06f;
@@ -155,31 +152,31 @@
   cursor: pointer;
   display: inline-flex;
   fill: #000;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 600;
   height: 40px;
   justify-content: center;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   line-height: 24px;
   min-width: 140px;
   outline: 0;
   padding: 0 17px;
   text-align: center;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-.all-videos:hover{
+.all-videos:hover {
   background-color: #3385ff;
   border-color: #3385ff;
   fill: #06f;
 }
 
-.all-videos:active{
+.all-videos:active {
   background-color: #3385ff;
   border-color: #3385ff;
   fill: #06f;
@@ -190,27 +187,28 @@
     min-width: 170px;
   }
 
-  .all-videos{
+  .all-videos {
     min-width: 170px;
   }
 }
 
-.home-videos-playList2{
-  font-size:17px;
-  display:flex;
+.home-videos-playList2 {
+  font-size: 17px;
+  display: flex;
   justify-content: center;
-  width:7rem;
+  width: 7rem;
   cursor: pointer;
-  font-weight:bold transparent;
+  font-weight: bold transparent;
   padding-bottom: 1rem;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.home-videos-playList{
-  border-bottom:1px solid rgb(211, 190, 190);
+.home-videos-playList {
+  border-bottom: 1px solid rgb(211, 190, 190);
 }
 
-.home-videos-playList2::after{
+.home-videos-playList2::after {
   font-family: "Times New Roman", Times, serif;
   content: "";
   display: block;
@@ -223,18 +221,19 @@
   font-size: 1rem;
 }
 
-.home-videos-playList3{
-  font-size:17px;
-  display:flex;
+.home-videos-playList3 {
+  font-size: 17px;
+  display: flex;
   justify-content: center;
-  width:4rem;
+  width: 4rem;
   cursor: pointer;
-  font-weight:bold transparent;
+  font-weight: bold transparent;
   padding-bottom: 1rem;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.all-videos-video{
+.all-videos-video {
   align-items: center;
   background-color: #06f;
   border: 2px solid #06f;
@@ -243,21 +242,20 @@
   cursor: pointer;
   display: inline-flex;
   fill: #000;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 600;
   height: 40px;
   justify-content: center;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   line-height: 24px;
   min-width: 30px;
   outline: 0;
   padding: 0 17px;
   text-align: center;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
