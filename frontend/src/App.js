@@ -62,7 +62,6 @@ function App() {
               <PlayVideo />
             ) : (
               <div class="admin">
-                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
@@ -82,7 +81,6 @@ function App() {
               <Profile />
             ) : (
               <div class="admin">
-                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
@@ -99,10 +97,16 @@ function App() {
             ) : (
               <div class="admin">
                 <div>
-                <img
-                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
-                  style={{ width: "40%", height: " 40%" ,display: "flex",flexdirection:"row",alignItems:"center"}}
-                />
+                  <img
+                    src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                    style={{
+                      width: "40%",
+                      height: " 40%",
+                      display: "flex",
+                      flexdirection: "row",
+                      alignItems: "center",
+                    }}
+                  />
                 </div>
               </div>
             )
@@ -116,7 +120,6 @@ function App() {
               <LikedVideos />
             ) : (
               <div class="admin">
-                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
@@ -157,7 +160,6 @@ function App() {
               <ChannelDetails />
             ) : (
               <div class="admin">
-                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
@@ -174,7 +176,6 @@ function App() {
               <AllCategories />
             ) : (
               <div class="admin">
-                unauthorized
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
                   style={{ width: "40%", height: " 40%" }}
