@@ -16,6 +16,7 @@ const CloudinaryVideo = ({ setVideo }) => {
       .then((res) => {
         setFilelink(res.data.secure_url);
         setVideo(res.data.secure_url);
+        
       })
       .catch((err) => {
         console.log(err.response);
