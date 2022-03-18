@@ -19,10 +19,11 @@ const register = async (req, res) => {
     country,
     email,
     hashPassword,
-    user_image,
+    user_image
   ];
 
   connection.query(query, data, (err, result) => {
+
     if (err) {
       console.log(err);
       res.status(409).json({

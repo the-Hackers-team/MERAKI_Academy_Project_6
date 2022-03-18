@@ -34,7 +34,15 @@ const Register = () => {
   };
 
   const register = () => {
-    if (firstName && lastName && age && country && email && password) {
+    if (
+      firstName &&
+      lastName &&
+      age &&
+      country &&
+      email &&
+      password &&
+      userImage
+    ) {
       const newUser = {
         firstName,
         lastName,
@@ -205,7 +213,6 @@ const Register = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          register();
         }}
       >
         <h2 class="title-sign"> Sign Up</h2>
@@ -308,7 +315,14 @@ const Register = () => {
           <Cloudinary setImage={setUserImage} />
         </div>
 
-        <button class="cta-btn">Sign Up</button>
+        <button
+          class="cta-btn"
+          onClick={() => {
+            register();
+          }}
+        >
+          Sign Up
+        </button>
         <p className="subtitle">
           Already have an account?{" "}
           <Link className="forget-pass" to="/login">

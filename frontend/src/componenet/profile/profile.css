@@ -259,3 +259,9 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
+.image-name{
+  width: 5rem;
+  height: 5rem;
+  border-radius:50%
+}
