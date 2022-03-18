@@ -4,20 +4,20 @@ import axios from "axios";
 
 
 
-const CloudinaryVideo = ({ setImage }) => {
+const CloudinaryVideo = ({ setVideo }) => {
     const [file, setFile] = useState();
     const [filelink, setFilelink] = useState("Choose File");
-    const imageUpload = (imageFile) => {
+    const VideoUpload = (imageFile) => {
       const data = new FormData();
       data.append("file", imageFile);
       data.append("upload_preset", "y3fujtpr");
       data.append("cloud_name", "the-debuggers");
   
       axios
-        .post(`https://api.cloudinary.com/v1_1/the-debuggers/image/upload`, data)
+        .post(`https://api.cloudinary.com/v1_1/the-debuggers/video/upload`, data)
         .then((res) => {
           setFilelink(res.data.secure_url);
-          setImage(res.data.secure_url);
+          setVideo(res.data.secure_url);
         })
         .catch((err) => {
           console.log(err.response);
@@ -34,7 +34,7 @@ const CloudinaryVideo = ({ setImage }) => {
         <button
           className="btn"
           onClick={() => {
-            imageUpload(file);
+            VideoUpload(file);
           }}
         >
           Upload
