@@ -14,9 +14,17 @@ import LikedVideos from "./componenet/LikedVideos/LikedVideos";
 import Subcriptions from "./componenet/subscriptions/subscriptions";
 import WatchLater from "./componenet/watchLater/watchLater";
 import ChannelDetails from "./componenet/channeldetails/chanelDetails";
-import AllCategories from "./componenet/allCategories/AllCategories.js"
-import Search from "./componenet/Search/Search.js"
+import AllCategories from "./componenet/allCategories/AllCategories.js";
+import NotFound from "./componenet/notfound/NotFound";
+import Search from "./componenet/Search/Search.js";
+import { useDispatch, useSelector } from "react-redux";
 function App() {
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
 
@@ -25,13 +33,17 @@ function App() {
   const showSide = function () {
     sidebar.classList.toggle("show-sidebar");
 
-    //create state for search 
-  
+    //create state for search
   };
   const [search, setSearch] = useState("");
   return (
     <div className="App">
-      <Header setSideClick={setSideClick} sideClick={sideClick} setSearch={setSearch} search={search}/>
+      <Header
+        setSideClick={setSideClick}
+        sideClick={sideClick}
+        setSearch={setSearch}
+        search={search}
+      />
       <Routes>
         <Route
           path="/"
@@ -43,16 +55,75 @@ function App() {
             </div>
           }
         />
-        <Route path="/video/:id" element={<PlayVideo />} />
+        <Route
+          path="/video/:id"
+          element={
+            state.token ? (
+              <PlayVideo />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />
 
+        <Route
+          path="/profile"
+          element={
+            state.token ? (
+              <Profile />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            state.token ? (
+              <CreateVideo />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/create" element={<CreateVideo />} />
-
-        <Route path="/likedVideos" element={<LikedVideos />} />
+        <Route
+          path="/likedVideos"
+          element={
+            state.token ? (
+              <LikedVideos />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
 
         <Route path="/likedVideos" element={<LikedVideos />} />
 
@@ -68,7 +139,7 @@ function App() {
             </div>
           }
         />
- <Route
+        <Route
           path="/search/:search"
           element={
             <div className="mainBody">
@@ -78,17 +149,41 @@ function App() {
             </div>
           }
         />
-        <Route path="/channelDetails/:id" element={<ChannelDetails />} />
+        <Route
+          path="/channelDetails/:id"
+          element={
+            state.token ? (
+              <ChannelDetails />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
 
-        <Route path="/mySubscription" element={<Subcriptions />} />
+        <Route
+          path="/categories/:category"
+          element={
+            state.token ? (
+              <AllCategories />
+            ) : (
+              <div class="admin">
+                unauthorized
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
 
-       
-
-        <Route path="/channelDetails/:id" element={<ChannelDetails />} />
-
-        <Route path="/categories/:category" element={<AllCategories />} />
-
-       
+        <Route path="*" exact={true} element={<NotFound />} />
       </Routes>
     </div>
   );
