@@ -31,7 +31,7 @@ function App() {
   const [search, setSearch] = useState("");
   return (
     <div className="App">
-      <Header setSideClick={setSideClick} sideClick={sideClick} setSearch={setSearch}/>
+      <Header setSideClick={setSideClick} sideClick={sideClick} setSearch={setSearch} search={search}/>
       <Routes>
         <Route
           path="/"

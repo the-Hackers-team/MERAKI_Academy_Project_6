@@ -1,11 +1,11 @@
 import React from "react";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import logo from "./youtube-logo.png";
 import Categories from "../Categories/Categories";
 import { useLocation } from "react-router-dom";
 
-const Header = ({ setSideClick, sideClick, setSearch }) => {
+const Header = ({ setSideClick, sideClick, setSearch, search }) => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -30,15 +30,21 @@ const Header = ({ setSideClick, sideClick, setSearch }) => {
       </div>
 
       <div className="header__search">
-        <form action="">
+        <form action="" onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Search"
-            onChange={(e) => {setSearch(e.target.value)
-            navigate(`/search/${e.target.value}`)}}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
           />
 
-          <i className="material-icons">search</i>
+          <i
+            className="material-icons"
+            onClick={() => navigate(`/search/${search}`)}
+          >
+            search
+          </i>
         </form>
       </div>
 
