@@ -37,7 +37,7 @@ const Home = () => {
     axios
       .get(`http://localhost:5000/video/all`)
       .then((response) => {
-        console.log(response.data.results);
+        setAllVideos(response.data.results);
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +47,7 @@ const Home = () => {
     getVideoBySubscriptios();
     getAllVideos();
   }, []);
-
+console.log(allVideos);
   return (
     <div className="videos">
       <Categories />
@@ -85,8 +85,8 @@ const Home = () => {
       </div>
       <h1>All videos</h1>
       <div className="videos__container">
-        {videos &&
-          videos.map((video) => {
+        {allVideos &&
+          allVideos.map((video) => {
             return (
               <div
                 className="video"
