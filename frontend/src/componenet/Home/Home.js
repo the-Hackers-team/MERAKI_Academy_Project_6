@@ -34,13 +34,18 @@ const Home = () => {
   };
 
   const getAllVideos = () => {
-    axios.get(`http://localhost:5000/video/all`).then((response)=>{
-      console.log(response.data.results);
-    }).catch((err)=>{console.log(err);})
+    axios
+      .get(`http://localhost:5000/video/all`)
+      .then((response) => {
+        console.log(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   useEffect(() => {
     getVideoBySubscriptios();
-    getAllVideos()
+    getAllVideos();
   }, []);
 
   return (
