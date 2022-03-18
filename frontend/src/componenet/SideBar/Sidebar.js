@@ -1,8 +1,39 @@
-import React from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Sidebar = ({ sideClick }) => {
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
+
+  //// create state to save the user information
+
+  const [user, setUser] = useState([]);
+
+  const getUserById = () => {
+    axios
+      .get(`http://localhost:5000/user/profile`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
   return (
     // <div classNameName="main-sidebar">
     //   <div className={sideClick ? "show-sidebar" : "sidebar"}>
@@ -48,16 +79,20 @@ const Sidebar = ({ sideClick }) => {
     // </div>
     ////////////////////////////////////////////////////////////////////////////////////////////actual
     <aside className={sideClick ? "sidebar open" : "sidebar"}>
-      <div className="top-sidebar">
-        <Link to="#" className="channel-logo">
-          <img
-            src="https://yt3.ggpht.com/ytc/AAUvwnhESPVEatju_1yE-03-KLeSrnSLc5yy0RcvhPd5Lg=s48-c-k-c0x00ffffff-no-rj"
-            alt=""
-          />
-        </Link>
-        <div className="hidden-sidebar your-channel">Your channel</div>
-        <div className="hidden-sidebar channel-name">Web Dev Simplified</div>
-      </div>
+      {user &&
+        user.map((user) => {
+          return (
+            <div className="top-sidebar">
+              <Link to="#" className="channel-logo">
+                <img src={user.user_image} alt="" />
+              </Link>
+              <div className="hidden-sidebar your-channel">Your channel</div>
+              <div className="hidden-sidebar channel-name">
+                {user.firstName + user.lastName}
+              </div>
+            </div>
+          );
+        })}
       <div className="middle-sidebar">
         <ul className="sidebar-list">
           <li className="sidebar-list-item active">
@@ -91,7 +126,7 @@ const Sidebar = ({ sideClick }) => {
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/mySubscription" className="sidebar-link">
               <svg
                 className="sidebar-icon"
                 viewBox="0 0 24 24"
@@ -102,11 +137,11 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M19 9H2v2h17V9zm0-4H2v2h17V5zM2 15h13v-2H2v2zm15-2v6l5-3-5-3z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Playlists</div>
+              <div className="hidden-sidebar">Subscriptions</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/likedVideos" className="sidebar-link">
               <svg
                 viewBox="0 0 24 24"
                 preserveAspectRatio="xMidYMid meet"
@@ -117,11 +152,11 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Analytics</div>
+              <div className="hidden-sidebar">Liked Videos</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/watchLater" className="sidebar-link">
               <svg
                 viewBox="0 0 24 24"
                 preserveAspectRatio="xMidYMid meet"
@@ -132,7 +167,7 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Comments</div>
+              <div className="hidden-sidebar">Watch Later</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
