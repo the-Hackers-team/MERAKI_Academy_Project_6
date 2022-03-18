@@ -7,6 +7,7 @@ const Cloudinary = ({ setImage }) => {
   const [file, setFile] = useState();
   const [filelink, setFilelink] = useState("Choose File");
   const imageUpload = (imageFile) => {
+    console.log("ksjckjn");
     const data = new FormData();
     data.append("file", imageFile);
     data.append("upload_preset", "y3fujtpr");
