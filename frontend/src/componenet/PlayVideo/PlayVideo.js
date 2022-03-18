@@ -273,7 +273,7 @@ const PlayVideo = () => {
                       src={element.user_image}
                       alt=""
                       onClick={() => {
-                        navigate(`/channelDetails/${element.id}`);
+                        navigate(`/channelDetails/${element.user_id}`);
                       }}
                     />
                     <div>
