@@ -240,6 +240,25 @@ const PlayVideo = ({ chanelId }) => {
     }
   };
 
+  const editComment = (id) => {
+    axios
+      .put(
+        `http://localhost:5000/comment/${id}`,
+        { updatedComment },
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // console.log(comments);
   useEffect(() => {
     getVideoById();
     getChanelVideos();
@@ -381,36 +400,38 @@ const PlayVideo = ({ chanelId }) => {
                                 <input
                                   defaultValue={comment.comment}
                                   onChange={(e) => {
-                                    setUpdatedComment(e.target.value)
+                                    setUpdatedComment(e.target.value);
                                   }}
                                 />
                               ) : (
                                 <p>{comment.comment}</p>
                               )}
                             </div>
-                            <div class="section__controls">
-                              <Link to="#">
-                                <i
-                                  class="fas fa-edit"
-                                  onClick={
-                                    isUpdating
-                                      ? () => {
-                                          setupdateId(0);
-                                          setIsUpdating(!isUpdating);
-                                        }
-                                      : () => {
-                                          setupdateId(comment.id);
-                                          setIsUpdating(!isUpdating);
-                                        }
-                                  }
-                                ></i>
-                              </Link>
-                              <Link to="#">
-                                {isUpdating ? null : (
-                                  <i class="fas fa-trash"></i>
-                                )}
-                              </Link>
-                            </div>
+                            {user_id == comment.user_id ? (
+                              <div class="section__controls">
+                                <Link to="#">
+                                  <i
+                                    class="fas fa-edit"
+                                    onClick={
+                                      isUpdating
+                                        ? () => {
+                                            setupdateId(0);
+                                            setIsUpdating(!isUpdating);
+                                          }
+                                        : () => {
+                                            setupdateId(comment.id);
+                                            setIsUpdating(!isUpdating);
+                                          }
+                                    }
+                                  ></i>
+                                </Link>
+                                <Link to="#">
+                                  {isUpdating ? null : (
+                                    <i class="fas fa-trash"></i>
+                                  )}
+                                </Link>
+                              </div>
+                            ) : null}
                           </div>
                         );
                       })}
