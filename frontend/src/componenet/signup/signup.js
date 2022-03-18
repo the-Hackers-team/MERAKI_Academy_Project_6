@@ -19,7 +19,7 @@ const Register = () => {
   const [country, setcountry] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userImage, setUserImage] = useState("");
+  const [user_image, setUser_image] = useState("");
   //////////////////// for the hide and show
 
   /////////////////////////////////////
@@ -41,7 +41,7 @@ const Register = () => {
       country &&
       email &&
       password &&
-      userImage
+      user_image
     ) {
       const newUser = {
         firstName,
@@ -50,7 +50,7 @@ const Register = () => {
         country,
         email,
         password,
-        userImage,
+        user_image,
       };
       axios
         .post(`http://localhost:5000/user/register`, newUser)
@@ -74,7 +74,7 @@ const Register = () => {
         !country ||
         !email ||
         !password ||
-        !userImage
+        !user_image
       ) {
         notifyRegisterError();
       }
@@ -312,7 +312,7 @@ const Register = () => {
             <b>Choose Profile Image</b>
           </label>
 
-          <Cloudinary setImage={setUserImage} />
+          <Cloudinary setImage={setUser_image} />
         </div>
 
         <button
