@@ -62,9 +62,27 @@ const getMySubscriptionChannels = (req, res) => {
     }
   });
 };
+const getsubscribersofchanel = (req, res) => {
+  const userId = req.params.id;
+  const query = `SELECT * from subscriptions WHERE chanel_id = ? `;
+  const data = [userId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All the channels`, results: result });
+    }
+  });
+};
+
 const getAllvideossubscripes = (req, res) => {
   const userId = req.token.userId;
-  const query = `select users.id,video_views,firstName,videos.publish_date,description,videos.id, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
+  const query = `select users.id as user_id,video_views,firstName,videos.publish_date,description,videos.id, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -90,4 +108,5 @@ module.exports = {
   removeFromMySubscription,
   getMySubscriptionChannels,
   getAllvideossubscripes,
+  getsubscribersofchanel
 };

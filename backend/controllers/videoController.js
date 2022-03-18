@@ -39,7 +39,7 @@ const createNewVideo = (req, res) => {
 //create controller for getAllVideos
 const getChannelVideos = (req, res) => {
   const userId = req.params.id;
-  const query = `SELECT title,videos.id,description,videos.publish_date,video_link,firstName,lastName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM videos INNER JOIN users ON users.id=videos.user_id where users.id = ? and videos.is_deleted =0 and users.is_deleted = 0`;
+  const query = `SELECT title,videos.id,description,videos.publish_date,video_link,firstName,lastName,user_id,Likes,Dislikes,users.user_image,videos.image,video_views,category FROM videos INNER JOIN users ON users.id=videos.user_id where users.id = ? and videos.is_deleted =0 and users.is_deleted = 0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -338,6 +338,33 @@ const removedisLikeVideo = (req, res) => {
   });
 };
 
+
+const addViews = (req,res)=>{
+  const videoId = req.params.id;
+  const query = ` update videos SET video_views = video_views+1 where  id = ?`;
+  const data = [videoId];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      returnres.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    } else {
+      if (!result.affectedRows) {
+        return res.status(404).json({
+          success: false,
+          message: `No videos found with the indicated  videoId => ${videoId}`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `view has been added`,
+      });
+    }
+  });
+};
+
 ///////////////////////////////////////////////////////////////////
 
 module.exports = {
@@ -354,5 +381,6 @@ module.exports = {
   removedisLikeVideo,
   removeLikeOnVideo,
   disLikeVideo,
+  addViews
   //////////////
 };

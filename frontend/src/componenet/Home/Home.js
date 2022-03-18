@@ -7,13 +7,15 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import moment from "moment";
 const menuIcon = document.querySelector(".logo");
-const Home = () => {
+const Home = ({setChanelId}) => {
   
   //Navigate initialization
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
+  
   //create state for all videos
   const [allVideos, setAllVideos] = useState([]);
+
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -48,7 +50,7 @@ const Home = () => {
     getVideoBySubscriptios();
     getAllVideos();
   }, []);
-
+console.log(videos);
   return (
     <div className="videos">
       <Categories />
@@ -62,6 +64,7 @@ const Home = () => {
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
+                  setChanelId(video.user_id)
                 }}
               >
                 <div className="video__thumbnail">
@@ -75,7 +78,7 @@ const Home = () => {
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
                     <span>
-                      {video.video_views} •{" "}
+                      {video.video_views} Views •{" "}
                       {moment(video.publish_date).fromNow()}
                     </span>
                   </div>
@@ -93,6 +96,7 @@ const Home = () => {
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
+                  setChanelId(video.user_id)
                 }}
               >
                 <div className="video__thumbnail">
@@ -106,7 +110,7 @@ const Home = () => {
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
                     <span>
-                      {video.video_views} •{" "}
+                      {video.video_views} Views •{" "}
                       {moment(video.publish_date).fromNow()}
                     </span>
                   </div>

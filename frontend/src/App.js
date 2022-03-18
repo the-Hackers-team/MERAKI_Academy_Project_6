@@ -36,6 +36,7 @@ function App() {
     //create state for search
   };
   const [search, setSearch] = useState("");
+  const [chanelId, setChanelId] = useState(0)
   return (
     <div className="App">
       <Header
@@ -51,15 +52,16 @@ function App() {
             <div className="mainBody">
               <Sidebar sideClick={sideClick} />
 
-              <Home />
+              <Home setChanelId ={setChanelId}/>
             </div>
           }
         />
+
         <Route
           path="/video/:id"
           element={
             state.token ? (
-              <PlayVideo />
+              <PlayVideo chanelId={chanelId}/> />
             ) : (
               <div class="admin">
                 <img
@@ -70,6 +72,7 @@ function App() {
             )
           }
         />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />

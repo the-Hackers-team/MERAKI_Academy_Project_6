@@ -5,6 +5,7 @@
   padding: 15px 15px;
   border-top: 1px solid #ddd;
   overflow-y: auto;
+  min-height: calc(100vh - 70px) !important;
 }
 
 .videos__container {
@@ -13,7 +14,7 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  /* min-height:calc(100vh); */
+
 }
 
 .video {
