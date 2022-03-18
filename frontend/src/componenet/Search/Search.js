@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../SideBar/Sidebar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useParams } from "react-router-dom";
 
 import Categories from "../Categories/Categories";
 import axios from "axios";
@@ -9,6 +9,8 @@ import moment from "moment";
 const menuIcon = document.querySelector(".logo");
 const Search = () => {
   const navigate = useNavigate();
+  const params = useParams();
+  const {search} = params;
   const [allVideos, setAllVideos] = useState([]);
   const state = useSelector((state) => {
     return {
@@ -32,11 +34,20 @@ const Search = () => {
   return (
     <div className="videos">
       <Categories />
-      <h1>Recommended</h1>
+    
 
       <div className="videos__container">
         {allVideos &&
-          allVideos.map((video) => {
+          allVideos
+            .filter((element) => {
+               if (
+                element.title.toLowerCase().includes(search.toLowerCase()) ||
+                (element.category &&
+                  element.category.toLowerCase().includes(search.toLowerCase()))
+              ) {
+                return element;
+              }
+            }).map((video) => {
             return (
               <div
                 className="video"
