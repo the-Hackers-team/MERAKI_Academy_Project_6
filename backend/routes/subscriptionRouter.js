@@ -11,6 +11,7 @@ const {
   removeFromMySubscription,
   getMySubscriptionChannels,
   getAllvideossubscripes,
+  getsubscribersofchanel,
 } = require("../controllers/subscripe.js");
 
 //cerate end point to get LikesContoller
@@ -33,6 +34,9 @@ subsciptionRouter.get(
   getMySubscriptionChannels
 );
 subsciptionRouter.get("/videos", authentication, getAllvideossubscripes);
+
+subsciptionRouter.get("/subscribers/:id", getsubscribersofchanel);
+
 //create end point to delete Video from LikesContoller
 
 module.exports = { subsciptionRouter };

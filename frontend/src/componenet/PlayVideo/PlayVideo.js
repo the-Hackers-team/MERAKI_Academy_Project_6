@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import "./PlayVideo.css";
 import moment from "moment";
-const PlayVideo = () => {
+const PlayVideo = ({ chanelId }) => {
   //params initialization
   const params = useParams();
   //get id from params
@@ -33,6 +33,8 @@ const PlayVideo = () => {
   //create state for comments
   const [comments, setComments] = useState([]);
   //find user_id from token
+  //create state to set number of sbscribers
+  const [numberOfScribers, setNumberOfScribers] = useState([]);
 
   //create state to render on comment
   const [iscomment, setIscomment] = useState(true);
@@ -42,7 +44,9 @@ const PlayVideo = () => {
   let user_img = decode && decode.image;
   let userFirstName = decode && decode.firstName;
   let userLastName = decode && decode.lastName;
-  const chanelId = video.length && video[0].user_id;
+  // const chanelId = video.length && video[0].user_id;
+  //create state for chanelId
+
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -53,6 +57,8 @@ const PlayVideo = () => {
       .then((response) => {
         setVideo(response.data.results);
         getAllVideosByChannelId(response.data.results[0].user_id);
+
+        numSubscribtions(response.data.results[0].user_id);
       })
       .catch((err) => {
         console.log(err);
@@ -187,13 +193,39 @@ const PlayVideo = () => {
   };
   const getChanelVideos = () => {
     axios
-      .get(`http://localhost:5000/videos/${chanelId}`)
+      .get(`http://localhost:5000/video/${chanelId}`)
       .then((response) => {
-        console.log(response.data.results);
+        setChanelVideos(response.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+  //create functions to get number of subscribtions
+
+  const numSubscribtions = (chanelId) => {
+    axios
+      .get(`http://localhost:5000/subscription/subscribers/${chanelId}`)
+      .then((response) => {
+        setNumberOfScribers(response.data.results);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addView = () => {
+    if (chanelId) {
+      axios
+        .put(`http://localhost:5000/video/addview/${chanelId}`, {}, {})
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   useEffect(() => {
@@ -203,7 +235,9 @@ const PlayVideo = () => {
   useEffect(() => {
     getAllComment();
   }, [iscomment]);
-  // console.log(video[0].user_id);
+  useEffect(() => {
+    addView();
+  }, []);
   return (
     <div className="container-Play-video play-container">
       <div className="row-video">
@@ -224,7 +258,7 @@ const PlayVideo = () => {
                 <h3>{element.title}</h3>
                 <div className="play-video-info">
                   <p>
-                    {element.video_views} &bull;{" "}
+                    {element.video_views} Views &bull;{" "}
                     {moment(element.publish_date).fromNow()}
                   </p>
                   <div>
@@ -281,12 +315,13 @@ const PlayVideo = () => {
                         {element.firstName}{" "}
                         <span className="material-icons">check_circle</span>
                       </p>
-                      <span>500k Subscribers</span>
+                      <span>{numberOfScribers.length} Subscribers</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => {
                         subscribe();
+                        setIscomment(!iscomment);
                       }}
                     >
                       Subscribe
@@ -340,7 +375,6 @@ const PlayVideo = () => {
                               <Link to="#">
                                 <i class="fas fa-trash"></i>
                               </Link>
-                             
                             </div>
                           </div>
                         );
@@ -352,6 +386,7 @@ const PlayVideo = () => {
           })}
         <div className="right-sidebar-video">
           {chanelVideos &&
+            chanelVideos.length &&
             chanelVideos.map((element) => {
               return (
                 <div className="side-video-list">
@@ -360,9 +395,7 @@ const PlayVideo = () => {
                   </Link>
                   <div className="vid-info">
                     <Link to="">{element.title}</Link>
-                    <p>{`${video.length && video[0].firstName} ${
-                      video.length && video[0].lastName
-                    }`}</p>
+                    <p>{`${element.firstName} ${element.lastName}`}</p>
                     <p>
                       {element.video_views} Views •{" "}
                       {moment(element.publish_date).fromNow()}
