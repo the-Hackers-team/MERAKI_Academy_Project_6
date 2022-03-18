@@ -56,9 +56,8 @@ const getChannelVideos = (req, res) => {
 };
 //create controller to get all videos
 const getallVideos = (req, res) => {
-  const userId = req.params.id;
   const query = `select * from videos  where is_deleted = 0`;
- 
+
   connection.query(query, (err, result) => {
     if (err) {
       console.log(err);

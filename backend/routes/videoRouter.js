@@ -52,7 +52,7 @@ videoRouter.delete("/removeLikeOnVideo/:id", authentication, removeLikeOnVideo);
 
 videoRouter.post("/addDisLikeOnVideo/:id", authentication, disLikeVideo);
 
-videoRouter.post("/all", getallVideos);
+videoRouter.get("/all", getallVideos);
 
 
 
