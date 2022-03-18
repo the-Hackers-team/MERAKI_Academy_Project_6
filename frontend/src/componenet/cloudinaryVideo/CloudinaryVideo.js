@@ -5,9 +5,9 @@ import axios from "axios";
 const CloudinaryVideo = ({ setVideo }) => {
   const [file, setFile] = useState();
   const [filelink, setFilelink] = useState("Choose File");
-  const VideoUpload = (imageFile) => {
+  const VideoUpload = (videoFile) => {
     const data = new FormData();
-    data.append("file", imageFile);
+    data.append("file", videoFile);
     data.append("upload_preset", "y3fujtpr");
     data.append("cloud_name", "the-debuggers");
 
