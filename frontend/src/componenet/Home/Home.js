@@ -11,6 +11,8 @@ const Home = () => {
   //Navigate initialization
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
+  //create state for all videos
+  const [allVideos, setAllVideos] = useState([])
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -30,6 +32,10 @@ const Home = () => {
       })
       .catch((err) => {});
   };
+
+  const getAllVideos = ()=>{
+    axios.get(`http://localhost:5000/`)
+  }
   useEffect(() => {
     getVideoBySubscriptios();
   }, []);
@@ -39,6 +45,32 @@ const Home = () => {
       <Categories />
       <h1>Recommended</h1>
 
+      <div className="videos__container">
+        {videos &&
+          videos.map((video) => {
+            return (
+              <div className="video" onClick={() => {
+                navigate(`/video/${video.id}`)
+                
+              }}>
+                <div className="video__thumbnail">
+                  <img src={video.image} alt="" />
+                </div>
+                <div className="video__details">
+                  <div className="author">
+                    <img src={video.user_image} alt="" />
+                  </div>
+                  <div className="title">
+                    <h3>{video.title}</h3>
+                    <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                    <span>{video.video_views} • {moment(video.publish_date).fromNow()}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+      <h1>All videos</h1>
       <div className="videos__container">
         {videos &&
           videos.map((video) => {
