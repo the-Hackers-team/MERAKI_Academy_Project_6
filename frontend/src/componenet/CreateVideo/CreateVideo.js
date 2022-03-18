@@ -6,11 +6,12 @@ import { useNavigate, useEffect, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import "./createNewVideo.css";
+
 import Swal from "sweetalert2";
 import Cloudinary from "../Cloudinary/Cloudinary";
+import "./CreateVideo.css"
 toast.configure();
-const CreateNewVideo = () => {
+const CreateVideo = () => {
   const [title, setTitle] = useState("");
   const [description, setdescription] = useState("");
   const [image, setimage] = useState("");
@@ -135,4 +136,4 @@ const CreateNewVideo = () => {
   );
 };
 
-export default CreateNewVideo;
+export default CreateVideo;
