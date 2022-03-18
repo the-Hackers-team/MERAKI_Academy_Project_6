@@ -29,6 +29,7 @@ function App() {
   
   };
   const [search, setSearch] = useState("");
+  const [chanelId, setChanelId] = useState(0)
   return (
     <div className="App">
       <Header setSideClick={setSideClick} sideClick={sideClick} setSearch={setSearch} search={search}/>
@@ -39,11 +40,11 @@ function App() {
             <div className="mainBody">
               <Sidebar sideClick={sideClick} />
 
-              <Home />
+              <Home setChanelId ={setChanelId}/>
             </div>
           }
         />
-        <Route path="/video/:id" element={<PlayVideo />} />
+        <Route path="/video/:id" element={<PlayVideo chanelId={chanelId}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/update/:id" element={<UpdateAnVideoById />} />

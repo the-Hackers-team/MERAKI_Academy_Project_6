@@ -35,8 +35,9 @@ const Search = () => {
     <div className="videos">
       <Categories />
     
-
+      <h1>Search results for {search}</h1>
       <div className="videos__container">
+      
         {allVideos &&
           allVideos
             .filter((element) => {

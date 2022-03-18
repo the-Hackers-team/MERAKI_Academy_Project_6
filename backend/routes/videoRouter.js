@@ -16,7 +16,8 @@ const {
   removedisLikeVideo,
   removeLikeOnVideo,
   disLikeVideo,
-  getallVideos
+  getallVideos,
+  addViews
 } = require("../controllers/videoController.js");
 
 //create end points
@@ -37,7 +38,7 @@ videoRouter.get("/search_2", getAnVideoByCategory);
 //4-  get all videos
 videoRouter.get("/all", getallVideos);
 
-videoRouter.get("/:id", authentication, getChannelVideos);
+videoRouter.get("/:id",  getChannelVideos);
 //5- delete video by id
 
 videoRouter.delete("/delete_1/:id", authentication, deleteAnVideoById);
@@ -52,7 +53,7 @@ videoRouter.post("/addLikeOnVideo/:id", authentication, addLikeOnVideo);
 videoRouter.delete("/removeLikeOnVideo/:id", authentication, removeLikeOnVideo);
 
 videoRouter.post("/addDisLikeOnVideo/:id", authentication, disLikeVideo);
-
+videoRouter.put("/addview/:id", addViews);
 
 
 
