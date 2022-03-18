@@ -61,7 +61,7 @@ function App() {
           path="/video/:id"
           element={
             state.token ? (
-              <PlayVideo chanelId={chanelId}/> />
+              <PlayVideo chanelId={chanelId}/>
             ) : (
               <div class="admin">
                 <img
