@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 const menuIcon = document.querySelector(".logo");
 const Home = () => {
+  
   //Navigate initialization
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../SideBar/Sidebar";
 import { Link, useNavigate } from "react-router-dom";
-import "./Home.css";
+
 import Categories from "../Categories/Categories";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -35,8 +35,8 @@ const Search = () => {
       <h1>Recommended</h1>
 
       <div className="videos__container">
-        {videos &&
-          videos.map((video) => {
+        {allVideos &&
+          allVideos.map((video) => {
             return (
               <div
                 className="video"

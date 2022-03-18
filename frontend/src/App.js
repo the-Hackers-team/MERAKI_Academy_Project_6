@@ -16,6 +16,7 @@ import Subcriptions from "./componenet/subscriptions/subscriptions";
 import WatchLater from "./componenet/watchLater/watchLater";
 import ChannelDetails from "./componenet/channeldetails/chanelDetails";
 import AllCategories from "./componenet/allCategories/AllCategories.js"
+import Search from "./componenet/Search/Search.js"
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");
@@ -24,10 +25,14 @@ function App() {
 
   const showSide = function () {
     sidebar.classList.toggle("show-sidebar");
+
+    //create state for search 
+  
   };
+  const [search, setSearch] = useState("");
   return (
     <div className="App">
-      <Header setSideClick={setSideClick} sideClick={sideClick} />
+      <Header setSideClick={setSideClick} sideClick={sideClick} setSearch={setSearch}/>
       <Routes>
         <Route
           path="/"
@@ -64,7 +69,16 @@ function App() {
             </div>
           }
         />
+ <Route
+          path="/search/:search"
+          element={
+            <div className="mainBody">
+              <Sidebar sideClick={sideClick} />
 
+              <Search />
+            </div>
+          }
+        />
         <Route path="/channelDetails/:id" element={<ChannelDetails />} />
 
         <Route path="/mySubscription" element={<Subcriptions />} />
