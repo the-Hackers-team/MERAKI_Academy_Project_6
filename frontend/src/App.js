@@ -15,6 +15,7 @@ import LikedVideos from "./componenet/LikedVideos/LikedVideos";
 import Subcriptions from "./componenet/subscriptions/subscriptions";
 import WatchLater from "./componenet/watchLater/watchLater";
 import ChannelDetails from "./componenet/channeldetails/chanelDetails";
+import AllCategories from "./componenet/allCategories/AllCategories.js"
 function App() {
   const [sideClick, setSideClick] = useState(true);
   const menu = document.querySelector("#menu");

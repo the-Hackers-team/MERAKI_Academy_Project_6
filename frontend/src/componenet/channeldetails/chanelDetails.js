@@ -27,7 +27,7 @@ const ChannelDetails = () => {
 
   const getChannelById = () => {
     axios
-      .get(`http://localhost:5000/channelDetails/${id}`, {
+      .get(`http://localhost:5000/user/channelDetails/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

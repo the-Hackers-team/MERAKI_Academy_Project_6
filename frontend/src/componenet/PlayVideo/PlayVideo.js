@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams ,useNavigate} from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
@@ -11,9 +11,7 @@ const PlayVideo = () => {
   //get id from params
   const { id } = params;
 
-
   const navigate = useNavigate();
-
 
   const state = useSelector((state) => {
     return {
@@ -271,9 +269,13 @@ const PlayVideo = () => {
 
                   <hr />
                   <div className="plublisher">
-                    <img src={element.user_image} alt="" onClick={()=>{
-                      navigate(`/channelDetails/${element.id}`)
-                    }}/>
+                    <img
+                      src={element.user_image}
+                      alt=""
+                      onClick={() => {
+                        navigate(`/channelDetails/${element.id}`);
+                      }}
+                    />
                     <div>
                       <p>
                         {element.firstName}{" "}
@@ -330,6 +332,15 @@ const PlayVideo = () => {
                               <p>
                                 <p>{comment.comment}</p>
                               </p>
+                            </div>
+                            <div class="section__controls">
+                              <Link to="#">
+                                <i class="fas fa-edit"></i>
+                              </Link>
+                              <Link to="#">
+                                <i class="fas fa-trash"></i>
+                              </Link>
+                             
                             </div>
                           </div>
                         );

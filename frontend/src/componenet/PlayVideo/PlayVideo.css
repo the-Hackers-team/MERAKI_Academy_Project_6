@@ -51,7 +51,7 @@
 .play-video h3 {
   font-weight: 600;
   font-size: 1.5rem;
-  line-height: 2.6rem;
+  line-height: 2.3rem;
   font-weight: 400;
   margin-top: 0.5rem;
 }
@@ -171,9 +171,10 @@
 }
 .old-comment {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin: 20px 0;
   min-width: 50vw;
+  flex-direction: column;
 }
 .old-comment img {
   width: 35px;
@@ -233,3 +234,8 @@
   width: 40px;
   height: 40px;
 }
+
+
+
+
+
