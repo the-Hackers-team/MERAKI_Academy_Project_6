@@ -176,12 +176,12 @@ const Profile = () => {
                     return (
                       <div
                         className="video"
-                        onClick={() => {
-                          navigate(`/video/${video.id}`);
-                        }}
+                        
                       >
                         <div className="video__thumbnail">
-                          <img src={video.image} alt="" />
+                          <img src={video.image} alt="" onClick={() => {
+                          navigate(`/video/${video.id}`);
+                        }} />
                         </div>
                         <div className="video__details">
                           <div className="author">
@@ -199,7 +199,9 @@ const Profile = () => {
                         <div>
                           <button
                             className="all-videos-video"
-                            onClick={() => {}}
+                            onClick={() => {
+                              navigate(`/update/${video.id}`)
+                            }}
                           >
                             Update
                           </button>
