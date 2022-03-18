@@ -208,8 +208,11 @@
   margin-right: 20px;
   color: #5a5a5a;
 }
+.old-comment .acomment-action i{
+  width: 20px;
+}
 .old-comment .acomment-action a {
-  color: #0000ff;
+  /* color: #0000ff; */
 }
 @media (max-width: 900px) {
   .play-video {

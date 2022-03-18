@@ -51,8 +51,6 @@ const PlayVideo = ({ chanelId }) => {
   //create state for update comment
   const [updatedComment, setUpdatedComment] = useState("");
 
-  
-
   const decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
   let user_img = decode && decode.image;
@@ -108,7 +106,6 @@ const PlayVideo = ({ chanelId }) => {
       )
       .then((response) => {
         console.log(response);
-        
       })
       .catch((err) => {
         console.log(err);
@@ -247,12 +244,12 @@ const PlayVideo = ({ chanelId }) => {
     axios
       .put(
         `http://localhost:5000/comment/${id}`,
-        {comment: updatedComment },
+        { comment: updatedComment },
         {
           headers: {
             Authorization: `Basic ${state.token}`,
           },
-        },
+        }
       )
       .then((response) => {
         console.log(response);
@@ -418,16 +415,14 @@ const PlayVideo = ({ chanelId }) => {
                                     onClick={
                                       isUpdating
                                         ? () => {
-                                          editComment(comment.id);
+                                            editComment(comment.id);
                                             setupdateId(0);
                                             setIsUpdating(!isUpdating);
-                                            setIscomment(!iscomment)
+                                            setIscomment(!iscomment);
                                           }
                                         : () => {
-                                          
                                             setupdateId(comment.id);
                                             setIsUpdating(!isUpdating);
-                                            
                                           }
                                     }
                                   ></i>
@@ -436,6 +431,17 @@ const PlayVideo = ({ chanelId }) => {
                                   {isUpdating ? null : (
                                     <i class="fas fa-trash"></i>
                                   )}
+                                </Link>
+                                <Link
+                                  to="#"
+                                  onClick={() => {
+                                    setupdateId(0);
+                                    setIsUpdating(!isUpdating);
+                                  }}
+                                >
+                                  {isUpdating ? (
+                                    <i class="fa fa-times" />
+                                  ) : null}
                                 </Link>
                               </div>
                             ) : null}
