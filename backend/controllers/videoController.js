@@ -54,6 +54,23 @@ const getChannelVideos = (req, res) => {
     }
   });
 };
+//create controller to get all videos
+const getallVideos = (req, res) => {
+  const query = `SELECT title,videos.id,description,videos.publish_date,video_link,firstName,lastName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM users INNER JOIN videos ON users.id=videos.user_id where   videos.is_deleted =0 and videos.is_deleted =0 and users.is_deleted = 0`;
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All videos`, results: result });
+    }
+  });
+};
 
 //create controller for getAnVideoById
 
@@ -332,7 +349,7 @@ module.exports = {
   deleteAnVideoByUserId,
   updateAnVideoById,
   ///////////////////////
-
+  getallVideos,
   addLikeOnVideo,
   removedisLikeVideo,
   removeLikeOnVideo,
