@@ -281,7 +281,7 @@ const UpdateAnVideoById = () => {
         <div className="product-info">
           <p className="text">Video Link</p>
 
-          <Cloudinary setImage={setvideo_link} />
+          <CloudinaryVideo setVideo={setvideo_link} />
         </div>
 
         <div className="buttons">
