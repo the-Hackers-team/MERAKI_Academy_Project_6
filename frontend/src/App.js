@@ -36,7 +36,7 @@ function App() {
     //create state for search
   };
   const [search, setSearch] = useState("");
-  const [chanelId, setChanelId] = useState(0)
+  const [chanelId, setChanelId] = useState(0);
   return (
     <div className="App">
       <Header
@@ -52,7 +52,7 @@ function App() {
             <div className="mainBody">
               <Sidebar sideClick={sideClick} />
 
-              <Home setChanelId ={setChanelId}/>
+              <Home setChanelId={setChanelId} />
             </div>
           }
         />
@@ -61,7 +61,7 @@ function App() {
           path="/video/:id"
           element={
             state.token ? (
-              <PlayVideo chanelId={chanelId}/>
+              <PlayVideo chanelId={chanelId} />
             ) : (
               <div class="admin">
                 <img
