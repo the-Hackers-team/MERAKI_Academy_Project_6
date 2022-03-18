@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
 import "./signup.css";
-
+import Cloudinary from "../Cloudinary/Cloudinary";
 toast.configure();
 const Register = () => {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [userImage, setUserImage] = useState("");
   //////////////////// for the hide and show
- 
-/////////////////////////////////////
+
+  /////////////////////////////////////
   const notifyRegisterSuccess = () => {
     toast.success("Register Done", { position: toast.POSITION.TOP_RIGHT });
     navigate("/login");
@@ -33,15 +33,8 @@ const Register = () => {
     });
   };
 
-  const register =  () => {
-    if (
-      firstName &&
-      lastName &&
-      age &&
-      country &&
-      email &&
-      password 
-    ) {
+  const register = () => {
+    if (firstName && lastName && age && country && email && password) {
       const newUser = {
         firstName,
         lastName,
@@ -49,9 +42,9 @@ const Register = () => {
         country,
         email,
         password,
-        
+        userImage,
       };
-       axios
+      axios
         .post(`http://localhost:5000/user/register`, newUser)
         .then((response) => {
           if (response.data.success) {
@@ -72,7 +65,8 @@ const Register = () => {
         !age ||
         !country ||
         !email ||
-        !password 
+        !password ||
+        !userImage
       ) {
         notifyRegisterError();
       }
@@ -188,7 +182,6 @@ const Register = () => {
     //               </label>
     //             </div>
 
-               
     //             <div class="text-center text-lg-start mt-3 pt-2">
     //               <button
     //                 type="button"
@@ -307,13 +300,12 @@ const Register = () => {
             }}
             required
           />
-        
-        
-          {/* <label className="image-label">
+
+          <label className="image-label">
             <b>Choose Profile Image</b>
           </label>
 
-          <Cloudinary setImage={setUserImage} /> */}
+          <Cloudinary setImage={setUserImage} />
         </div>
 
         <button class="cta-btn">Sign Up</button>
