@@ -1,8 +1,39 @@
-import React from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Sidebar = ({ sideClick }) => {
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.loginReducer.isLoggedIn,
+      token: state.loginReducer.token,
+    };
+  });
+
+  //// create state to save the user information
+
+  const [user, setUser] = useState([]);
+
+  const getUserById = () => {
+    axios
+      .get(`http://localhost:5000/user/profile`, {
+        headers: {
+          Authorization: `Basic ${state.token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
   return (
     // <div classNameName="main-sidebar">
     //   <div className={sideClick ? "show-sidebar" : "sidebar"}>
@@ -48,16 +79,20 @@ const Sidebar = ({ sideClick }) => {
     // </div>
     ////////////////////////////////////////////////////////////////////////////////////////////actual
     <aside className={sideClick ? "sidebar open" : "sidebar"}>
-      <div className="top-sidebar">
-        <Link to="#" className="channel-logo">
-          <img
-            src="https://yt3.ggpht.com/ytc/AAUvwnhESPVEatju_1yE-03-KLeSrnSLc5yy0RcvhPd5Lg=s48-c-k-c0x00ffffff-no-rj"
-            alt=""
-          />
-        </Link>
-        <div className="hidden-sidebar your-channel">Your channel</div>
-        <div className="hidden-sidebar channel-name">Web Dev Simplified</div>
-      </div>
+      {user &&
+        user.map((user) => {
+          return (
+            <div className="top-sidebar">
+              <Link to="#" className="channel-logo">
+                <img src={user.user_image} alt="" />
+              </Link>
+              <div className="hidden-sidebar your-channel">Your channel</div>
+              <div className="hidden-sidebar channel-name">
+                {user.firstName + user.lastName}
+              </div>
+            </div>
+          );
+        })}
       <div className="middle-sidebar">
         <ul className="sidebar-list">
           <li className="sidebar-list-item active">
