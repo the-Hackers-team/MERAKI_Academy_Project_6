@@ -25,7 +25,7 @@ const Subcriptions = () => {
 
   const getAllvideossubscripes = () => {
     axios
-      .get("https://localhost:5000/subscription/mySubsciption", {
+      .get("http://localhost:5000/subscription/mySubsciption", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

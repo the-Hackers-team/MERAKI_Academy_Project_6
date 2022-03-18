@@ -47,7 +47,7 @@ const removeFromMySubscription = (req, res) => {
 
 const getMySubscriptionChannels = (req, res) => {
   const userId = req.token.userId;
-  const query = `select users.id,firstName,lastName,users.user_image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0 `;
+  const query = `select users.id,video_views,firstName,videos.publish_date,description,videos.id, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -62,6 +62,7 @@ const getMySubscriptionChannels = (req, res) => {
     }
   });
 };
+///select users.id,firstName,lastName,users.user_image from subscriptions INNER JOIN users ON users.id = subscriptions.chanel_id where user_id=? is_deleted = 0
 const getAllvideossubscripes = (req, res) => {
   const userId = req.token.userId;
   const query = `select users.id,video_views,firstName,videos.publish_date,description,videos.id, lastName,users.user_image ,video_link,videos.image,title from subscriptions inner join users on subscriptions.chanel_id = users.id inner join videos on videos.user_id = users.id where subscriptions.user_id=? `;

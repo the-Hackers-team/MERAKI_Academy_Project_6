@@ -91,7 +91,7 @@ const Sidebar = ({ sideClick }) => {
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/mySubscription" className="sidebar-link">
               <svg
                 className="sidebar-icon"
                 viewBox="0 0 24 24"
@@ -102,7 +102,7 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M19 9H2v2h17V9zm0-4H2v2h17V5zM2 15h13v-2H2v2zm15-2v6l5-3-5-3z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Playlists</div>
+              <div className="hidden-sidebar">Subscriptions</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
