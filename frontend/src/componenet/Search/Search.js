@@ -9,13 +9,26 @@ import moment from "moment";
 const menuIcon = document.querySelector(".logo");
 const Search = () => {
   const navigate = useNavigate();
+  const [allVideos, setAllVideos] = useState([]);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
       token: state.loginReducer.token,
     };
   });
-
+  const getAllVideos = () => {
+    axios
+      .get(`http://localhost:5000/video/all`)
+      .then((response) => {
+        setAllVideos(response.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getAllVideos();
+  });
   return (
     <div className="videos">
       <Categories />
