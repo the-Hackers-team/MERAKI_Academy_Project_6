@@ -134,15 +134,22 @@ textarea {
 }
 
 .btn {
-  padding: 10px 30px;
-  text-transform: capitalize;
+  background: red;
   color: #fff;
-  background: #ff0000;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  margin-right: 10px;
+  padding: 8px 30px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
   cursor: pointer;
+  background-color: #c00;
+  border-radius: 2px;
+  color: #fff;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  flex-direction: row;
+  
 }
 
 #save-btn {

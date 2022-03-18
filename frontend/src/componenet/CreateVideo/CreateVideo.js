@@ -127,12 +127,11 @@ const CreateVideo = () => {
           >
             upload Video
           </button>
-          {/* <button className="btn" id="save-btn">
-      save draft
-    </button> */}
+         
         </div>
       </div>
     </div>
+    
   );
 };
 
