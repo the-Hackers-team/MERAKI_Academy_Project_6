@@ -215,7 +215,7 @@ const Register = () => {
           register();
         }}
       >
-        <h2 class="title"> Sign Up</h2>
+        <h2 class="title-sign"> Sign Up</h2>
 
         <div class="email-login">
           <label for="First Name">

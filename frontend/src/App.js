@@ -10,7 +10,7 @@ import UpdateAnVideoById from "./componenet/updateVideo/updateVideo.js";
 import { Routes, Route, Link } from "react-router-dom";
 import Register from "./componenet/signup/signup";
 import Profile from "./componenet/profile/profile.js";
-import CreateNewVideo from "./componenet/CreateNewVideo/createNewVideos.js";
+import CreateVideo from "./componenet/CreateVideo/CreateVideo.js";
 import LikedVideos from "./componenet/LikedVideos/LikedVideos";
 import Subcriptions from "./componenet/subscriptions/subscriptions";
 import WatchLater from "./componenet/watchLater/watchLater";
@@ -46,7 +46,7 @@ function App() {
 
 
         <Route path="/profile" element={<Profile />} />
-        <Route path="/create" element={<CreateNewVideo />} />
+        <Route path="/create" element={<CreateVideo />} />
 
         <Route path="/likedVideos" element={<LikedVideos />} />
 
