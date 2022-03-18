@@ -126,3 +126,7 @@
   background-color: white;
   z-index: 999;
 }
+
+.dropdown-item{
+  cursor: pointer;
+}
