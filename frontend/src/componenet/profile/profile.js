@@ -98,7 +98,7 @@ const Profile = () => {
                 <span className="home-videos-playList3">
                   {profile.firstName}
                 </span>
-                <span className="home-videos-playList2">
+                <span className="home-videos-playList3">
                   {profile.lastName}
                 </span>
               </div>
