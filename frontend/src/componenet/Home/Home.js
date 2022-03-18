@@ -47,7 +47,7 @@ const Home = () => {
     getVideoBySubscriptios();
     getAllVideos();
   }, []);
-console.log(allVideos);
+
   return (
     <div className="videos">
       <Categories />
