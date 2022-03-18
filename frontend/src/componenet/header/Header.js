@@ -75,13 +75,7 @@ const Header = ({ setSideClick, sideClick, setSearch, search }) => {
           >
             {" "}
             <li>
-              <Link
-                className="dropdown-item"
-                to="#"
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
+              <Link className="dropdown-item" to="/profile">
                 New Video...
               </Link>
             </li>{" "}
@@ -91,30 +85,22 @@ const Header = ({ setSideClick, sideClick, setSearch, search }) => {
               </Link>
             </li>{" "}
             <li>
-              <Link
-                className="dropdown-item"
-                to="#"
-                onClick={() => {
-                  navigate("/profile");
-                }}
-              >
+              <Link className="dropdown-item" to="/profile">
                 Profile
               </Link>
             </li>{" "}
             <li>
               <hr className="dropdown-divider" />
             </li>{" "}
-            <li>
-              <Link
-                className="dropdown-item"
-                to="#"
-                onClick={() => {
-                  localStorage.clear();
-                  navigate("/login");
-                }}
-              >
-                Sign out
-              </Link>
+            <li
+              className="dropdown-item"
+              to="#"
+              onClick={() => {
+                window.localStorage.clear();
+                navigate("/login");
+              }}
+            >
+              Sign out
             </li>{" "}
           </ul>{" "}
         </div>{" "}
