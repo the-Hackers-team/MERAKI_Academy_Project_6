@@ -39,7 +39,7 @@ const createNewVideo = (req, res) => {
 //create controller for getAllVideos
 const getChannelVideos = (req, res) => {
   const userId = req.params.id;
-  const query = `select * from videos  where is_deleted = 0 and user_id =?`;
+  const query = `SELECT title,videos.id,description,videos.publish_date,video_link,firstName,lastName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM videos INNER JOIN users ON users.id=videos.user_id where users.id = ? and videos.is_deleted =0 and users.is_deleted = 0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -54,7 +54,7 @@ const getChannelVideos = (req, res) => {
     }
   });
 };
-//create controller to get all videos
+//create controller to get all videos //select * from videos  where is_deleted = 0 and user_id =?
 const getallVideos = (req, res) => {
   const query = `SELECT title,videos.id,description,videos.publish_date,video_link,firstName,lastName,user_id,Likes ,Dislikes,users.user_image,videos.image,video_views,category FROM users INNER JOIN videos ON users.id=videos.user_id where   videos.is_deleted =0 and videos.is_deleted =0 and users.is_deleted = 0`;
 
