@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import "./updateVideo.css";
-
+import CloudinaryVideo from "../cloudinaryVideo/CloudinaryVideo";
 toast.configure();
 const UpdateAnVideoById = () => {
   const [title, setTitle] = useState("");
