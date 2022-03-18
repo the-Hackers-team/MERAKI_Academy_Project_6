@@ -12,7 +12,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   //create state for all videos
-  const [allVideos, setAllVideos] = useState([])
+  const [allVideos, setAllVideos] = useState([]);
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -33,11 +33,14 @@ const Home = () => {
       .catch((err) => {});
   };
 
-  const getAllVideos = ()=>{
-    axios.get(`http://localhost:5000/`)
-  }
+  const getAllVideos = () => {
+    axios.get(`http://localhost:5000/video/all`).then((response)=>{
+      console.log(response.data.results);
+    }).catch((err)=>{console.log(err);})
+  };
   useEffect(() => {
     getVideoBySubscriptios();
+    getAllVideos()
   }, []);
 
   return (
@@ -49,10 +52,12 @@ const Home = () => {
         {videos &&
           videos.map((video) => {
             return (
-              <div className="video" onClick={() => {
-                navigate(`/video/${video.id}`)
-                
-              }}>
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
                 <div className="video__thumbnail">
                   <img src={video.image} alt="" />
                 </div>
@@ -63,7 +68,10 @@ const Home = () => {
                   <div className="title">
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                    <span>{video.video_views} • {moment(video.publish_date).fromNow()}</span>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -75,10 +83,12 @@ const Home = () => {
         {videos &&
           videos.map((video) => {
             return (
-              <div className="video" onClick={() => {
-                navigate(`/video/${video.id}`)
-                
-              }}>
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
                 <div className="video__thumbnail">
                   <img src={video.image} alt="" />
                 </div>
@@ -89,7 +99,10 @@ const Home = () => {
                   <div className="title">
                     <h3>{video.title}</h3>
                     <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                    <span>{video.video_views} • {moment(video.publish_date).fromNow()}</span>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
                   </div>
                 </div>
               </div>

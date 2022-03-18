@@ -54,6 +54,24 @@ const getChannelVideos = (req, res) => {
     }
   });
 };
+//create controller to get all videos
+const getallVideos = (req, res) => {
+  const userId = req.params.id;
+  const query = `select * from videos  where is_deleted = 0`;
+ 
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res
+        .status(404)
+        .json({ success: false, message: "server error", err: err });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: `All videos`, results: result });
+    }
+  });
+};
 
 //create controller for getAnVideoById
 
@@ -332,7 +350,7 @@ module.exports = {
   deleteAnVideoByUserId,
   updateAnVideoById,
   ///////////////////////
-
+  getallVideos,
   addLikeOnVideo,
   removedisLikeVideo,
   removeLikeOnVideo,
