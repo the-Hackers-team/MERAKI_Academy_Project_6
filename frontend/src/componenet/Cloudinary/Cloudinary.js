@@ -18,6 +18,7 @@ const Cloudinary = ({ setImage }) => {
       .then((res) => {
         setFilelink(res.data.secure_url);
         setImage(res.data.secure_url);
+      
       })
       .catch((err) => {
         console.log(err.response);
