@@ -98,11 +98,12 @@ function App() {
               <CreateVideo />
             ) : (
               <div class="admin">
-                unauthorized
+                <div>
                 <img
                   src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
-                  style={{ width: "40%", height: " 40%" }}
+                  style={{ width: "40%", height: " 40%" ,display: "flex",flexdirection:"row",alignItems:"center"}}
                 />
+                </div>
               </div>
             )
           }
