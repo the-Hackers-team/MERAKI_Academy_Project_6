@@ -30,7 +30,7 @@ const createNewComment = (req, res) => {
 const updateCommentById = (req, res) => {
   const commentId = req.params.id;
   const { comment } = req.body;
-  const query = `update comments set comment = ? where id = ? And is_deleted = 0`;
+  const query = `update comments set comment = ? where id = ? `;
   const data = [comment, commentId];
   connection.query(query, data, (err, result) => {
     if (err) {
