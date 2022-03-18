@@ -106,7 +106,7 @@ const Sidebar = ({ sideClick }) => {
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/likedVideos" className="sidebar-link">
               <svg
                 viewBox="0 0 24 24"
                 preserveAspectRatio="xMidYMid meet"
@@ -117,11 +117,11 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Analytics</div>
+              <div className="hidden-sidebar">Liked Videos</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
-            <Link to="#" className="sidebar-link">
+            <Link to="/watchLater" className="sidebar-link">
               <svg
                 viewBox="0 0 24 24"
                 preserveAspectRatio="xMidYMid meet"
@@ -132,7 +132,7 @@ const Sidebar = ({ sideClick }) => {
                   <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path>
                 </g>
               </svg>
-              <div className="hidden-sidebar">Comments</div>
+              <div className="hidden-sidebar">Watch Later</div>
             </Link>
           </li>
           <li className="sidebar-list-item">
