@@ -6,11 +6,12 @@ import { useNavigate, useEffect, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Dropdown } from "react-bootstrap";
 
 import Swal from "sweetalert2";
 import Cloudinary from "../Cloudinary/Cloudinary";
 import CloudinaryVideo from "../cloudinaryVideo/CloudinaryVideo";
-import "./CreateVideo.css"
+import "./CreateVideo.css";
 toast.configure();
 const CreateVideo = () => {
   const [title, setTitle] = useState("");
@@ -84,14 +85,96 @@ const CreateVideo = () => {
 
         <br />
         <br />
-        <textarea
+        {/* <textarea
           className="text-area"
           id="tags"
           placeholder="Enter categories here, for example - cars, Electonics, Clothes, "
           onChange={(e) => {
             setcategory(e.target.value);
           }}
-        ></textarea>
+        ></textarea> */}
+        <Dropdown className="drop">
+          <Dropdown.Toggle
+            variant="success"
+            id="dropdown-basic"
+            className="drop-btn"
+          >
+            category
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Educational Videos`);
+              }}
+            >
+              Educational Videos
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Unboxing Videos`);
+              }}
+            >
+              Unboxing Videos
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Unboxing Videos`);
+              }}
+            >
+              Unboxing Videos
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Learning Videos`);
+              }}
+            >
+              Learning Videos
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Actions Films`);
+              }}
+            >
+              Actions Films
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Trailers`);
+              }}
+            >
+              Trailers
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Challenge Video`);
+              }}
+            >
+              Challenge Video
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Product Demo`);
+              }}
+            >
+              Product Demo
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Reaction Videos`);
+              }}
+            >
+              Reaction Videos
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                setcategory(`Video Blogs`);
+              }}
+            >
+              Video Blogs
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <div className="product-info">
           <p className="text">Video image</p>
 
@@ -128,11 +211,9 @@ const CreateVideo = () => {
           >
             upload Video
           </button>
-         
         </div>
       </div>
     </div>
-    
   );
 };
 

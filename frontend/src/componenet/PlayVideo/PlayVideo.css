@@ -8,6 +8,7 @@
 
 .play-container {
   padding-left: 2%;
+  
 }
 .row-video {
   display: flex;
@@ -17,6 +18,7 @@
 
 .play-video {
   flex-basis: 69%;
+ 
 }
 .right-sidebar-video {
   flex-basis: 30%;
@@ -154,6 +156,7 @@
   display: flex;
   align-items: center;
   margin: 30px 0;
+  min-width: 458px;
 }
 .add-comment img {
   width: 40px;

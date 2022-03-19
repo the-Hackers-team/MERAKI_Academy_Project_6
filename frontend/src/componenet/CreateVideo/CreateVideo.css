@@ -149,7 +149,6 @@ textarea {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   flex-direction: row;
-  
 }
 
 #save-btn {
@@ -187,4 +186,17 @@ textarea {
 
 .create-new-video-main {
   padding-top: 65px;
+}
+.drop-btn {
+  min-width: 100%;
+  margin-bottom: 30px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #c00 !important;
+  border-color: #c00 !important;
+
+}
+.btn-success:hover{
+  color: black !important;
 }
