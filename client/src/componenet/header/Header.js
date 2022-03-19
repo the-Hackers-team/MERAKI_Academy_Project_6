@@ -6,7 +6,7 @@ import Categories from "../Categories/Categories";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
-const Header = ({ setSideClick, sideClick, setSearch, search }) => {
+const Header = ({ setSideClick, sideClick, setSearch, search,setRightSearch }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -50,7 +50,11 @@ const Header = ({ setSideClick, sideClick, setSearch, search }) => {
 
             <i
               className="material-icons"
-              onClick={() => navigate(`/search/${search}`)}
+              onClick={() => {
+                
+                navigate(`/search/${search}` )
+             
+              setRightSearch(true)}}
             >
               search
             </i>
