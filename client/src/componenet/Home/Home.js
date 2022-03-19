@@ -58,9 +58,9 @@ const Home = ({ setChanelId }) => {
   return (
     <div className="videos">
       <Categories />
-      <h1>Recommended</h1>
+     {videos&&videos.length? <h1>Recommended</h1>:null}
 
-      <div className="videos__container border-botom">
+      {videos&&videos.length?<div className="videos__container border-botom">
         {videos &&
           videos.map((video) => {
             return (
@@ -90,7 +90,7 @@ const Home = ({ setChanelId }) => {
               </div>
             );
           })}
-      </div>
+      </div>:null}
       <h1 className="padding-top">All videos</h1>
       <div className="videos__container">
         {allVideos &&

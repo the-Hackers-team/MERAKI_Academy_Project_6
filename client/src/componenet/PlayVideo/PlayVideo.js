@@ -479,7 +479,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                                     deleteComment(comment.id);
                                   }}
                                 >
-                                  {isUpdating ? null : (
+                                  {isUpdating &&comment.id == updateId? null : (
                                     <i class="fas fa-trash"></i>
                                   )}
                                 </Link>
@@ -490,7 +490,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                                     setIsUpdating(!isUpdating);
                                   }}
                                 >
-                                  {isUpdating ? (
+                                  {isUpdating &&comment.id == updateId ? (
                                     <i class="fa fa-times" />
                                   ) : null}
                                 </Link>
@@ -504,7 +504,9 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
               </div>
             );
           })}
+          
         <div className="right-sidebar-video">
+        <h1>Related videos</h1>
           {chanelVideos &&
             chanelVideos.length &&
             chanelVideos.map((element) => {
@@ -514,7 +516,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                     to=""
                     className="small-thumbnail"
                     onClick={() => {
-                      navigate(`/video/${video.id}`);
+                      navigate(`/video/${element.id}`);
                       setChanelId(video.id);
                     }}
                   >

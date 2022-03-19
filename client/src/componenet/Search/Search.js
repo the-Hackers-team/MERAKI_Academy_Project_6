@@ -37,7 +37,7 @@ const Search = ({rightSearch,setRightSearch}) => {
       <Categories />
 
       <h1>Search results for {search}</h1>
-      {rightSearch? (
+    
         <div className="videos__container">
           {allVideos &&
             allVideos
@@ -85,11 +85,7 @@ const Search = ({rightSearch,setRightSearch}) => {
                 );
               })}
         </div>
-      ) : (
-        <div className="videos__container">
-          <img src="https://stories.freepiklabs.com/storage/23239/404-error-page-not-found-with-people-connecting-a-plug-rafiki-2841.png" />
-        </div>
-      )}
+     
     </div>
   );
 };
