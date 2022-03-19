@@ -21,6 +21,7 @@ const CreateVideo = () => {
   const [video_link, setvideo_link] = useState("");
 
   const [isVideoUploaded,setisVideoUploaded] = useState(false)
+  const [isLoading,setisLoading] = useState(false)
 
   const state = useSelector((state) => {
     return {
@@ -186,7 +187,7 @@ const CreateVideo = () => {
         <div className="product-info">
           <p className="text">Video Link</p>
 
-          <CloudinaryVideo setVideo={setvideo_link} setisVideoUploaded={setisVideoUploaded} />
+          <CloudinaryVideo setVideo={setvideo_link} setisVideoUploaded={setisVideoUploaded} setisLoading={setisLoading} />
         </div>
 
         <div className="buttons">
@@ -213,6 +214,7 @@ const CreateVideo = () => {
           >
             upload Video
           </button>:null}
+          {isLoading?<div class="loader"></div>:null}
         </div>
       </div>
     </div>
