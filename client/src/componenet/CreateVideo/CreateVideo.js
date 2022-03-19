@@ -20,8 +20,8 @@ const CreateVideo = () => {
   const [category, setcategory] = useState("");
   const [video_link, setvideo_link] = useState("");
 
-  const [isVideoUploaded,setisVideoUploaded] = useState(false)
-  const [isLoading,setisLoading] = useState(false)
+  const [isVideoUploaded, setisVideoUploaded] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   const state = useSelector((state) => {
     return {
@@ -187,34 +187,42 @@ const CreateVideo = () => {
         <div className="product-info">
           <p className="text">Video Link</p>
 
-          <CloudinaryVideo setVideo={setvideo_link} setisVideoUploaded={setisVideoUploaded} setisLoading={setisLoading} />
+          <CloudinaryVideo
+            setVideo={setvideo_link}
+            setisVideoUploaded={setisVideoUploaded}
+            setisLoading={setisLoading}
+            video_link={video_link}
+          />
         </div>
 
         <div className="buttons">
-         {isVideoUploaded ?<button
-            className="btn"
-            id="add-btn"
-            onClick={() => {
-              Swal.fire({
-                title: "Do you want to save the changes?",
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: "Save",
-                confirmButtonColor: "#4267b3",
-                denyButtonText: `Don't save`,
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  createNewVideo();
-                  Swal.fire("Saved!", "", "success");
-                } else if (result.isDenied) {
-                  Swal.fire("Changes are not saved", "", "info");
-                }
-              });
-            }}
-          >
-            upload Video
-          </button>:null}
-          {isLoading?<div class="loader"></div>:null}
+          {isVideoUploaded ? (
+            <button
+              style={{ transition: "1000ms ease out" }}
+              className="btn"
+              id="add-btn"
+              onClick={() => {
+                Swal.fire({
+                  title: "Do you want to save the changes?",
+                  showDenyButton: true,
+                  showCancelButton: true,
+                  confirmButtonText: "Save",
+                  confirmButtonColor: "#4267b3",
+                  denyButtonText: `Don't save`,
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    createNewVideo();
+                    Swal.fire("Saved!", "", "success");
+                  } else if (result.isDenied) {
+                    Swal.fire("Changes are not saved", "", "info");
+                  }
+                });
+              }}
+            >
+              upload Video
+            </button>
+          ) : null}
+          {isLoading ? <div class="loader"></div> : null}
         </div>
       </div>
     </div>
