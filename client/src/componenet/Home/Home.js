@@ -31,6 +31,7 @@ const Home = ({ setChanelId }) => {
       })
       .then((response) => {
         setVideos(response.data.results);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -67,8 +68,8 @@ const Home = ({ setChanelId }) => {
               <div
                 className="video"
                 onClick={() => {
+                  setChanelId(video.user_id);
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.id);
                 }}
               >
                 <div className="video__thumbnail">
@@ -100,7 +101,7 @@ const Home = ({ setChanelId }) => {
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.id);
+                  setChanelId(video.user_id);
                 }}
               >
                 <div className="video__thumbnail">

@@ -7,7 +7,9 @@ const addToSubscription = (req, res) => {
 
   const data = [chanelId, userId];
   connection.query(query, data, (err, result) => {
+ 
     if (err) {
+      console.log(err);
       return res.status(500).json({
         success: false,
         message: `Something went wrong in subscription`,
