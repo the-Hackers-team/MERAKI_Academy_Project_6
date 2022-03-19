@@ -39,6 +39,18 @@ const PlayVideo = ({ chanelId }) => {
   //create state to render on comment
   const [iscomment, setIscomment] = useState(true);
 
+  //create state to render on view
+
+  const [isView, setIsView] = useState(false);
+
+  //create state to update click
+  const [updateId, setupdateId] = useState(0);
+
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  //create state for update comment
+  const [updatedComment, setUpdatedComment] = useState("");
+
   const decode = state.token && jwt_decode(state.token);
   let user_id = decode && decode.userId;
   let user_img = decode && decode.image;
@@ -46,7 +58,7 @@ const PlayVideo = ({ chanelId }) => {
   let userLastName = decode && decode.lastName;
   // const chanelId = video.length && video[0].user_id;
   //create state for chanelId
-
+  console.log(comments);
   const getVideoById = () => {
     axios
       .get(`http://localhost:5000/video/search_1?id=${id}`, {
@@ -208,7 +220,6 @@ const PlayVideo = ({ chanelId }) => {
       .get(`http://localhost:5000/subscription/subscribers/${chanelId}`)
       .then((response) => {
         setNumberOfScribers(response.data.results);
-        
       })
       .catch((err) => {
         console.log(err);
@@ -221,6 +232,7 @@ const PlayVideo = ({ chanelId }) => {
         .put(`http://localhost:5000/video/addview/${chanelId}`, {}, {})
         .then((response) => {
           console.log(response);
+          setIsView(!isView);
         })
         .catch((err) => {
           console.log(err);
@@ -228,10 +240,48 @@ const PlayVideo = ({ chanelId }) => {
     }
   };
 
+  const editComment = (id) => {
+    axios
+      .put(
+        `http://localhost:5000/comment/${id}`,
+        { comment: updatedComment },
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteComment = (id) => {
+    axios
+      .delete(
+        `http://localhost:5000/comment/delete_1/${id}`,
+
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // console.log(comments);
   useEffect(() => {
     getVideoById();
     getChanelVideos();
-  }, [iscomment]);
+  }, [iscomment, isView]);
   useEffect(() => {
     getAllComment();
   }, [iscomment]);
@@ -364,18 +414,61 @@ const PlayVideo = ({ chanelId }) => {
                                   {moment(comment.publish_date).fromNow()}
                                 </span>
                               </h3>
-                              <p>
+
+                              {comment.id == updateId ? (
+                                <input
+                                  defaultValue={comment.comment}
+                                  onChange={(e) => {
+                                    setUpdatedComment(e.target.value);
+                                  }}
+                                />
+                              ) : (
                                 <p>{comment.comment}</p>
-                              </p>
+                              )}
                             </div>
-                            <div class="section__controls">
-                              <Link to="#">
-                                <i class="fas fa-edit"></i>
-                              </Link>
-                              <Link to="#">
-                                <i class="fas fa-trash"></i>
-                              </Link>
-                            </div>
+                            {user_id == comment.user_id ? (
+                              <div class="section__controls">
+                                <Link to="#">
+                                  <i
+                                    class="fas fa-edit"
+                                    onClick={
+                                      isUpdating
+                                        ? () => {
+                                            editComment(comment.id);
+                                            setupdateId(0);
+                                            setIsUpdating(!isUpdating);
+                                            setIscomment(!iscomment);
+                                          }
+                                        : () => {
+                                            setupdateId(comment.id);
+                                            setIsUpdating(!isUpdating);
+                                          }
+                                    }
+                                  ></i>
+                                </Link>
+                                <Link
+                                  to="#"
+                                  onClick={() => {
+                                    deleteComment(comment.id);
+                                  }}
+                                >
+                                  {isUpdating ? null : (
+                                    <i class="fas fa-trash"></i>
+                                  )}
+                                </Link>
+                                <Link
+                                  to="#"
+                                  onClick={() => {
+                                    setupdateId(0);
+                                    setIsUpdating(!isUpdating);
+                                  }}
+                                >
+                                  {isUpdating ? (
+                                    <i class="fa fa-times" />
+                                  ) : null}
+                                </Link>
+                              </div>
+                            ) : null}
                           </div>
                         );
                       })}

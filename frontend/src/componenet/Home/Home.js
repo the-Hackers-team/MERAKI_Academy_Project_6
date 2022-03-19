@@ -46,6 +46,9 @@ const Home = ({setChanelId}) => {
         console.log(err);
       });
   };
+
+
+
   useEffect(() => {
     getVideoBySubscriptios();
     getAllVideos();
@@ -64,7 +67,7 @@ console.log(videos);
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.user_id)
+                  setChanelId(video.id)
                 }}
               >
                 <div className="video__thumbnail">
@@ -96,7 +99,7 @@ console.log(videos);
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.user_id)
+                  setChanelId(video.id)
                 }}
               >
                 <div className="video__thumbnail">
