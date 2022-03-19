@@ -10,13 +10,13 @@ const CloudinaryVideo = ({ setVideo }) => {
     data.append("file", videoFile);
     data.append("upload_preset", "y3fujtpr");
     data.append("cloud_name", "the-debuggers");
-
+    console.log(11111);
     axios
       .post(`https://api.cloudinary.com/v1_1/the-debuggers/video/upload`, data)
       .then((res) => {
         setFilelink(res.data.secure_url);
         setVideo(res.data.secure_url);
-        
+        console.log(res.data.secure_url);
       })
       .catch((err) => {
         console.log(err.response);

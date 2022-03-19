@@ -30,7 +30,7 @@ const createNewComment = (req, res) => {
 const updateCommentById = (req, res) => {
   const commentId = req.params.id;
   const { comment } = req.body;
-  const query = `update comments set comment = ? where id = ? `;
+  const query = `update comments set comment = ? where id = ? and is_deleted =0`;
   const data = [comment, commentId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -83,7 +83,7 @@ const deleteCommentById = (req, res) => {
 
 const deleteCommentByUserId = (req, res) => {
   const userId = req.params.user_id;
-  const query = `update comments set is_deleted=1 where user_id=?`;
+  const query = `update comments set is_deleted=1 where user_id=?  and is_deleted =0`;
   const data = [userId];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -108,7 +108,7 @@ const deleteCommentByUserId = (req, res) => {
 /// create get all comment function/backend
 const getAllComments = (req, res) => {
   const videoId = req.params.id;
-  const query = `select firstName,lastName,users.user_image,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join videos on comments.video_id = videos.id where videos.id =? `;
+  const query = `select firstName,lastName,users.user_image,comments.user_id,comments.id,comment,comments.publish_date from comments inner join users on comments.user_id = users.id inner join videos on comments.video_id = videos.id where videos.id =? and comments.is_deleted =0 `;
   const data = [videoId];
   connection.query(query, data, (err, result) => {
     if (err) {
