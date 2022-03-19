@@ -96,6 +96,7 @@ const WatchLater = () => {
                   </div>
                   <div className="remove-button-watchLater">
                     <button
+                      className="comment-btn-5"
                       onClick={() => {
                         deleteFromWatchLaterVideos(video.id);
                       }}
