@@ -105,8 +105,10 @@ const Header = ({ setSideClick, sideClick, setSearch, search }) => {
                 className="dropdown-item"
                 to="#"
                 onClick={() => {
+                  
                   window.localStorage.clear();
                   navigate("/login");
+                  window.location.reload();
                 }}
               >
                 Sign out

@@ -7,12 +7,11 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import moment from "moment";
 const menuIcon = document.querySelector(".logo");
-const Home = ({setChanelId}) => {
-  
+const Home = ({ setChanelId }) => {
   //Navigate initialization
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
-  
+
   //create state for all videos
   const [allVideos, setAllVideos] = useState([]);
 
@@ -47,13 +46,13 @@ const Home = ({setChanelId}) => {
       });
   };
 
-
-
   useEffect(() => {
-    getVideoBySubscriptios();
     getAllVideos();
   }, []);
-console.log(videos);
+  useEffect(() => {
+    getVideoBySubscriptios();
+  });
+  console.log(videos);
   return (
     <div className="videos">
       <Categories />
@@ -67,7 +66,7 @@ console.log(videos);
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.id)
+                  setChanelId(video.id);
                 }}
               >
                 <div className="video__thumbnail">
@@ -99,7 +98,7 @@ console.log(videos);
                 className="video"
                 onClick={() => {
                   navigate(`/video/${video.id}`);
-                  setChanelId(video.id)
+                  setChanelId(video.id);
                 }}
               >
                 <div className="video__thumbnail">
