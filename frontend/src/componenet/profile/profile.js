@@ -196,7 +196,7 @@ const Profile = () => {
                             </span>
                           </div>
                         </div>
-                        <div>
+                        <div className="profile-btn">
                           <button
                             className="all-videos-video"
                             onClick={() => {

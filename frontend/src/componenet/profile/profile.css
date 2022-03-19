@@ -19,11 +19,12 @@
 
 .container-above-div {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 80rem;
-  justify-content: flex-start;
-  padding-left: 15rem;
+    flex-direction: row;
+
+    /* gap: 12rem; */
+    justify-content: space-between;
+    padding-left: 15rem;
+    padding-right: 5rem;
 }
 
 .image-name {
@@ -225,7 +226,7 @@
   font-size: 17px;
   display: flex;
   justify-content: center;
-  width: 4rem;
+  
   cursor: pointer;
   font-weight: bold transparent;
   padding-bottom: 1rem;
@@ -280,4 +281,12 @@
 
 .videos-profile {
   padding-top: 3rem;
+}
+.all-videos-video{
+  margin-right:20px
+}
+.profile-btn{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px
 }
