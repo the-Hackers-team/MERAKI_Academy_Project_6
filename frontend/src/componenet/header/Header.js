@@ -5,7 +5,9 @@ import logo from "./youtube-logo.png";
 import Categories from "../Categories/Categories";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../reducer/login/index";
 const Header = ({ setSideClick, sideClick, setSearch, search }) => {
+  const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -105,8 +107,9 @@ const Header = ({ setSideClick, sideClick, setSearch, search }) => {
                 className="dropdown-item"
                 to="#"
                 onClick={() => {
-                  
+                  dispatch(logout());
                   window.localStorage.clear();
+
                   navigate("/login");
                   window.location.reload();
                 }}

@@ -32,7 +32,7 @@ const Home = ({ setChanelId }) => {
       .then((response) => {
         setVideos(response.data.results);
       })
-      .catch((err) => {});
+      .catch((err) => {console.log(err);});
   };
 
   const getAllVideos = () => {
@@ -51,8 +51,8 @@ const Home = ({ setChanelId }) => {
   }, []);
   useEffect(() => {
     getVideoBySubscriptios();
-  });
-  console.log(videos);
+  },[]);
+ 
   return (
     <div className="videos">
       <Categories />

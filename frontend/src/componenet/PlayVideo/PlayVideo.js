@@ -413,12 +413,10 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                     <div className="add-comment">
                       <img src={user_img} alt="" />
                       <input
-                     
                         type="text"
                         placeholder="Write comments..."
                         onChange={(e) => {
                           setComment(e.target.value);
-                          
                         }}
                       />
                       <button
@@ -426,7 +424,6 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                         onClick={() => {
                           createComment();
                           setIscomment(!iscomment);
-                          // this.refs.comment.value = '';
                         }}
                       >
                         comment
@@ -480,7 +477,6 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                                   to="#"
                                   onClick={() => {
                                     deleteComment(comment.id);
-                                    setIscomment(!iscomment);
                                   }}
                                 >
                                   {isUpdating ? null : (
