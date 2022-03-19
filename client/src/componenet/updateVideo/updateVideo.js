@@ -21,6 +21,10 @@ const UpdateAnVideoById = () => {
   const [category, setcategory] = useState("");
   const [video_link, setvideo_link] = useState("");
 
+  //// cretae ternary for the loading when the video uploaded
+  const [isVideoUploaded, setisVideoUploaded] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.loginReducer.isLoggedIn,
@@ -363,11 +367,13 @@ const UpdateAnVideoById = () => {
         <div className="product-info">
           <p className="text">Video Link</p>
 
-          <CloudinaryVideo setVideo={setvideo_link} />
+          <CloudinaryVideo setVideo={setvideo_link} setisVideoUploaded={setisVideoUploaded}
+            setisLoading={setisLoading}
+            video_link={video_link}/>
         </div>
 
         <div className="buttons">
-          <button
+          {isVideoUploaded?<button
             className="btn"
             id="add-btn"
             onClick={() => {
@@ -389,10 +395,8 @@ const UpdateAnVideoById = () => {
             }}
           >
             Update Video
-          </button>
-          {/* <button className="btn" id="save-btn">
-      save draft
-    </button> */}
+          </button>:null}
+          {isLoading ? <div class="loader"></div> : null}
         </div>
       </div>
     </div>
