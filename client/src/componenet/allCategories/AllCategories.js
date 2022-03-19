@@ -16,7 +16,7 @@ const AllCategories = () => {
 
   const getAllVideosByCategories = () => {
     axios
-      .get(`https://localhost:5000/video/search_2?category=${category}`)
+      .get(`/video/search_2?category=${category}`)
       .then((response) => {
         setallVideos(response.data.results);
       })
