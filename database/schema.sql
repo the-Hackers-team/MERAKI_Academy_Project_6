@@ -1,6 +1,6 @@
-DROP DATABASE sql11480073;
-CREATE DATABASE sql11480073 ;
-USE  sql11480073 ;
+DROP DATABASE MERAKI_Academy_Project_6;
+CREATE DATABASE MERAKI_Academy_Project_6 ;
+USE  MERAKI_Academy_Project_6 ;
 
 CREATE TABLE roles (
 id INT AUTO_INCREMENT NOT NULL,
@@ -85,3 +85,14 @@ is_deleted TINYINT DEFAULT 0,
 PRIMARY KEY (id)
 )
 
+-- --------------------------------------------------------
+
+-- CREATE TABLE subscriptions2 (
+-- id INT AUTO_INCREMENT NOT NULL,
+-- video_id INT,
+-- user_id INT,
+-- FOREIGN KEY (video_id) REFERENCES videos(id),
+-- FOREIGN KEY (user_id) REFERENCES users(id),
+-- is_deleted TINYINT DEFAULT 0,
+-- PRIMARY KEY (id)
+-- )
