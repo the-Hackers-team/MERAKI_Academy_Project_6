@@ -41,8 +41,9 @@ const Login = () => {
         .post(`/user/login`, userLogin)
         .then((response) => {
           if (response.data.success) {
-            localStorage.setItem("token", response.data.token);
             dispatch(login(response.data.token));
+            localStorage.setItem("token", response.data.token);
+            navigate("/");
           }
         })
         .catch((err) => {
@@ -156,7 +157,7 @@ const Login = () => {
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     onClick={() => {
                       loginFunction();
-                      navigate("/");
+                     
                     }}
                   >
                     Login
