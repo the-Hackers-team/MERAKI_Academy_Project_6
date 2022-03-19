@@ -24,6 +24,7 @@ const Sidebar = ({ sideClick }) => {
       })
       .then((response) => {
         setUser(response.data.results);
+        console.log(response.data.results);
       })
       .catch((err) => {
         console.log(err);
