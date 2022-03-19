@@ -420,7 +420,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                         }}
                       />
                       <button
-                        className="comment"
+                        className="comment-btn-5"
                         onClick={() => {
                           createComment();
                           setIscomment(!iscomment);
