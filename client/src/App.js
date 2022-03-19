@@ -35,6 +35,7 @@ function App() {
 
     //create state for search
   };
+  const [rightSearch, setRightSearch] = useState(true)
   const [search, setSearch] = useState("");
   const [chanelId, setChanelId] = useState(0);
   return (
@@ -44,6 +45,7 @@ function App() {
         sideClick={sideClick}
         setSearch={setSearch}
         search={search}
+        setRightSearch={setRightSearch}
       />
       <Routes>
         <Route
@@ -152,7 +154,7 @@ function App() {
             <div className="mainBody">
               <Sidebar sideClick={sideClick} />
 
-              <Search />
+              <Search rightSearch={rightSearch} setRightSearch={setRightSearch} />
             </div>
           }
         />
