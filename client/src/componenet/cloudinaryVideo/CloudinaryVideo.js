@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-const CloudinaryVideo = ({ setVideo ,setisVideoUploaded,setisLoading,video_link}) => {
-  
+const CloudinaryVideo = ({
+  setVideo,
+  setisVideoUploaded,
+  setisLoading,
+  video_link,
+}) => {
   const [file, setFile] = useState();
   const [filelink, setFilelink] = useState("Choose File");
   const VideoUpload = (videoFile) => {
@@ -26,7 +30,6 @@ const CloudinaryVideo = ({ setVideo ,setisVideoUploaded,setisLoading,video_link}
       });
   };
 
-  
   return (
     <div className="upload">
       <input
@@ -40,7 +43,7 @@ const CloudinaryVideo = ({ setVideo ,setisVideoUploaded,setisLoading,video_link}
         onClick={() => {
           VideoUpload(file);
           setisLoading(true);
-          if(video_link){
+          if (video_link) {
             setisLoading(false);
           }
         }}
