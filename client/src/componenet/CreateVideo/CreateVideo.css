@@ -195,19 +195,12 @@ textarea {
   color: #fff;
   background-color: #c00 !important;
   border-color: #c00 !important;
-
 }
-.btn-success:hover{
+.btn-success:hover {
   color: black !important;
 }
 
-
-
-
-
 /*  */
-
-
 
 /* .ring
 {
@@ -290,3 +283,29 @@ span:before
     transform:rotate(405deg);
   }
 } */
+
+.loader {
+  margin: auto;
+
+  border: 20px solid #eaf0f6;
+
+  border-radius: 50%;
+
+  border-top: 20px solid #ff7a59;
+
+  width: 200px;
+
+  height: 200px;
+
+  animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
