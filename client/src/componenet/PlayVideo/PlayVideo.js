@@ -477,6 +477,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                                   to="#"
                                   onClick={() => {
                                     deleteComment(comment.id);
+                                    setIscomment(!iscomment);
                                   }}
                                 >
                                   {isUpdating &&comment.id == updateId? null : (

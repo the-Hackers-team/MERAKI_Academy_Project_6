@@ -77,10 +77,7 @@ const ChannelDetails = () => {
               <div className="image-name">
                 <img src={profile.user_image} />
                 <span className="home-videos-playList3">
-                  {profile.firstName}
-                </span>
-                <span className="home-videos-playList2">
-                  {profile.lastName}
+                  {profile.firstName} {profile.lastName}
                 </span>
               </div>
               {/* <div className="videos-profile">
