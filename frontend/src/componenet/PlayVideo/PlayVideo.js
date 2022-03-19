@@ -258,6 +258,25 @@ const PlayVideo = ({ chanelId }) => {
         console.log(err);
       });
   };
+
+  const deleteComment = (id) => {
+    axios
+      .delete(
+        `http://localhost:5000/comment/delete_1/${id}`,
+
+        {
+          headers: {
+            Authorization: `Basic ${state.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   // console.log(comments);
   useEffect(() => {
     getVideoById();
@@ -427,7 +446,12 @@ const PlayVideo = ({ chanelId }) => {
                                     }
                                   ></i>
                                 </Link>
-                                <Link to="#">
+                                <Link
+                                  to="#"
+                                  onClick={() => {
+                                    deleteComment(comment.id);
+                                  }}
+                                >
                                   {isUpdating ? null : (
                                     <i class="fas fa-trash"></i>
                                   )}
