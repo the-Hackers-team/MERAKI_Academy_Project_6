@@ -361,7 +361,7 @@ const UpdateAnVideoById = () => {
         <div className="product-info">
           <p className="text">Video image</p>
 
-          <Cloudinary setImage={setimage} />
+          <Cloudinary setImage={setimage} setisVideoUploaded={setisVideoUploaded}/>
         </div>
 
         <div className="product-info">
