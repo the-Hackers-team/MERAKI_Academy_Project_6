@@ -7,11 +7,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
-
 import Swal from "sweetalert2";
 import Cloudinary from "../Cloudinary/Cloudinary";
 import CloudinaryVideo from "../cloudinaryVideo/CloudinaryVideo";
 import "./CreateVideo.css";
+
 toast.configure();
 const CreateVideo = () => {
   const [title, setTitle] = useState("");
@@ -19,6 +19,8 @@ const CreateVideo = () => {
   const [image, setimage] = useState("");
   const [category, setcategory] = useState("");
   const [video_link, setvideo_link] = useState("");
+
+  const [isVideoUploaded,setisVideoUploaded] = useState(false)
 
   const state = useSelector((state) => {
     return {
@@ -184,11 +186,11 @@ const CreateVideo = () => {
         <div className="product-info">
           <p className="text">Video Link</p>
 
-          <CloudinaryVideo setVideo={setvideo_link} />
+          <CloudinaryVideo setVideo={setvideo_link} setisVideoUploaded={setisVideoUploaded} />
         </div>
 
         <div className="buttons">
-          <button
+         {isVideoUploaded ?<button
             className="btn"
             id="add-btn"
             onClick={() => {
@@ -210,7 +212,7 @@ const CreateVideo = () => {
             }}
           >
             upload Video
-          </button>
+          </button>:null}
         </div>
       </div>
     </div>
