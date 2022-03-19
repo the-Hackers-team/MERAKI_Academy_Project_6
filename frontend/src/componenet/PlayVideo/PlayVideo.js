@@ -19,7 +19,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
       token: state.loginReducer.token,
     };
   });
-
+  const [showMore, setShowMore] = useState(false);
   //create state for video
 
   const [video, setVideo] = useState([]);
@@ -277,7 +277,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
         console.log(err);
       });
   };
-  // console.log(comments);
+  console.log(video);
   useEffect(() => {
     getVideoById();
     getChanelVideos();
@@ -362,24 +362,51 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
                     />
                     <div>
                       <p>
-                        {element.firstName}{" "}
+                        {element.firstName} {element.lastName}
                         <span className="material-icons">check_circle</span>
                       </p>
                       <span>{numberOfScribers.length} Subscribers</span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        subscribe();
-                        setIscomment(!iscomment);
-                      }}
-                    >
-                      Subscribe
-                    </button>
+                    {user_id == element.user_id ? null : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          subscribe();
+                          setIscomment(!iscomment);
+                        }}
+                      >
+                        Subscribe
+                      </button>
+                    )}
                   </div>
                   <div className="vid-description">
                     <p>{element.title}</p>
-                    <p>{element.description}</p>
+                    {showMore ? (
+                      <p> {element.description}</p>
+                    ) : (
+                      <p> {element.description.substring(-1, 65)}...</p>
+                    )}
+                    <Link to="#">
+                      {showMore ? (
+                        <p
+                          style={{ color: "black" }}
+                          onClick={() => {
+                            setShowMore(!showMore);
+                          }}
+                        >
+                          show less
+                        </p>
+                      ) : (
+                        <p
+                          style={{ color: "black" }}
+                          onClick={() => {
+                            setShowMore(!showMore);
+                          }}
+                        >
+                          show more
+                        </p>
+                      )}
+                    </Link>
                     <hr />
                     <h4>{comments.length} Comments</h4>
 
