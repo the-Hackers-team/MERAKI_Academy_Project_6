@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import "./PlayVideo.css";
 import moment from "moment";
-const PlayVideo = ({ chanelId }) => {
+const PlayVideo = ({ chanelId, setChanelId }) => {
   //params initialization
   const params = useParams();
   //get id from params
@@ -483,7 +483,14 @@ const PlayVideo = ({ chanelId }) => {
             chanelVideos.map((element) => {
               return (
                 <div className="side-video-list">
-                  <Link to="" className="small-thumbnail">
+                  <Link
+                    to=""
+                    className="small-thumbnail"
+                    onClick={() => {
+                      navigate(`/video/${video.id}`);
+                      setChanelId(video.id);
+                    }}
+                  >
                     <img src={element.image} alt="" />
                   </Link>
                   <div className="vid-info">
