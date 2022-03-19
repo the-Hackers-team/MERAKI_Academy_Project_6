@@ -53,7 +53,7 @@ const Register = () => {
         user_image,
       };
       axios
-        .post(`http://localhost:5000/user/register`, newUser)
+        .post(`/user/register`, newUser)
         .then((response) => {
           if (response.data.success) {
             notifyRegisterSuccess();

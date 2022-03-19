@@ -61,7 +61,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   console.log(comments);
   const getVideoById = () => {
     axios
-      .get(`http://localhost:5000/video/search_1?id=${id}`, {
+      .get(`/video/search_1?id=${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -79,7 +79,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
 
   const getAllVideosByChannelId = (chanelId) => {
     axios
-      .get(`http://localhost:5000/video/${chanelId}`, {
+      .get(`/video/${chanelId}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -96,7 +96,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const createComment = () => {
     axios
       .post(
-        `http://localhost:5000/comment/${id}`,
+        `/comment/${id}`,
         { comment },
         {
           headers: {
@@ -114,7 +114,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
 
   const getAllComment = () => {
     axios
-      .get(`http://localhost:5000/comment/${id}`, {
+      .get(`/comment/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -131,7 +131,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const addVideotosave = () => {
     axios
       .post(
-        `http://localhost:5000/watchlater/add/${id}`,
+        `/watchlater/add/${id}`,
         {},
         {
           headers: {
@@ -150,7 +150,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const addLikeOnVideo = () => {
     axios
       .post(
-        `http://localhost:5000/video/addLikeOnVideo/${id}`,
+        `/video/addLikeOnVideo/${id}`,
         {},
         {
           headers: {
@@ -169,7 +169,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const disLikeOnVideo = () => {
     axios
       .post(
-        `http://localhost:5000/video/addDisLikeOnVideo/${id}`,
+        `/video/addDisLikeOnVideo/${id}`,
         {},
         {
           headers: {
@@ -188,7 +188,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const subscribe = () => {
     axios
       .post(
-        `http://localhost:5000/subscription/add/${chanelId}`,
+        `/subscription/add/${chanelId}`,
         {},
         {
           headers: {
@@ -205,7 +205,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   };
   const getChanelVideos = () => {
     axios
-      .get(`http://localhost:5000/video/${chanelId}`)
+      .get(`/video/${chanelId}`)
       .then((response) => {
         setChanelVideos(response.data.results);
       })
@@ -217,7 +217,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
 
   const numSubscribtions = (chanelId) => {
     axios
-      .get(`http://localhost:5000/subscription/subscribers/${chanelId}`)
+      .get(`/subscription/subscribers/${chanelId}`)
       .then((response) => {
         setNumberOfScribers(response.data.results);
       })
@@ -229,7 +229,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const addView = () => {
     if (chanelId) {
       axios
-        .put(`http://localhost:5000/video/addview/${chanelId}`, {}, {})
+        .put(`/video/addview/${chanelId}`, {}, {})
         .then((response) => {
           console.log(response);
           setIsView(!isView);
@@ -243,7 +243,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const editComment = (id) => {
     axios
       .put(
-        `http://localhost:5000/comment/${id}`,
+        `/comment/${id}`,
         { comment: updatedComment },
         {
           headers: {
@@ -262,7 +262,7 @@ const PlayVideo = ({ chanelId, setChanelId }) => {
   const deleteComment = (id) => {
     axios
       .delete(
-        `http://localhost:5000/comment/delete_1/${id}`,
+        `/comment/delete_1/${id}`,
 
         {
           headers: {

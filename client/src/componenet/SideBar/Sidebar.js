@@ -17,7 +17,7 @@ const Sidebar = ({ sideClick }) => {
 
   const getUserById = () => {
     axios
-      .get(`http://localhost:5000/user/profile`, {
+      .get(`/user/profile`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

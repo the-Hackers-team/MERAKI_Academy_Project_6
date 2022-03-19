@@ -28,7 +28,7 @@ const WatchLater = () => {
 
   const getWatchLaterVideosByUserId = () => {
     axios
-      .get("http://localhost:5000/watchLater", {
+      .get("/watchLater", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -46,7 +46,7 @@ const WatchLater = () => {
 
   const deleteFromWatchLaterVideos = (id) => {
     axios
-      .delete(`http://localhost:5000/watchLater/delete/${id}`, {
+      .delete(`/watchLater/delete/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -68,7 +68,8 @@ const WatchLater = () => {
   return (
     <div className="videos">
       <div className="videos__container">
-        {watchLaterVideos&&watchLaterVideos.length &&
+        {watchLaterVideos &&
+          watchLaterVideos.length &&
           watchLaterVideos.map((video) => {
             return (
               <div

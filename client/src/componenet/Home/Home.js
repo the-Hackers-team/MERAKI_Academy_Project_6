@@ -24,7 +24,7 @@ const Home = ({ setChanelId }) => {
 
   const getVideoBySubscriptios = () => {
     axios
-      .get(`http://localhost:5000/subscription/videos`, {
+      .get(`/subscription/videos`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -32,12 +32,14 @@ const Home = ({ setChanelId }) => {
       .then((response) => {
         setVideos(response.data.results);
       })
-      .catch((err) => {console.log(err);});
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const getAllVideos = () => {
     axios
-      .get(`http://localhost:5000/video/all`)
+      .get(`/video/all`)
       .then((response) => {
         setAllVideos(response.data.results);
       })
@@ -51,8 +53,8 @@ const Home = ({ setChanelId }) => {
   }, []);
   useEffect(() => {
     getVideoBySubscriptios();
-  },[]);
- 
+  }, []);
+
   return (
     <div className="videos">
       <Categories />

@@ -29,7 +29,7 @@ const Profile = () => {
 
   const getUserById = () => {
     axios
-      .get(`http://localhost:5000/user/profile`, {
+      .get(`/user/profile`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -46,7 +46,7 @@ const Profile = () => {
 
   const getAllVideosByChannelId = () => {
     axios
-      .get(`http://localhost:5000/video/${user_id}`, {
+      .get(`/video/${user_id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -63,7 +63,7 @@ const Profile = () => {
 
   const deleteAnVideoById = (id) => {
     axios
-      .delete(`http://localhost:5000/video/delete_1/${id}`, {
+      .delete(`/video/delete_1/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -174,14 +174,15 @@ const Profile = () => {
                 {profileVideos &&
                   profileVideos.map((video) => {
                     return (
-                      <div
-                        className="video"
-                        
-                      >
+                      <div className="video">
                         <div className="video__thumbnail">
-                          <img src={video.image} alt="" onClick={() => {
-                          navigate(`/video/${video.id}`);
-                        }} />
+                          <img
+                            src={video.image}
+                            alt=""
+                            onClick={() => {
+                              navigate(`/video/${video.id}`);
+                            }}
+                          />
                         </div>
                         <div className="video__details">
                           <div className="author">
@@ -200,7 +201,7 @@ const Profile = () => {
                           <button
                             className="all-videos-video"
                             onClick={() => {
-                              navigate(`/update/${video.id}`)
+                              navigate(`/update/${video.id}`);
                             }}
                           >
                             Update

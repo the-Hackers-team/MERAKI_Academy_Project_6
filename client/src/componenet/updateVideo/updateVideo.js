@@ -32,7 +32,7 @@ const UpdateAnVideoById = () => {
 
   const getVideoById = () => {
     axios
-      .get(`http://localhost:5000/video/search_1?id=${id}`, {
+      .get(`/video/search_1?id=${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -54,7 +54,7 @@ const UpdateAnVideoById = () => {
   const updateAnVideoById = () => {
     axios
       .put(
-        `http://localhost:5000/video/update/${id}`,
+        `/video/update/${id}`,
         { title, description, image, category, video_link },
         {
           headers: {
@@ -272,7 +272,7 @@ const UpdateAnVideoById = () => {
             setcategory(e.target.value);
           }}
         ></textarea> */}
-         <Dropdown className="drop">
+        <Dropdown className="drop">
           <Dropdown.Toggle
             variant="success"
             id="dropdown-basic"

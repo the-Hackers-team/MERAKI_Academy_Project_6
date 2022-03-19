@@ -38,7 +38,7 @@ const Login = () => {
       const userLogin = { email, password };
 
       const myUser = axios
-        .post(`http://localhost:5000/user/login`, userLogin)
+        .post(`/user/login`, userLogin)
         .then((response) => {
           if (response.data.success) {
             localStorage.setItem("token", response.data.token);

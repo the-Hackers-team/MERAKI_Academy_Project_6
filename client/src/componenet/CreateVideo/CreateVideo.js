@@ -31,7 +31,7 @@ const CreateVideo = () => {
     if (title && description && image && category && video_link) {
       axios
         .post(
-          "http://localhost:5000/video",
+          "/video",
           { title, description, image, category, video_link },
           {
             headers: {

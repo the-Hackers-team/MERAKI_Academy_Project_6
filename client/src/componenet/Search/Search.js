@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../SideBar/Sidebar";
-import { Link, useNavigate,useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Categories from "../Categories/Categories";
 import axios from "axios";
@@ -10,7 +10,7 @@ const menuIcon = document.querySelector(".logo");
 const Search = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const {search} = params;
+  const { search } = params;
   const [allVideos, setAllVideos] = useState([]);
   const state = useSelector((state) => {
     return {
@@ -20,7 +20,7 @@ const Search = () => {
   });
   const getAllVideos = () => {
     axios
-      .get(`http://localhost:5000/video/all`)
+      .get(`/video/all`)
       .then((response) => {
         setAllVideos(response.data.results);
       })
@@ -34,47 +34,47 @@ const Search = () => {
   return (
     <div className="videos">
       <Categories />
-    
+
       <h1>Search results for {search}</h1>
       <div className="videos__container">
-      
         {allVideos &&
           allVideos
             .filter((element) => {
-               if (
+              if (
                 element.title.toLowerCase().includes(search.toLowerCase()) ||
                 (element.category &&
                   element.category.toLowerCase().includes(search.toLowerCase()))
               ) {
                 return element;
               }
-            }).map((video) => {
-            return (
-              <div
-                className="video"
-                onClick={() => {
-                  navigate(`/video/${video.id}`);
-                }}
-              >
-                <div className="video__thumbnail">
-                  <img src={video.image} alt="" />
-                </div>
-                <div className="video__details">
-                  <div className="author">
-                    <img src={video.user_image} alt="" />
+            })
+            .map((video) => {
+              return (
+                <div
+                  className="video"
+                  onClick={() => {
+                    navigate(`/video/${video.id}`);
+                  }}
+                >
+                  <div className="video__thumbnail">
+                    <img src={video.image} alt="" />
                   </div>
-                  <div className="title">
-                    <h3>{video.title}</h3>
-                    <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                    <span>
-                      {video.video_views} •{" "}
-                      {moment(video.publish_date).fromNow()}
-                    </span>
+                  <div className="video__details">
+                    <div className="author">
+                      <img src={video.user_image} alt="" />
+                    </div>
+                    <div className="title">
+                      <h3>{video.title}</h3>
+                      <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                      <span>
+                        {video.video_views} •{" "}
+                        {moment(video.publish_date).fromNow()}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
       </div>
     </div>
   );

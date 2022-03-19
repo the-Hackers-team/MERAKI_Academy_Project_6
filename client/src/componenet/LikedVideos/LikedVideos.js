@@ -26,7 +26,7 @@ const LikedVideos = () => {
 
   const getVideosByLiks = () => {
     axios
-      .get("http://localhost:5000/like", {
+      .get("/like", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -41,7 +41,7 @@ const LikedVideos = () => {
 
   const deleteLikedVideos = (id) => {
     axios
-      .delete(`http://localhost:5000/like/delete/${id}`, {
+      .delete(`/like/delete/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },

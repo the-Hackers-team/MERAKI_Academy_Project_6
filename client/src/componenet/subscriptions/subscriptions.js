@@ -25,7 +25,7 @@ const Subcriptions = () => {
 
   const getAllvideossubscripes = () => {
     axios
-      .get("http://localhost:5000/subscription/mySubsciption", {
+      .get("/subscription/mySubsciption", {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
@@ -42,7 +42,7 @@ const Subcriptions = () => {
 
   const removeFromMySubscription = (id) => {
     axios
-      .delete(`http://localhost:5000/subscription/delete/${id}`, {
+      .delete(`/subscription/delete/${id}`, {
         headers: {
           Authorization: `Basic ${state.token}`,
         },
