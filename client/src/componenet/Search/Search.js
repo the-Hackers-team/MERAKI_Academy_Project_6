@@ -36,47 +36,47 @@ const Search = () => {
       <Categories />
 
       <h1>Search results for {search}</h1>
-      <div className="videos__container">
-        {allVideos &&
-          allVideos
-            .filter((element) => {
-              if (
-                element.title.toLowerCase().includes(search.toLowerCase()) ||
-                (element.category &&
-                  element.category.toLowerCase().includes(search.toLowerCase()))
-              ) {
-                return element;
-              }
-            })
-            .map((video) => {
-              return (
-                <div
-                  className="video"
-                  onClick={() => {
-                    navigate(`/video/${video.id}`);
-                  }}
-                >
-                  <div className="video__thumbnail">
-                    <img src={video.image} alt="" />
+    <div className="videos__container">
+      {allVideos &&
+        allVideos
+          .filter((element) => {
+            if (
+              element.title.toLowerCase().includes(search.toLowerCase()) ||
+              (element.category &&
+                element.category.toLowerCase().includes(search.toLowerCase()))
+            ) {
+              return element;
+            }
+          })
+          .map((video) => {
+            return (
+              <div
+                className="video"
+                onClick={() => {
+                  navigate(`/video/${video.id}`);
+                }}
+              >
+                <div className="video__thumbnail">
+                  <img src={video.image} alt="" />
+                </div>
+                <div className="video__details">
+                  <div className="author">
+                    <img src={video.user_image} alt="" />
                   </div>
-                  <div className="video__details">
-                    <div className="author">
-                      <img src={video.user_image} alt="" />
-                    </div>
-                    <div className="title">
-                      <h3>{video.title}</h3>
-                      <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
-                      <span>
-                        {video.video_views} •{" "}
-                        {moment(video.publish_date).fromNow()}
-                      </span>
-                    </div>
+                  <div className="title">
+                    <h3>{video.title}</h3>
+                    <Link to="">{`${video.firstName}  ${video.lastName}`}</Link>
+                    <span>
+                      {video.video_views} •{" "}
+                      {moment(video.publish_date).fromNow()}
+                    </span>
                   </div>
                 </div>
-              );
-            })}
-      </div>
+              </div>
+            );
+          })}
     </div>
+  </div>
   );
 };
 

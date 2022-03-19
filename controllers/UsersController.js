@@ -49,7 +49,7 @@ const login = (req, res) => {
   const data = [email];
   connection.query(query, data, async (err, result) => {
     if (err) {
-      res
+     return res
         .status(404)
         .json({ success: false, message: "server error", err: err });
     }

@@ -60,7 +60,7 @@ const Home = ({ setChanelId }) => {
       <Categories />
       <h1>Recommended</h1>
 
-      <div className="videos__container">
+      <div className="videos__container border-botom">
         {videos &&
           videos.map((video) => {
             return (
@@ -91,7 +91,7 @@ const Home = ({ setChanelId }) => {
             );
           })}
       </div>
-      <h1>All videos</h1>
+      <h1 className="padding-top">All videos</h1>
       <div className="videos__container">
         {allVideos &&
           allVideos.map((video) => {

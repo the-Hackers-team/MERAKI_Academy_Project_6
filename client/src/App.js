@@ -172,7 +172,7 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/categories/:category"
           element={
             state.token ? (
@@ -186,8 +186,26 @@ function App() {
               </div>
             )
           }
-        />
+        /> */}
+        <Route
+          path="/categories/:category"
+          element={
+            state.token ? (
+              <div className="mainBody">
+                <Sidebar sideClick={sideClick} />
 
+                <AllCategories />
+              </div>
+            ) : (
+              <div class="admin">
+                <img
+                  src="https://stories.freepiklabs.com/storage/23247/401-error-unauthorized-rafiki-2845.png"
+                  style={{ width: "40%", height: " 40%" }}
+                />
+              </div>
+            )
+          }
+        />
         <Route path="*" exact={true} element={<NotFound />} />
       </Routes>
     </div>

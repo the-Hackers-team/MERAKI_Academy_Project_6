@@ -94,6 +94,7 @@
   position: sticky;
   left: 0;
   top: var(--header-height);
+  background-color: white;
 }
 
 .sidebar .hidden-sidebar {
@@ -212,6 +213,7 @@
 
 .sidebar.open {
   width: 200px;
+  background-color: white;
 }
 
 .your-channel {

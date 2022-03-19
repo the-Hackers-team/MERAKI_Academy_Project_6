@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducer/login/index";
+import Categories from "../Categories/Categories";
 import moment from "moment";
 
 const AllCategories = () => {
@@ -31,6 +32,8 @@ const AllCategories = () => {
 
   return (
     <div className="videos">
+       <Categories />
+      <h1>Results filter for {category} </h1>
       <div className="videos__container">
         {allVideos &&
           allVideos.map((video) => {
